@@ -1,0 +1,47 @@
+// colors
+$primary_color: #414141;
+$secondary_color: #808080;
+$bg_color: #FFF;
+$bg_color_lighter: #ececec;
+$bg_color_darker: #c9c9c9;
+$note_color: #bc243c;
+$favourites_color_lighter: #FFE9E9;
+$favourites_color: #FF6464;
+// typography
+$font: 'Montserrat', sans-serif;
+$big_font_size: 46px;
+$h1_font_size: 36px;
+$h2_font_size: 32px;
+$h3_font_size: 22px;
+$p_font_size: 15px;
+$input_font_size: 14px;
+$bolder_font_weight: 800;
+$bold_font_weight: 700;
+$medium_font_weight: 600;
+$light_font_weight: 500;
+$lighter_font_weight: 400;
+// margin and padding
+$mb_auto: 0 auto;
+$pd_super: 140px 0;
+$pd_big: 120px 0 0 0;
+$pd_medium: 80px 0;
+$pd_small: 20px 0;
+$pd_block: 80px 60px;
+$pd_input: 13px;
+$pd_button: 7px 25px;
+$pd_plate: 30px 20px;
+$pd_medium_bottom: 0 0 80px 0;
+// z-index
+$z_tooltip: 10;
+$z_fixed: 100;
+$z_modal: 999;
+$z_background: -2;
+// media breakpoints
+$breakpoint_desktop: 1550px;
+$breakpoint_laptop: 1280px;
+$breakpoint_tablet: 940px;
+$breakpoint_phone: 700px;
+// border radius
+$input_radius: 7px;
+$button_radius: 7px;
+$plate_radius: 13px;

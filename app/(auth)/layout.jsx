@@ -1,10 +1,9 @@
-import '@/styles/style.scss'
 export default function Layout({ children }) {
     return (
         <>
-            <div className="wrapper">
+            <main>
                 {children}
-            </div>
+            </main>
         </>
     )
 }
