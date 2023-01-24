@@ -78,4 +78,5 @@ export default NextAuth({
         signIn: '/',
     },
     adapter: MongoDBAdapter(clientPromise),
+    secret: "g3xqP+Ihl+zzFtmjxg20DUlxug1+m9hocsw3g+i00zw="
 })
