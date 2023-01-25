@@ -1,12 +1,14 @@
 import lang from "@/constants/lang"
 
-export default function useLanguage({user}) {
+export default function useLanguage(session, status) {
     function languageSelector() {
-            if (user) {
-                const language = user.lang
-                for (let i = 0; i < lang.length; i++) {
-                    if (language === lang[i].lang) {
-                        return i
+            if (status !== 'loading') {
+                if (session){
+                    const language = session.user.lang
+                    for (let i = 0; i < lang.length; i++) {
+                        if (language === lang[i].lang) {
+                            return i
+                        }
                     }
                 }
             } else {

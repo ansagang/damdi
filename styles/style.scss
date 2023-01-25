@@ -2,6 +2,21 @@
 @import 'vars';
 @import 'reset';
 
+.login{
+    height: 100vh;
+    &__inner{
+        display: flex;
+        align-items: center;
+    }
+    &__banner{
+        width: 65%;
+    }
+    &__menu{
+        width: 35%;
+        
+    }
+}
+
 // :root {
 //     --max-width: 1100px;
 //     --border-radius: 12px;

@@ -1,13 +1,11 @@
-import { Layout } from '@/components'
-import useLanguage from '@/utils/useLanguage';
+import { Layout, Landing } from '@/components'
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import useClient from '@/utils/useClient';
+import { signIn } from 'next-auth/react';
+import Router from 'next/router';
 
 export default function Page() {
-    const { data: session, status } = useSession()
-    const language = useLanguage(status, session.user)
-
-    console.log(language, session);
+    const {session} = useClient()
 
     // async function signInC() {
     //     const status = await signIn('credentials', {
@@ -17,16 +15,16 @@ export default function Page() {
     //         redirect: false
     //     })
     //     console.log(status);
-    //     if(status.ok) router.push(status.url)
+    //     if(status.ok) Router.push(status.url)
     // }
-    // <>
-    //     <h3 onClick={() => signInC()}>login</h3>
+    // <h3 onClick={() => signInC()}>login</h3>
     //     <h1 onClick={() => signIn('google')}>fawfa</h1>
     //     <h2 onClick={() => signOut('')}>wfawf</h2>
     //     </>
+    //     </>
 
     return (
-        <h1>faw</h1>
+        <Landing />
     )
 }
 
