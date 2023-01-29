@@ -38,7 +38,7 @@ async function login(req, res) {
                     res.setHeader(
                         "Set-Cookie",
                         cookie.serialize("session", sessionID, {
-                            maxAge: 60 * 60,
+                            maxAge: 60 * 60 * 24,
                             sameSite: "strict",
                             path: "/"
                         }) 
@@ -46,18 +46,18 @@ async function login(req, res) {
 
                     res.send({
                         success: true,
-                        message: language.loginResult,
+                        message: language.res.loginResult,
                     })
                 } else {
                     res.send({
                         success: false,
-                        message: language.passwordIncorrectError
+                        message: language.res.passwordIncorrectError
                     })
                 }
             } else {
                 res.send({
                     success: false,
-                    message: language.userNotFoundError
+                    message: language.res.userNotFoundError
                 })
             }
         } else {

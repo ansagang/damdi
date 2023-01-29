@@ -21,20 +21,20 @@ async function loginSession(req, res) {
                 const user = await User.findOne({ _id: session.userID })
                 res.send({
                     success: true,
-                    message: language.userResult,
+                    message: language.res.userResult,
                     data: user
                 })
             } else {
                 res.send({
                     success: false,
-                    message: language.sessionNotFoundError
+                    message: language.res.sessionNotFoundError
                 })
             }
         } else {
             
             res.send({
                 success: false,
-                message: language.sessionRequiredError
+                message: language.res.sessionRequiredError
             })
         }
     } catch (err) {

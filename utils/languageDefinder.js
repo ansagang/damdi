@@ -1,6 +1,6 @@
-import lang from "@/constants/lang";
+import { lang } from "@/constants"
 
-function languageDefinder(language) {
+export default function languageDefinder(language) {
     function languageSelector() {
         for (let i = 0; i < lang.length; i++) {
             if (language === lang[i].lang) {
@@ -11,5 +11,3 @@ function languageDefinder(language) {
 
     return lang[languageSelector()]
 }
-
-export default languageDefinder;

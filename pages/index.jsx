@@ -1,11 +1,12 @@
 import { Layout, Landing } from '@/components'
-import { useSession } from 'next-auth/react';
-import useClient from '@/utils/useClient';
-import { signIn } from 'next-auth/react';
 import Router from 'next/router';
+import { signOut } from 'next-auth/react';
+import axios from 'axios';
+import useLanguage from '@/utils/useLanguage';
+import account from '@/utils/account';
 
-export default function Page() {
-    const {session} = useClient()
+export default function Page({data}) {
+    console.log(data);
 
     // async function signInC() {
     //     const status = await signIn('credentials', {
@@ -19,16 +20,31 @@ export default function Page() {
     // }
     // <h3 onClick={() => signInC()}>login</h3>
     //     <h1 onClick={() => signIn('google')}>fawfa</h1>
-    //     <h2 onClick={() => signOut('')}>wfawf</h2>
     //     </>
     //     </>
 
     return (
+        <>
         <Landing />
+
+        <h2 onClick={() => signOut('')}>wfawf</h2>
+        </>
+        
     )
 }
 
+export async function getServerSideProps(context) {
+
+    const data = await account(context)
+
+    return {
+        props: {
+            data
+        }
+    }
+}
+
 Page.getLayout = (page) => {
-    return <Layout head={{ title: 'Home', content: 'Content' }} comp={{ header: true, footer: true }}>{page}</Layout>;
+    return <Layout data={page.props.data} head={{ title: 'Home', content: 'Content' }} comp={{ header: true, footer: true }}>{page}</Layout>;
 };
 Page.auth = false

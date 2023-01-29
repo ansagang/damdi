@@ -1,42 +1,52 @@
 import '@/styles/style.scss'
-import { SessionProvider } from 'next-auth/react'
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import NotificationProvider from '@/context/notification/NotificationProvider';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
 
     const getLayout = Component.getLayout || ((page) => page);
 
+
     return (
-        <SessionProvider session={session}>
-            {
-                Component.auth ?
-                    (
-                        <Auth adminOnly={Component.auth.adminOnly}>
-                            {getLayout(<Component {...pageProps} />)}
-                        </Auth>
-                    )
-                    :
-                    (
-                        getLayout(<Component {...pageProps} />)
-                    )
-            }
-        </SessionProvider>
+        // <SessionProvider session={session}>
+        // {
+        Component.auth ?
+            (
+                <NotificationProvider>
+                    <Auth adminOnly={Component.auth.adminOnly}>
+                        {getLayout(<Component {...pageProps} />)}
+                    </Auth>
+                </NotificationProvider>
+            )
+            :
+            (
+                <NotificationProvider>
+                    {getLayout(<Component {...pageProps} />)}
+                </NotificationProvider>
+            )
+        // }
+        // </SessionProvider>
     )
 }
 
 function Auth({ children, adminOnly }) {
     const router = useRouter();
-    const { status, data: session } = useSession({
-        required: true,
-        onUnauthenticated() {
-            router.push('/login');
-        },
-    });
-    if (status === 'loading') {
-        return <div>Loading...</div>;
+    const session = context.req.cookies['session']
+    const lang = context.req.headers["accept-language"].split(",")[0]
+    console.log(lang);
+    console.log(session);
+    let data = {}
+    try {
+        axios.post(`http://localhost:3000/api/auth/login-session?lang=${lang}`, {
+            sessionID: session
+        }).then((res) => {
+            console.log(res.data);
+            data = res.data
+        })
+    } catch (err) {
+        console.log(err);
     }
-    if (adminOnly && !session.user.isAdmin) {
+    if (adminOnly && !data.data.role !== 'admin') {
         router.push('/login');
     }
 

@@ -1,10 +1,10 @@
-import { Layout, LoginForm } from "@/components"
+import { Layout, RegisterForm } from "@/components"
 import axios from "axios"
 
-export default function Login() {
+export default function Register() {
 
     return (
-        <LoginForm />
+        <RegisterForm />
     )
 }
 
@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
     // }
 }
 
-Login.getLayout = (page) => {
-    return <Layout head={{ title: 'Login', content: 'Login to your account' }} comp={{ header: false, footer: false }}>{page}</Layout>;
+Register.getLayout = (page) => {
+    return <Layout head={{ title: 'Register', content: 'Register your account' }} comp={{ header: false, footer: false }}>{page}</Layout>;
 };
-Login.auth = false
+Register.auth = false

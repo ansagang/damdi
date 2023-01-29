@@ -3,26 +3,25 @@ import languageDefinder from "./languageDefinder"
 export const registerValidation = (req) => {
     const { username, password, email, confirmPassword, lang } = req.body
     const errors = []
-
     const language = languageDefinder(req.query.lang)
     if (username && password && email && confirmPassword && lang) {
         if (username.length < 3) {
-            errors.push(language.usernameLengthError)
+            errors.push(language.res.usernameLengthError)
         }
 
         if (password === confirmPassword) {
             if (password.length < 3) {
-                errors.push(language.passwordLengthError)
+                errors.push(language.res.passwordLengthError)
             }
         } else {
-            errors.push(language.passwordMatchError)
+            errors.push(language.res.passwordMatchError)
         }
 
         if (!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            errors.push(language.emailValidError)
+            errors.push(language.res.emailValidError)
         }
     } else {
-        errors.push(language.missingFields)
+        errors.push(language.res.missingFields)
     }
 
     return errors
@@ -35,7 +34,7 @@ export const loginValidation = (req) => {
     const language = languageDefinder(req.query.lang)
     if (email && password) {
     } else {
-        errors.push(language.missingFields)
+        errors.push(language.res.missingFields)
     }
 
     return errors
@@ -50,16 +49,16 @@ export const changePasswordValidation = (req) => {
         if (newPassword === confirmNewPassword) {
             if (!(newPassword === password)) {
                 if (newPassword.length < 3) {
-                    errors.push(language.passwordLengthError)
+                    errors.push(language.res.passwordLengthError)
                 }
             } else {
-                errors.push(language.passwordUniqueError)
+                errors.push(language.res.passwordUniqueError)
             }
         } else {
             errors.push(language.passwordMatchError)
         }
     } else {
-        errors.push(language.missingFields)
+        errors.push(language.res.missingFields)
     }
 
     return errors
@@ -72,22 +71,22 @@ export const createUserValidation = (req) => {
     const language = languageDefinder(req.query.lang)
     if (username && password && email && role && lang && confirmPassword) {
         if (username.length < 3) {
-            errors.push(language.usernameLengthError)
+            errors.push(language.res.usernameLengthError)
         }
 
         if (password === confirmPassword) {
             if (password.length < 3) {
-                errors.push(language.passwordLengthError)
+                errors.push(language.res.passwordLengthError)
             }
         } else {
-            errors.push(language.passwordMatchError)
+            errors.push(language.res.passwordMatchError)
         }
 
         if (!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            errors.push(language.emailValidError)
+            errors.push(language.res.emailValidError)
         }
     } else {
-        errors.push(language.missingFields)
+        errors.push(language.res.missingFields)
     }
 
     return errors
@@ -100,14 +99,14 @@ export const createCategoryValidation = (req) => {
     const language = languageDefinder(req.query.lang)
     if (name && code) {
         if (name.length < 3) {
-            errors.push(language.nameLengthError)
+            errors.push(language.res.nameLengthError)
         }
 
         if (code.length < 3) {
-            errors.push(language.codeLengthError)
+            errors.push(language.res.codeLengthError)
         }
     } else {
-        errors.push(language.missingFields)
+        errors.push(language.res.missingFields)
     }
 
     return errors
@@ -120,18 +119,18 @@ export const createCollectionValidation = (req) => {
     const language = languageDefinder(req.query.lang)
     if (name && code && description) {
         if (name.length < 3) {
-            errors.push(language.nameLengthError)
+            errors.push(language.res.nameLengthError)
         }
 
         if (code.length < 3) {
-            errors.push(language.codeLengthError)
+            errors.push(language.res.codeLengthError)
         }
 
         if (description.length < 5) {
-            errors.push(language.descriptionLengthError)
+            errors.push(language.res.descriptionLengthError)
         }
     } else {
-        errors.push(language.missingFields)
+        errors.push(language.res.missingFields)
     }
     return errors
 }

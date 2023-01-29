@@ -28,7 +28,7 @@ async function register(req, res) {
             if (_email) {
                 res.send({
                     success: false,
-                    message: language.emailExistsError
+                    message: language.res.emailExistsError
                 })
             } else {
                 const salt = bcrypt.genSaltSync(10)
@@ -52,7 +52,7 @@ async function register(req, res) {
 
                 res.send({
                     success: true,
-                    message: language.registrationResult,
+                    message: language.res.registrationResult,
                     sessionID: _sessionID
                 })
             }
