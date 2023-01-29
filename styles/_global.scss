@@ -1,59 +1,64 @@
 @import 'vars';
 
-.container{
+.container {
     margin: $mb_auto;
     max-width: 1230px;
-    &__fluid{
+
+    &__fluid {
         margin: $mb_auto;
         padding: 0 $pd_block;
         max-width: 1530px;
     }
 }
 
-.title{
+.title {
     font-weight: $bold_font_weight;
     color: $primary_color;
     margin-bottom: 15px;
     transition: 0.4s ease;
-    & h1{
+
+    & h1 {
         font-size: $h1_font_size;
     }
-    & h2{
+
+    & h2 {
         font-size: $h2_font_size;
     }
-    & h3{
+
+    & h3 {
         font-size: $h3_font_size;
     }
 }
 
-.info{
+.info {
     font-size: $p_font_size;
     font-weight: $lighter_font_weight;
-    margin-top:5px;
+    margin-top: 5px;
     color: $secondary_color;
     line-height: 22px;
     transition: 0.4s ease;
 }
 
-.inner{
+.inner {
     padding: $pd_medium;
-    &__mini{
+
+    &__mini {
         padding: $pd-block;
     }
 }
 
-button{
-    &.primary{
-        border: 2px solid $primary_color;
-        background-color: $primary_color;
+button {
+    &.primary {
+        border: 2px solid $accent_color;
+        background-color: $accent_color;
         color: $bg_color;
     }
-    &.secondary{
-        border: 2px solid $bg_color_lighter;
+
+    &.secondary {
+        border: none;
+        background-color: $bg_color;
         color: $primary_color;
+        border: 2px solid $bg_color_lighter;
+        width: 100%;
     }
-    &:last-child{
-        margin-bottom: 0;
-    }
-    margin-bottom: 20px;
 }

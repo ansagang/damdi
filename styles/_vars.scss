@@ -1,12 +1,10 @@
 // colors
 $primary_color: #414141;
-$secondary_color: #808080;
+$secondary_color: #cdcdcd;
+$accent_color: #98F9FF;
 $bg_color: #FFF;
 $bg_color_lighter: #ececec;
 $bg_color_darker: #c9c9c9;
-$note_color: #bc243c;
-$favourites_color_lighter: #FFE9E9;
-$favourites_color: #FF6464;
 // typography
 $font: 'Montserrat', sans-serif;
 $big_font_size: 46px;
@@ -27,8 +25,8 @@ $pd_big: 120px 0 0 0;
 $pd_medium: 80px 0;
 $pd_small: 20px 0;
 $pd_block: 80px 60px;
-$pd_input: 13px;
-$pd_button: 7px 25px;
+$pd_input: 17px;
+$pd_button: 15px 25px;
 $pd_plate: 30px 20px;
 $pd_medium_bottom: 0 0 80px 0;
 // z-index
@@ -42,6 +40,6 @@ $breakpoint_laptop: 1280px;
 $breakpoint_tablet: 940px;
 $breakpoint_phone: 700px;
 // border radius
-$input_radius: 7px;
+$input_radius: 5px;
 $button_radius: 7px;
 $plate_radius: 13px;

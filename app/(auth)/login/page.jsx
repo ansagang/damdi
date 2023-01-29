@@ -1,5 +1,5 @@
 import Image from "next/image"
-import images from "@/src/images"
+import images from "@/constants/images"
 import { ClickCounter } from "@/components/ClickCounter"
 
 export default async function LoginPage() {
