@@ -1,31 +1,15 @@
 import { Layout, Landing } from '@/components'
 import Router from 'next/router';
 import { signOut } from 'next-auth/react';
-import axios from 'axios';
+import { getAccount } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
-import account from '@/utils/account';
 
-export default function Page({data}) {
-    console.log(data);
-
-    // async function signInC() {
-    //     const status = await signIn('credentials', {
-    //         email: 'ansagaaang@gmail.com',
-    //         password: "aansag",
-    //         callbackUrl: '/',
-    //         redirect: false
-    //     })
-    //     console.log(status);
-    //     if(status.ok) Router.push(status.url)
-    // }
-    // <h3 onClick={() => signInC()}>login</h3>
-    //     <h1 onClick={() => signIn('google')}>fawfa</h1>
-    //     </>
-    //     </>
+export default function Page({account, language}) {
+    console.log(account);
 
     return (
         <>
-        <Landing />
+        <Landing language={language}/>
 
         <h2 onClick={() => signOut('')}>wfawf</h2>
         </>
@@ -35,11 +19,12 @@ export default function Page({data}) {
 
 export async function getServerSideProps(context) {
 
-    const data = await account(context)
-
+    const account = await getAccount(context)
+    const language = useLanguage(account.data, context)
     return {
         props: {
-            data
+            account: account,
+            language: language
         }
     }
 }

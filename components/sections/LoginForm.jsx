@@ -4,36 +4,18 @@ import Link from "next/link"
 import { useState } from "react"
 import Router from "next/router"
 import axios from "axios"
-import { useEffect } from "react"
-import useLanguage from "@/utils/useLanguage"
 import responseHandler from "@/utils/responseHandler"
 
-export default function LoginForm() {
+export default function LoginForm({language}) {
 
     
     const dispatcher = responseHandler()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [lang, setLang] = useState('')
-    useEffect(() => {
-        const language = useLanguage()
-        setLang(language.lang)
-    }, [])
-
-    // async function signInCredentials() {
-    //     const status = await signIn('credentials', {
-    //         email: email,
-    //         password: password,
-    //         callbackUrl: '/',
-    //         redirect: true
-    //     })
-    //     console.log(status);
-    //     if(status.ok) Router.push(status.url)
-    // }
 
     async function login() {
         try {
-            await axios.post(`/api/auth/login?lang=${lang}`, {
+            await axios.post(`/api/auth/login?lang=${language.lang}`, {
                 email: email,
                 password: password
             }).then((res) => {
@@ -56,24 +38,24 @@ export default function LoginForm() {
                 </div>
                 <div className="login__menu">
                     <div className="login__menu-title title">
-                        <h2>Login</h2>
+                        <h2>{language.login.title}</h2>
                     </div>
                     <div className="login__menu-info info">
-                        <p>Welcome back Please enter your details.</p>
+                        <p>{language.login.description}</p>
                     </div>
                     <form className="login__menu-form">
                         <div className="login__menu-form_input">
                             <input value={email} onChange={(e) => {
                                 setEmail(e.target.value)
-                            }} type="email" placeholder="Email" />
+                            }} type="email" placeholder={language.login.inputs.email} />
                         </div>
                         <div className="login__menu-form_input">
                             <input onChange={(e) => {
                                 setPassword(e.target.value)
-                            }} value={password} type="password" placeholder="Password" />
+                            }} value={password} type="password" placeholder={language.login.inputs.password}  />
                         </div>
-                        <button onClick={() => login()} type="button" className="login__menu-form_button primary">Login</button>
-                        <p className="login__menu-form_note">Don't have an account? <Link href={'/register'}>Sign up</Link></p>
+                        <button onClick={() => login()} type="button" className="login__menu-form_button primary">{language.login.buttons.login}</button>
+                        <p className="login__menu-form_note">{language.login.texts.dontHaveAnAccount}<Link href={'/register'}>{language.login.links.signUp}</Link></p>
                     </form>
                 </div>
             </div>

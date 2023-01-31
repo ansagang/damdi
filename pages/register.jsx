@@ -1,43 +1,35 @@
 import { Layout, RegisterForm } from "@/components"
-import axios from "axios"
+import { getAccount } from "@/utils/requests"
+import useLanguage from "@/utils/useLanguage"
 
-export default function Register() {
+export default function Register({language}) {
 
     return (
-        <RegisterForm />
+        <RegisterForm language={language} />
     )
 }
 
 export async function getServerSideProps(context) {
-    const session = context.req.cookies['session']
-    const lang = context.req.headers["accept-language"].split(",")[0]
-    let data = {}
-    try {
-        await axios.post(`http:/localhost:3000/api/auth/login-session?lang=${lang}`, {
-            sessionID: session
-        }).then((res) => {
-            data = res.data
-        })
-    } catch (err) {
-        console.log(err);
-    }
-    // if (session) {
-    //     return {
-    //         redirect: {
-    //             destination: '/',
-    //             permanent: true,
-    //         },
-    //     }
-    // } else {
+    const account = await getAccount(context)
+    const language = useLanguage(account.data, context)
+    if (account.data) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: true,
+            },
+        }
+    } else {
         return {
             props: {
-                data
+                account: account,
+                language: language
             }
         }
-    // }
+    }
 }
 
 Register.getLayout = (page) => {
-    return <Layout head={{ title: 'Register', content: 'Register your account' }} comp={{ header: false, footer: false }}>{page}</Layout>;
+    return <Layout head={{  title: page.props.language.register.title, content:  page.props.language.register.description }} comp={{ header: false, footer: false }}>{page}</Layout>;
 };
 Register.auth = false

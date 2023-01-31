@@ -36,53 +36,39 @@ const lang = [
         },
         title: 'English',
         login: {
-            stepOne: {
-                title: "Login to your account",
-                inputs: {
-                    username: "Username",
-                    password: "Password",
-                    email: "Email"
-                },
-                buttons: {
-                    rememberMe: "Remember me",
-                    login: "Login",
-                    dontHaveAccount: "Do not have an account?"
-                }
+            title: 'Login',
+            description: 'Log in to your account.',
+            inputs: {
+                email: 'Email',
+                password: 'Password',
+            },
+            buttons: {
+                login: 'Login'
+            },
+            links: {
+                signUp: 'Sign up'
+            },
+            texts: {
+                dontHaveAnAccount: "Don't have an account? "
             }
         },
         register: {
-            stepOne: {
-                title: "Register",
-                inputs: {
-                    username: "Username",
-                    password: "Password",
-                    confirmPassword: "Confirm password",
-                    email: "Email"
-                },
-                buttons: {
-                    register: "Register",
-                    alreadyHaveAccount: "Already have an account?"
-                }
+            title: 'Register',
+            description: 'Register your account.',
+            inputs: {
+                email: 'Email',
+                username: 'Username',
+                password: 'Password',
+                confirmPassword: 'Confirm your password'
             },
-            stepTwo: {
-                title: "Choose your profile picture",
-                inputs: {
-                    img: "Select profile image"
-                },
-                buttons: {
-                    done: "Done",
-                    skip: "Skip"
-                }
+            buttons: {
+                register: 'Register'
             },
-            stepThree: {
-                title: "Choose your profile language",
-                inputs: {
-                    language: "Select language"
-                },
-                buttons: {
-                    done: "Done",
-                    skip: "Skip"
-                }
+            links: {
+                signIn: 'Sign in'
+            },
+            texts: {
+                alreadyHaveAnAccount: 'Already have an account? '
             }
         }
     },
@@ -123,53 +109,41 @@ const lang = [
         },
         title: 'Русский',
         login: {
-                title: "Войдите в аккаунт",
-                inputs: {
-                    username: "Логин",
-                    password: "Пароль",
-                    email: "Электронная почта"
-                },
-                buttons: {
-                    rememberMe: "Запомните меня",
-                    login: "Войти",
-                    dontHaveAccount: "У вас нету аккаунта?"
-                }
-        },
-        register: {
-            stepOne: {
-                title: "Зарегистрироваться",
-                inputs: {
-                    username: "Логин",
-                    password: "Пароль",
-                    confirmPassword: "Подтверждение пароля",
-                    email: "Электронная почта"
-                },
-                buttons: {
-                    register: "Зарегистрироваться",
-                    alreadyHaveAccount: "У вас уже есть аккаунт?"
-                }
+            title: 'Логин',
+            description: 'Войти в аккаунт.',
+            inputs: {
+                email: 'Электронная почта',
+                password: 'Пароль',
             },
-            stepTwo: {
-                title: "Выберите аватар",
-                inputs: {
-                    img: "Выберите аватарку"
-                },
-                buttons: {
-                    done: "Готово",
-                    skip: "Пропустить"
-                }
+            buttons: {
+                login: 'Войти'
             },
-            stepThree: {
-                title: "Выберите язык",
-                inputs: {
-                    language: "Выберите язык"
-                },
-                buttons: {
-                    done: "Готово",
-                    skip: "Пропустить"
-                }
+            links: {
+                signUp: 'Зарегистрируйтесь'
+            },
+            texts: {
+                dontHaveAnAccount: "Еще нет аккаунта? "
             }
         },
+        register: {
+            title: 'Регистрация',
+            description: 'Зарегистрируйте ваш аккаунт.',
+            inputs: {
+                email: 'Электронная почта',
+                username: 'Имя пользователя',
+                password: 'Пароль',
+                confirmPassword: 'Повторите пароль'
+            },
+            buttons: {
+                register: 'Войти'
+            },
+            links: {
+                signIn: 'Войти'
+            },
+            texts: {
+                alreadyHaveAnAccount: 'Уже есть аккаунт? '
+            }
+        }
     }
 ]
 
