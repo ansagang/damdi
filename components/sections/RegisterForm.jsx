@@ -38,11 +38,11 @@ export default function RegisterForm({language}) {
         <section className="login">
             <div className="login__inner">
                 <div className="login__banner">
-                    <Image width="100%" height="100%" src={images.donutOne} />
+                    <Image width="100%" height="100%" src={images.damdiBackground} />
                 </div>
                 <div className="login__menu">
                     <div className="login__menu-title title">
-                        <h2>{language.register.title}</h2>
+                        <h1>{language.register.title}</h1>
                     </div>
                     <div className="login__menu-info info">
                         <p>{language.register.description}</p>
@@ -70,7 +70,7 @@ export default function RegisterForm({language}) {
                         </div>
 
                         <button onClick={() => register()} type="button" className="login__menu-form_button primary">{language.register.buttons.register}</button>
-                        <p className="login__menu-form_note">{language.register.texts.alreadyHaveAnAccount}<Link href={'/login'}>{language.register.links.signIn}</Link></p>
+                        <p className="login__menu-form_note info">{language.register.texts.alreadyHaveAnAccount}<Link href={'/login'}>{language.register.links.signIn}</Link></p>
                     </form>
                 </div>
             </div>

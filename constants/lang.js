@@ -70,6 +70,21 @@ const lang = [
             texts: {
                 alreadyHaveAnAccount: 'Already have an account? '
             }
+        },
+        home: {
+            title: 'Home'
+        },
+        aboutUs: {
+            title: 'About us'
+        },
+        catalog: {
+            title: 'Catalog'
+        },
+        account: {
+            title: 'Account'
+        },
+        cart: {
+            title: 'Cart'
         }
     },
     {
@@ -143,6 +158,21 @@ const lang = [
             texts: {
                 alreadyHaveAnAccount: 'Уже есть аккаунт? '
             }
+        },
+        home: {
+            title: 'Главная'
+        },
+        aboutUs: {
+            title: 'О нас'
+        },
+        catalog: {
+            title: 'Каталог'
+        },
+        account: {
+            title: 'Аккаунт'
+        },
+        cart: {
+            title: 'Корзина'
         }
     }
 ]

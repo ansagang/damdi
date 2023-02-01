@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 @import 'vars';
 
 *,
@@ -81,8 +82,15 @@ select {
 
 a {
     text-decoration: none;
-    color: inherit;
     font-weight: $bold_font_weight;
+    color: $secondary_color;
+    transition: 0.2s ease;
+    &.active{
+        color: $primary_color;
+    }
+    &:hover{
+        color: $primary_color;
+    }
 }
 
 input[type="email"],

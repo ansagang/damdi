@@ -22,12 +22,33 @@
     &__menu {
         width: 35%;
         padding: $pd_block;
+
         &-form {
             margin: 40px 0 10px 0;
 
             &_input {
-                &:last-child {
-                    margin-bottom: 0;
+                position: relative;
+
+                // & svg{
+                //     position: absolute;
+                //     right: 13px;
+                //     top: 13px;
+                //     width: 27px;
+                //     height: 27px;
+                //     fill: $secondary_color;
+                // }
+                & input+svg {
+                    position: absolute;
+                    right: 13px;
+                    top: 13px;
+                    width: 27px;
+                    height: 27px;
+                    fill: $secondary_color;
+                }
+
+                & input:focus+svg {
+
+                    fill: $accent_color;
                 }
             }
 
@@ -39,9 +60,41 @@
             &_button {
                 width: 100%;
                 margin-top: 10px;
+
                 &.secondary {
                     margin-bottom: 25px;
                 }
+            }
+        }
+    }
+}
+
+.header {
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        &-title {
+            &.title {
+                font-family: 'Pacifico', cursive;
+            }
+        }
+    }
+
+    &__nav {
+        &-ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-li {
+            margin-left: 50px;
+            &:first-child{
+                margin-left: 0;
             }
         }
     }
