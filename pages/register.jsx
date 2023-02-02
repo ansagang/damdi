@@ -31,5 +31,4 @@ export async function getServerSideProps(context) {
 
 Register.getLayout = (page) => {
     return <Layout head={{  title: page.props.language.register.title, content:  page.props.language.register.description }} comp={{ header: false, footer: false }}>{page}</Layout>;
-};
-Register.auth = false
+}

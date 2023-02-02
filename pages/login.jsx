@@ -31,5 +31,4 @@ export async function getServerSideProps(context) {
 
 Login.getLayout = (page) => {
     return <Layout head={{ title: page.props.language.login.title, content:  page.props.language.login.description }} comp={{ header: false, footer: false }}>{page}</Layout>;
-};
-Login.auth = false
+}
