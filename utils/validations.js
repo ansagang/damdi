@@ -93,16 +93,20 @@ export const createUserValidation = (req) => {
 }
 
 export const createCategoryValidation = (req) => {
-    const { name, code } = req.body
+    const { title, description, code } = req.body
     const errors = []
 
     const language = languageDefinder(req.query.lang)
-    if (name && code) {
-        if (name.length < 3) {
+    if (title && code && description) {
+        if (title.length < 3) {
             errors.push(language.res.nameLengthError)
         }
 
         if (code.length < 3) {
+            errors.push(language.res.codeLengthError)
+        }
+
+        if (description.length < 20) {
             errors.push(language.res.codeLengthError)
         }
     } else {
@@ -112,20 +116,15 @@ export const createCategoryValidation = (req) => {
     return errors
 }
 
-export const createCollectionValidation = (req) => {
-    const { name, description, code } = req.body
+export const createProductValidation = (req) => {
+    const { title, description, price, category, stock, id, weight, quantity, flavors, ingredients } = req.body
     const errors = []
 
     const language = languageDefinder(req.query.lang)
-    if (name && code && description) {
-        if (name.length < 3) {
+    if (title && price && description && category && stock && id && weight && quantity && flavors, ingredients) {
+        if (title.length < 3) {
             errors.push(language.res.nameLengthError)
         }
-
-        if (code.length < 3) {
-            errors.push(language.res.codeLengthError)
-        }
-
         if (description.length < 5) {
             errors.push(language.res.descriptionLengthError)
         }

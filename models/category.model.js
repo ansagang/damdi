@@ -5,7 +5,8 @@ const categorySchema = new mongoose.Schema({
     description: String,
     image: String,
     code: String,
-    language: String
+    language: String,
+    id: String
 },
   {
     timestamps: true

@@ -20,6 +20,7 @@ const productSchema = new mongoose.Schema({
     },
     quantity:Number,
     flavors: [String],
+    ingredients: [String],
     language: String,
 },
   {

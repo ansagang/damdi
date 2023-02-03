@@ -2,7 +2,6 @@ import { Layout, Landing } from '@/components'
 import { signOut } from 'next-auth/react';
 import { getAccount } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
-import routeProtecter from '@/utils/routeProtecter';
 
 export default function Page({account, language}) {
     console.log(account);
