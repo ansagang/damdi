@@ -2,7 +2,7 @@ import { Layout, LoginForm } from "@/components"
 import { getAccount } from "@/utils/requests"
 import useLanguage from "@/utils/useLanguage"
 
-export default function Login({language}) {
+export default function Login({ language }) {
 
     return (
         <LoginForm language={language} />
@@ -30,5 +30,5 @@ export async function getServerSideProps(context) {
 }
 
 Login.getLayout = (page) => {
-    return <Layout head={{ title: page.props.language.login.title, content:  page.props.language.login.description }} comp={{ header: false, footer: false }}>{page}</Layout>;
+    return <Layout head={{ title: page.props.language.login.title, content: page.props.language.login.description }} comp={{ header: false, footer: false }}>{page}</Layout>;
 }

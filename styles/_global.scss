@@ -44,8 +44,12 @@
 .inner {
     padding: $pd_medium;
 
-    &__mini {
+    &__small{
         padding: $pd_small;
+    }
+    
+    &__big{
+        padding: $pd_big;
     }
 }
 

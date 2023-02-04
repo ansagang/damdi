@@ -2,7 +2,7 @@ export default function Landing({ language }) {
     return (
         <section className="landing">
             <div className="container">
-                <div className="landing__inner inner">
+                <div className="landing__inner inner__big">
                     <div className="landing__left">
                         <div className="landing__title title">
                             <h1>FROM OUR OVEN TO YOUR DOOR</h1>

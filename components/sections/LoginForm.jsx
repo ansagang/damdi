@@ -44,7 +44,7 @@ export default function LoginForm({language}) {
                     <div className="login__menu-info info">
                         <p>{language.login.description}</p>
                     </div>
-                    <form className="login__menu-form">
+                    <div onSubmit={() => login()} className="login__menu-form">
                         <div className="login__menu-form_input">
                             <input value={email} onChange={(e) => {
                                 setEmail(e.target.value)
@@ -55,9 +55,9 @@ export default function LoginForm({language}) {
                                 setPassword(e.target.value)
                             }} value={password} type="password" placeholder={language.login.inputs.password}  />
                         </div>
-                        <button onClick={() => login()} type="button" className="login__menu-form_button primary">{language.login.buttons.login}</button>
+                        <button onClick={() => login()} type='submit' className="login__menu-form_button primary">{language.login.buttons.login}</button>
                         <p className="login__menu-form_note info">{language.login.texts.dontHaveAnAccount}<Link href={'/register'}>{language.login.links.signUp}</Link></p>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>

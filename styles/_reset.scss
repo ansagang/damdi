@@ -161,11 +161,17 @@ input[type="file"] {
 button {
     font-size: $input_font_size;
     font-weight: $medium_font_weight;
-    padding: $pd_button;
     border-radius: $button_radius;
 
 
     cursor: pointer;
+    &[type="button"]{
+        padding: 7px 25px;
+    }
+
+    &[type="submit"]{
+        padding: $pd_button;
+    }
     
 
     &:last-child() {

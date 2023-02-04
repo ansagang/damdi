@@ -47,7 +47,7 @@ export default function RegisterForm({language}) {
                     <div className="login__menu-info info">
                         <p>{language.register.description}</p>
                     </div>
-                    <form className="login__menu-form">
+                    <div onSubmit={() => register()} className="login__menu-form">
                         <div className="login__menu-form_input">
                             <input value={email} onChange={(e) => {
                                 setEmail(e.target.value)
@@ -69,9 +69,9 @@ export default function RegisterForm({language}) {
                             }} value={confirmPassword} type="password" placeholder={language.register.inputs.confirmPassword} />
                         </div>
 
-                        <button onClick={() => register()} type="button" className="login__menu-form_button primary">{language.register.buttons.register}</button>
+                        <button onClick={() => register()} type="submit" className="login__menu-form_button primary">{language.register.buttons.register}</button>
                         <p className="login__menu-form_note info">{language.register.texts.alreadyHaveAnAccount}<Link href={'/login'}>{language.register.links.signIn}</Link></p>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>
