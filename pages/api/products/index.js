@@ -18,15 +18,16 @@ export default async function handler(req, res) {
 
 async function get(req, res) {
     try {
+        console.log(req.query);
         await db.connect()
         const language = languageDefinder(req.query.lang)
         const filterOne = {
             flavors: req.query.flavors ? { $elemMatch: { name: { $in: req.query.flavors.split('-') } } } : undefined,
             "price.value": req.query.price ? { $gte: parseInt(req.query.price.split('-')[0]), $lte: parseInt(req.query.price.split('-')[1]) } : undefined,
-            stock: req.query.stock ? { stock: !!req.query.stock } : undefined,
+            stock: req.query.stock ? { stock: req.query.stock == 'true' ? true : false } : undefined,
         }
         const filterTwo = {
-            "category.code": req.query.category ? req.query.category.split('_')[1] !== 'all' ? req.query.category.split('_')[1] : undefined : undefined,
+            "category.code": req.query.category ? req.query.category : undefined,
             title: req.query.search ? { $regex: req.query.search } : undefined,
             language: language.lang
         }

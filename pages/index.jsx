@@ -1,8 +1,9 @@
 import { Layout, Landing } from '@/components'
-import { getAccount } from '@/utils/requests';
+import { getAccount, getProducts } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
 
-export default function Page({ account, language }) {
+export default function Page({ account, language, products }) {
+
 
     return (
         <>
@@ -16,10 +17,12 @@ export async function getServerSideProps(context) {
 
     const account = await getAccount(context)
     const language = useLanguage(account.data, context)
+    const products = await getProducts({language: language.lang, limit: 3, price: '40-60', stock: 'true'})
     return {
         props: {
             account: account,
-            language: language
+            language: language,
+            products: products
         }
     }
 }

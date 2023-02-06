@@ -37,7 +37,7 @@ async function register(req, res) {
                     username: username,
                     password: hash,
                     role: 'user',
-                    img: 'uploads/default-avatar.png',
+                    img: 'default-avatar.png',
                     lang: lang,
                     email: email
                 })

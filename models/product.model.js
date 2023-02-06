@@ -14,10 +14,6 @@ const productSchema = new mongoose.Schema({
     images: [String],
     stock: Boolean,
     id: String,
-    weight: {
-        unit: String,
-        value: Number
-    },
     quantity:Number,
     flavors: [String],
     ingredients: [String],
