@@ -72,7 +72,13 @@ const lang = [
             }
         },
         home: {
-            title: 'Home'
+            title: 'Home',
+            landing: {
+                title: ''
+            },
+            categories: {
+                title: 'Categories'
+            }
         },
         aboutUs: {
             title: 'About us'
@@ -160,7 +166,13 @@ const lang = [
             }
         },
         home: {
-            title: 'Главная'
+            title: 'Главная',
+            landing: {
+                title: ''
+            },
+            categories: {
+                title: 'Категории'
+            }
         },
         aboutUs: {
             title: 'О нас'

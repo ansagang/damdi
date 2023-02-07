@@ -17,16 +17,28 @@ export async function getAccount(context) {
     return account
 }
 
-export async function getProducts({language: language, limit: limit, price: price, stock: stock, category: category}) {
+export async function getProducts({ language: language, limit: limit, price: price, stock: stock, category: category }) {
     let data = {}
     try {
-        console.log(stock);
-        const query = `${limit ? `&limit=${limit}` : null}` + `${price ? `&price=${price}` : null}` + `${stock ? `&stock=${stock}` : null}` + `${category ? `&category=${category}` : null}`
-        console.log(query);
+        const query = `${limit ? `&limit=${limit}` : ''}` + `${price ? `&price=${price}` : ''}` + `${stock ? `&stock=${stock}` : ''}` + `${category ? `&category=${category}` : ''}`
         await axios.get(`${process.env.URL}/api/products?lang=${language}` + query)
-        .then((res) => {
-            data = res.data
-        })
+            .then((res) => {
+                data = res.data
+            })
+    } catch (err) {
+        console.log(err);
+    }
+
+    return data
+}
+
+export async function getCategories({ language: language }) {
+    let data = {}
+    try {
+        await axios.get(`${process.env.URL}/api/categories?lang=${language}`)
+            .then((res) => {
+                data = res.data
+            })
     } catch (err) {
         console.log(err);
     }

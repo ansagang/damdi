@@ -18,13 +18,12 @@ export default async function handler(req, res) {
 
 async function get(req, res) {
     try {
-        console.log(req.query);
         await db.connect()
         const language = languageDefinder(req.query.lang)
         const filterOne = {
-            flavors: req.query.flavors ? { $elemMatch: { name: { $in: req.query.flavors.split('-') } } } : undefined,
+            // flavors: req.query.flavors ? { $elemMatch: { name: { $in: req.query.flavors.split('-') } } } : undefined,
             "price.value": req.query.price ? { $gte: parseInt(req.query.price.split('-')[0]), $lte: parseInt(req.query.price.split('-')[1]) } : undefined,
-            stock: req.query.stock ? { stock: req.query.stock == 'true' ? true : false } : undefined,
+            stock: req.query.stock ? req.query.stock == 'true' ? true : false : undefined,
         }
         const filterTwo = {
             "category.code": req.query.category ? req.query.category : undefined,
@@ -41,11 +40,12 @@ async function get(req, res) {
         const previousPage = (page - 1) > 0 ? page - 1 : undefined
         const nextPage = (page + 1) <= totalPages ? page + 1 : undefined
         const currentPage = page <= totalPages ? page : undefined
+        const facets = await facetsFinder(productsCategories)
 
         res.send({
             success: true,
             data: products,
-            facets: facetsFinder(productsCategories),
+            facets: facets,
             message: language.getResult,
             pagination: {
                 totalResults: totalResults,
