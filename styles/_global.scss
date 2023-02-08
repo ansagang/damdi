@@ -3,6 +3,7 @@
 .container {
     margin: $mb_auto;
     max-width: 1230px;
+    padding: 0 20px;
 
     &__fluid {
         margin: $mb_auto;
@@ -15,12 +16,14 @@
     font-weight: $bold_font_weight;
     color: $primary_color;
     margin-bottom: 15px;
+    text-align: center;
     // transition: 0.4s ease;
     // text-transform: uppercase;
     // letter-spacing: 2px;
 
     & h1 {
         font-size: $h1_font_size;
+        text-align: left;
     }
 
     & h2 {
@@ -29,6 +32,7 @@
 
     & h3 {
         font-size: $h3_font_size;
+        font-weight: $light_font_weight;
     }
 }
 
@@ -67,4 +71,11 @@ button {
         border: 2px solid $bg_color_lighter;
         width: 100%;
     }
+}
+
+.list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:30px;
+    margin-top: 40px;
 }
