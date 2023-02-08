@@ -32,10 +32,11 @@ export async function getProducts({ language: language, limit: limit, price: pri
     return data
 }
 
-export async function getCategories({ language: language }) {
+export async function getCategories({ language: language, code }) {
     let data = {}
     try {
-        await axios.get(`${process.env.URL}/api/categories?lang=${language}`)
+        const query = `${code ? `/${code}` : ''}`
+        await axios.get(`${process.env.URL}/api/categories${query}?lang=${language}`)
             .then((res) => {
                 data = res.data
             })
