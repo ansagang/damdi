@@ -1,7 +1,8 @@
-import { NavLink } from ".."
 import Image from "next/image"
-import { images } from "@/constants"
 import Link from "next/link"
+
+import { images } from "@/constants"
+import { NavLink } from ".."
 
 export default function Header({ account, language }) {
     console.log(account.data)
@@ -28,7 +29,7 @@ export default function Header({ account, language }) {
                                     (
                                         <li className="header__menu-list_item">
                                             <Link href={"/account"}>
-                                                <Image width={35} height={35} title={account.data.username} src={`/${account.data.img}`} alt="" />
+                                                <Image width={35} height={35} title={account.data.username} src={`/uploads/${account.data.img}`} alt="" />
                                             </Link>
                                         </li>
                                     )

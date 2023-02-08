@@ -1,4 +1,5 @@
 import Head from "next/head"
+
 import Header from "./sections/Header"
 import Footer from "./sections/Footer"
 

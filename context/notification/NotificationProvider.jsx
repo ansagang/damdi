@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
-import Notification from "./Notification";
+
 import { v4 } from "uuid";
+
+import Notification from "./Notification";
 
 const NotificationContext = createContext();
 
