@@ -1,10 +1,11 @@
+import bcrypt from 'bcrypt'
+import cryptoRandomString from "crypto-random-string";
+import cookie from "cookie";
+
 import { Session, User } from "@/models";
 import languageDefinder from "@/utils/languageDefinder";
 import db from "@/utils/server";
 import { loginValidation } from "@/utils/validations";
-import bcrypt from 'bcrypt'
-import cryptoRandomString from "crypto-random-string";
-import cookie from "cookie";
 
 const random = id => {
     return id + cryptoRandomString({ length: 20, type: 'alphanumeric' })

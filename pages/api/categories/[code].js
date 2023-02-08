@@ -14,8 +14,8 @@ async function get(req, res) {
     try {
         await db.connect()
         const language = languageDefinder(req.query.lang)
-        const { id } = req.query
-        const category = await Category.findOne({ id: id, language: language.lang })
+        const { code } = req.query
+        const category = await Category.findOne({ code: code, language: language.lang })
         res.send({
             success: true,
             data: category,
