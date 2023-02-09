@@ -1,7 +1,7 @@
 import Head from "next/head"
 
-import Header from "./sections/Header"
-import Footer from "./sections/Footer"
+import Header from "./navigation/Header"
+import Footer from "./navigation/Footer"
 
 export default function Layout({ children, head: { title, content }, comp: { header, footer }, account, language }) {
 
