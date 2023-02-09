@@ -32,6 +32,7 @@ export async function getServerSideProps(context) {
     }
 }
 
+Page.useProgress = true
 Page.getLayout = (page) => {
     return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.home.title, content: page.props.language.home.description }} comp={{ header: true, footer: true }}>{page}</Layout>;
 };

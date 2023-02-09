@@ -1,5 +1,3 @@
-import { useRouter } from "next/router"
-
 import { getAccount, getCategories, getProducts } from "@/utils/requests"
 import useLanguage from "@/utils/useLanguage"
 import { Layout } from "@/components"
@@ -28,6 +26,7 @@ export async function getServerSideProps(context) {
     }
 }
 
+Catalog.useProgress = true
 Catalog.getLayout = (page) => {
     return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.catalog.title, content: page.props.language.catalog.description }} comp={{ header: true, footer: true }}>{page}</Layout>;
 }
