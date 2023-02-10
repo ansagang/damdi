@@ -83,8 +83,8 @@ const lang = [
         aboutUs: {
             title: 'About us'
         },
-        catalog: {
-            title: 'Catalog'
+        products: {
+            title: 'Products'
         },
         account: {
             title: 'Account'
@@ -177,8 +177,8 @@ const lang = [
         aboutUs: {
             title: 'О нас'
         },
-        catalog: {
-            title: 'Каталог'
+        products: {
+            title: 'Продукты'
         },
         account: {
             title: 'Аккаунт'

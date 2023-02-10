@@ -73,6 +73,8 @@ img {
     height: 100%;
     position: relative !important;
     object-fit: cover;
+    transition: transform .25s ease;
+    vertical-align: middle;
 }
 
 input,

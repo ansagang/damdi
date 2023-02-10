@@ -12,14 +12,14 @@ export default function Header({ account, language }) {
                 <div className="header__inner inner__small">
                     <div className="header__logo">
                         <div className="header__logo-title title">
-                            <h2>Damdi</h2>
+                            <h2>damdi</h2>
                         </div>
                     </div>
                     <nav className="header__menu">
                         <ul className="header__menu-list">
                             <li className="header__menu-list_item"><NavLink href={'/'}>{language.home.title}</NavLink></li>
                             <li className="header__menu-list_item"><NavLink href={'/about'}>{language.aboutUs.title}</NavLink></li>
-                            <li className="header__menu-list_item"><NavLink href={'/catalog'}>{language.catalog.title}</NavLink></li>
+                            <li className="header__menu-list_item"><NavLink href={'/products'}>{language.products.title}</NavLink></li>
                         </ul>
                     </nav>
                     <nav className="header__menu">

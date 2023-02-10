@@ -46,3 +46,17 @@ export async function getCategories({ language: language, code }) {
 
     return data
 }
+
+export async function getProduct({ language: language, id: id }) {
+    let data = {}
+    try {
+        await axios.get(`${process.env.URL}/api/products/${id}?lang=${language}`)
+            .then((res) => {
+                data = res.data
+            })
+    } catch (err) {
+        console.log(err);
+    }
+
+    return data
+}

@@ -8,7 +8,7 @@ export default function Layout({ children, head: { title, content }, comp: { hea
     return (
         <>
             <Head>
-                <title>{title ? title + ' || Damdi' : 'Damdi'}</title>
+                <title>{title ? title + ' | Damdi' : 'Damdi'}</title>
                 <meta name="description" content={content} />
             </Head>
             <div className="wrapper">

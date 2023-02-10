@@ -22,7 +22,7 @@ export default function Categories({ language, categories }) {
                                                             <div className="categories__list-item_img">
                                                                 <Image height={1} width={1} unoptimized={true} title={category.title} src={`/uploads/${category.image}`} alt="" />
                                                             </div>
-                                                            <Link href={{ pathname: '/catalog', query: {category: category.code}}} className="categories__list-item_title title">
+                                                            <Link href={{ pathname: '/products', query: {category: category.code}}} className="categories__list-item_title title">
                                                                 <h3>{category.title}</h3>
                                                             </Link>
                                                         </div>
