@@ -20,8 +20,9 @@ async function get(req, res) {
     try {
         await db.connect()
         const language = languageDefinder(req.query.lang)
+        console.log(req.query);
         const filterOne = {
-            // flavors: req.query.flavors ? { $elemMatch: { name: { $in: req.query.flavors.split('-') } } } : undefined,
+            flavors: req.query.flavors ? { $elemMatch: { $in: req.query.flavors.split('-') } } : undefined,
             "price.value": req.query.price ? { $gte: parseInt(req.query.price.split('-')[0]), $lte: parseInt(req.query.price.split('-')[1]) } : undefined,
             stock: req.query.stock ? req.query.stock == 'true' ? true : false : undefined,
         }

@@ -17,10 +17,10 @@ export async function getAccount(context) {
     return account
 }
 
-export async function getProducts({ language: language, limit: limit, price: price, stock: stock, category: category }) {
+export async function getProducts({ language: language, limit: limit, price: price, stock: stock, category: category, flavors: flavors, search: search, sortBy: sortBy, page: page }) {
     let data = {}
     try {
-        const query = `${limit ? `&limit=${limit}` : ''}` + `${price ? `&price=${price}` : ''}` + `${stock ? `&stock=${stock}` : ''}` + `${category ? `&category=${category}` : ''}`
+        const query = `${limit ? `&limit=${limit}` : ''}` + `${price ? `&price=${price}` : ''}` + `${stock ? `&stock=${stock}` : ''}` + `${category ? `&category=${category}` : ''}` + `${flavors ? `&flavors=${flavors}` : ''}` + `${search ? `&search=${search}` : ''}` + `${sortBy ? `&sortBy=${sortBy}` : ''}` + `${page ? `&page=${page}` : ''}`
         await axios.get(`${process.env.URL}/api/products?lang=${language}` + query)
             .then((res) => {
                 data = res.data
