@@ -164,3 +164,15 @@ header {
         height:350px;
     }
 }
+
+.catalog{
+    &__inner{
+        display: flex;
+    }
+    &__sidebar{
+        width: 25%;
+    }
+    &__list{
+        width: 75%;
+    }
+}

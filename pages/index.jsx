@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
 
     const account = await getAccount(context)
     const language = useLanguage(account.data, context)
-    const products = await getProducts({language: language.lang, limit: 3, price: '40-60', stock: 'false'})
+    const products = await getProducts({language: language.lang, limit: 3, price: '20-80', stock: 'true', flavors: 'banana'})
     const categories = await getCategories({language: language.lang})
     return {
         props: {

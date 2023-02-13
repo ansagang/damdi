@@ -84,7 +84,13 @@ const lang = [
             title: 'About us'
         },
         products: {
-            title: 'Products'
+            title: 'Products',
+            sideBar: {
+                title: 'Filter By',
+                filters: {
+                    flavors: 'Flavors'
+                }
+            }
         },
         account: {
             title: 'Account'
@@ -178,7 +184,13 @@ const lang = [
             title: 'О нас'
         },
         products: {
-            title: 'Продукты'
+            title: 'Продукты',
+            sideBar: {
+                title: 'Фильтры',
+                filters: {
+                    flavors: 'Вкусы'
+                }
+            }
         },
         account: {
             title: 'Аккаунт'

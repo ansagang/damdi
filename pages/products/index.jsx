@@ -1,7 +1,7 @@
 import { getAccount, getCategories, getProducts } from "@/utils/requests"
 import useLanguage from "@/utils/useLanguage"
 import { Layout } from "@/components"
-import { Category, List } from "@/components"
+import { Category, List, Sidebar } from "@/components"
 
 export default function Products({ account, language, products, categories }) {
     console.log(categories, products)
@@ -20,10 +20,10 @@ export default function Products({ account, language, products, categories }) {
 }
 
 export async function getServerSideProps(context) {
-    const { category, stock, limit, price } = context.query;
+    const { category, stock, limit, price, flavors, search, sortBy, page } = context.query;
     const account = await getAccount(context)
     const language = useLanguage(account.data, context)
-    const products = await getProducts({ language: language.lang, category: category, stock: stock, limit: limit, price: price })
+    const products = await getProducts({ language: language.lang, category: category, stock: stock, limit: limit, price: price, flavors: flavors, search: search, sortBy: sortBy, page: page })
     const categories = await getCategories({ language: language.lang, code: category })
     return {
         props: {
