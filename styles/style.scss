@@ -165,14 +165,27 @@ header {
     }
 }
 
-.catalog{
+.products{
     &__inner{
         display: flex;
+        justify-content: space-between;
     }
     &__sidebar{
         width: 25%;
+        &-filter{
+            &_range{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
     }
-    &__list{
-        width: 75%;
+    &__catalog{
+        width: 70%;
+        &-bar{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 }

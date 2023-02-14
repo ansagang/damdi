@@ -14,7 +14,7 @@ export default function Products({ account, language, products, categories }) {
                     :
                     <Category category={categories} language={language} />
             }
-            <List language={language} products={products} />
+            <List language={language} products={products} category={categories} />
         </>
     )
 }

@@ -88,8 +88,24 @@ const lang = [
             sideBar: {
                 title: 'Filter By',
                 filters: {
-                    flavors: 'Flavors'
+                    flavors: 'Flavors',
+                    stock: 'Stock',
+                    price: {
+                        from: 'From',
+                        to: 'To',
+                        price: 'Price'
+                    }
                 }
+            },
+            results: {
+                productsFound: 'Products found: ',
+                search: 'Search results for: '
+            },
+            sort: {
+                trendings: 'Trendings',
+                newArrivals: 'New Arrivals',
+                priceAsc: 'Price: Low to High',
+                priceDesc: 'Price: High to Low'
             }
         },
         account: {
@@ -188,8 +204,24 @@ const lang = [
             sideBar: {
                 title: 'Фильтры',
                 filters: {
-                    flavors: 'Вкусы'
+                    flavors: 'Вкусы',
+                    stock: 'Сток',
+                    price: {
+                        from: 'От',
+                        to: 'До',
+                        price: 'Цена'
+                    }
                 }
+            },
+            results: {
+                productsFound: 'Найдено товаров: ',
+                search: 'Результаты поиска для: '
+            },
+            sort: {
+                trendings: 'Популярные',
+                newArrivals: 'Новинки',
+                priceAsc: 'Цена: низкая - высокая',
+                priceDesc: 'Цена: высокая - низкая'
             }
         },
         account: {

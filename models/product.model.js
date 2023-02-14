@@ -18,6 +18,7 @@ const productSchema = new mongoose.Schema({
     flavors: [String],
     ingredients: [String],
     language: String,
+    trendScore: Number
 },
   {
     timestamps: true

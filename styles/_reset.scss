@@ -101,10 +101,14 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"],
+input[type="number"],
 select,
 textarea {
     &::placeholder{
         color: $bg_color_darker;
+    }
+    &:last-of-type{
+        margin-bottom: 0;
     }
     border: none;
     padding: $pd_input;
@@ -116,6 +120,10 @@ textarea {
     resize: none;
     border: 2px solid $bg_color_lighter;
     width: 100%;
+}
+
+input[type="number"]{
+    margin-bottom: 0;
 }
 
 input,
