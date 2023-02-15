@@ -86,7 +86,7 @@ const lang = [
         products: {
             title: 'Products',
             sideBar: {
-                title: 'Filter By',
+                title: 'Filter',
                 filters: {
                     flavors: 'Flavors',
                     stock: 'Stock',
@@ -95,7 +95,8 @@ const lang = [
                         to: 'To',
                         price: 'Price'
                     }
-                }
+                },
+                clearAll: 'Clear Filters'
             },
             results: {
                 productsFound: 'Products found: ',
@@ -211,7 +212,8 @@ const lang = [
                         to: 'До',
                         price: 'Цена'
                     }
-                }
+                },
+                clearAll: 'Убрать фильтры'
             },
             results: {
                 productsFound: 'Найдено товаров: ',

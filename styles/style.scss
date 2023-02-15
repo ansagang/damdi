@@ -28,19 +28,8 @@
 
             &_input {
                 position: relative;
-
-                & input+svg {
-                    position: absolute;
-                    right: 13px;
-                    top: 13px;
-                    width: 27px;
-                    height: 27px;
-                    fill: $secondary_color;
-                }
-
-                & input:focus+svg {
-
-                    fill: $accent_color;
+                & input {
+                    margin-bottom: 20px;
                 }
             }
 
@@ -173,11 +162,47 @@ header {
     &__sidebar{
         width: 25%;
         &-filter{
+            margin-bottom: 20px;
             &_range{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                & input:first-child{
+                    margin-right: 10px;
+                }
             }
+            &_item{
+                display: flex;
+                margin-bottom: 15px;
+                &:hover{
+                    color: $primary_color;
+                    cursor: pointer;
+                    & .checkbox{
+                        border: 1px solid $primary_color;
+                    }
+                }
+
+                & .checkbox{
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 5px;
+                    border: 1px solid $secondary_color;
+                    margin-right: 15px;
+                    transition: 0.1s border ease-out;
+                }
+
+                &.active{
+                    &.info{
+                        color: $primary_color;
+                    }
+                    & .checkbox{
+                        border: 6px solid $primary_color;
+                    }
+                }
+            }
+        }
+        &-button{
+            margin-top: 20px;
         }
     }
     &__catalog{

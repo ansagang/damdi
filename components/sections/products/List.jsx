@@ -6,17 +6,22 @@ import { useEffect, useState } from "react"
 export default function List({ products, language, category }) {
 
     const router = useRouter()
-    const [lowestPrice, setLowestPrice] = useState()
-    const [highestPrice, setHighestPrice] = useState()
     const [stock, setStock] = useState()
     const [flavors, setFlavors] = useState([])
+    const [sortBy, setSortBy] = useState('trendings')
+    const [limit, setLimit] = useState(10)
+    const [page, setPage] = useState(1)
+    const [lowestPrice, setLowestPrice] = useState(products.facets.priceRange.lowest)
+    const [highestPrice, setHighestPrice] = useState(products.facets.priceRange.highest)
 
     useEffect(() => {
         setLowestPrice(router.query.price ? router.query.price.split('-')[0] : products.facets.priceRange.lowest)
         setHighestPrice(router.query.price ? router.query.price.split('-')[1] : products.facets.priceRange.highest)
-        setStock(router.query.stock ? router.query.stock : '')
-        setFlavors(router.query.flavors ? router.query.flavors : '')
+        setFlavors(router.query.flavors ? router.query.flavors.split('-') : [])
+        setStock(router.query.stock)
+        setSortBy(router.query.sortBy ? router.query.sortBy : 'trendings')
     }, [router])
+
 
     function filterFlavor(flavor) {
         router.query['flavors'] = router.query.flavors || ''
@@ -84,6 +89,16 @@ export default function List({ products, language, category }) {
         router.push({ pathname: router.pathname, query: router.query }, undefined, { scroll: false })
     }
 
+    function clearFilters() {
+        delete router.query.flavors
+        delete router.query.stock
+        delete router.query.sortBy
+        delete router.query.limit
+        delete router.query.page
+        delete router.query.price
+        router.push({ pathname: router.pathname, query: router.query }, undefined, { scroll: false })
+    }
+
     return (
         <>
             <section className="products">
@@ -91,33 +106,34 @@ export default function List({ products, language, category }) {
                     <div className="products__inner inner">
                         <aside className="products__sidebar">
                             <div className="products__sidebar-title title">
-                                <h1>{language.products.sideBar.title}</h1>
+                                <h2>{language.products.sideBar.title}</h2>
                             </div>
                             {
                                 products.facets ?
                                     (
                                         <div className="products__sidebar-filters">
                                             <div className="products__sidebar-filter">
-                                                <div className="products__sidebar-filter_title">
-                                                    <h1>{language.products.sideBar.filters.price.price}</h1>
+                                                <div className="products__sidebar-filter_title title">
+                                                    <h3>{language.products.sideBar.filters.price.price}</h3>
                                                 </div>
                                                 <div className="products__sidebar-filter_range">
-                                                    <input onKeyPress={(e) => e.key === 'Enter' ? filterPrice() : null} onChange={(e) => setLowestPrice(e.target.value)} type='number' value={lowestPrice} />
-                                                    <input onKeyPress={(e) => e.key === 'Enter' ? filterPrice() : null} onChange={(e) => setHighestPrice(e.target.value)} type="number" value={highestPrice} />
+                                                    <input onKeyPress={(e) => e.key === 'Enter' ? filterPrice() : null} min={products.facets.priceRange.lowest} onChange={(e) => setLowestPrice(e.target.value)} type='number' value={lowestPrice} />
+                                                    <input onKeyPress={(e) => e.key === 'Enter' ? filterPrice() : null} max={products.facets.priceRange.highest} onChange={(e) => setHighestPrice(e.target.value)} type="number" value={highestPrice} />
                                                 </div>
                                             </div>
                                             {
                                                 products.facets.flavors ?
                                                     (
                                                         <div className="products__sidebar-filter">
-                                                            <div className="products__sidebar-filter_title">
-                                                                <h1>{language.products.sideBar.filters.flavors}</h1>
+                                                            <div className="products__sidebar-filter_title title">
+                                                                <h3>{language.products.sideBar.filters.flavors}</h3>
                                                             </div>
                                                             <div className="products__sidebar-filter_list">
                                                                 {
                                                                     products.facets.flavors.map((flavor, i) => (
-                                                                        <div style={flavors.includes(flavor) ? {color: 'red'} : null} onClick={() => filterFlavor(flavor)} className="products__sidebar-filter_item" key={i}>
-                                                                            <h1>{flavor}</h1>
+                                                                        <div onClick={() => filterFlavor(flavor)} className={flavors.includes(flavor) ? 'products__sidebar-filter_item active info' : 'products__sidebar-filter_item info'} key={i}>
+                                                                            <div className="checkbox"></div>
+                                                                            <p>{flavor.charAt(0).toUpperCase()}{flavor.slice(1)}</p>
                                                                         </div>
                                                                     ))
                                                                 }
@@ -128,22 +144,26 @@ export default function List({ products, language, category }) {
                                                     null
                                             }
                                             <div className="products__sidebar-filter">
-                                                <div className="products__sidebar-filter_title">
-                                                    <h1>{language.products.sideBar.filters.stock}</h1>
+                                                <div className="products__sidebar-filter_title title">
+                                                    <h3>{language.products.sideBar.filters.stock}</h3>
                                                 </div>
-                                                <select value={stock} onChange={(e) => {
-                                                    filterStock(e.target.value)
-                                                }} className="products__sidebar-filter_list">
-                                                    <option value=''>Выберите героя</option>
-                                                    <option value="true">True</option>
-                                                    <option value="false">False</option>
-                                                </select>
+                                                <div className="products__sidebar-filter_list">
+                                                    <div onClick={() => filterStock(stock === 'true' ? null : 'true')} className={stock === 'true' ? 'products__sidebar-filter_item active info' : 'products__sidebar-filter_item info'}>
+                                                        <div className="checkbox"></div>
+                                                        <p>True</p>
+                                                    </div>
+                                                    <div onClick={() => filterStock(stock === 'false' ? null : 'false')} className={stock === 'false' ? 'products__sidebar-filter_item active info' : 'products__sidebar-filter_item info'}>
+                                                        <div className="checkbox"></div>
+                                                        <p>False</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     )
                                     :
                                     null
                             }
+                            <button type="submit" onClick={() => clearFilters()} className="products__sidebar-button primary">{language.products.sideBar.clearAll}</button>
                         </aside>
                         <div className="products__catalog">
                             <div className="products__catalog-title title">
@@ -154,7 +174,7 @@ export default function List({ products, language, category }) {
                                     <p>{language.products.results.productsFound}{products.pagination.totalResults}</p>
                                 </div>
                                 <div className="products__catalog-bar_sort">
-                                    <select onChange={(e) => filterSortBy(e.target.value)}>
+                                    <select value={sortBy} onChange={(e) => filterSortBy(e.target.value)}>
                                         <option value="trendings">{language.products.sort.trendings}</option>
                                         <option value="new_arrivals">{language.products.sort.newArrivals}</option>
                                         <option value="price_asc">{language.products.sort.priceAsc}</option>

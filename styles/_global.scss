@@ -16,14 +16,12 @@
     font-weight: $bold_font_weight;
     color: $primary_color;
     margin-bottom: 15px;
-    text-align: center;
     // transition: 0.4s ease;
     // text-transform: uppercase;
     // letter-spacing: 2px;
 
     & h1 {
         font-size: $h1_font_size;
-        text-align: left;
     }
 
     & h2 {

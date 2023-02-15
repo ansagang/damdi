@@ -19,7 +19,7 @@ export default function Header({ account, language }) {
                         <ul className="header__menu-list">
                             <li className="header__menu-list_item"><NavLink href={'/'}>{language.home.title}</NavLink></li>
                             <li className="header__menu-list_item"><NavLink href={'/about'}>{language.aboutUs.title}</NavLink></li>
-                            <li className="header__menu-list_item"><NavLink href={'/products?limit=10&page=1&sortBy=trendings'}>{language.products.title}</NavLink></li>
+                            <li className="header__menu-list_item"><NavLink href={'/products'}>{language.products.title}</NavLink></li>
                         </ul>
                     </nav>
                     <nav className="header__menu">
