@@ -8,9 +8,9 @@ import { Pagination } from "@/components"
 export default function List({ products, language, category }) {
 
     const router = useRouter()
-    const [stock, setStock] = useState()
+    const [stock, setStock] = useState('trendings')
     const [flavors, setFlavors] = useState([])
-    const [sortBy, setSortBy] = useState('trendings')
+    const [sortBy, setSortBy] = useState()
     const [lowestPrice, setLowestPrice] = useState(products.facets.priceRange.lowest)
     const [highestPrice, setHighestPrice] = useState(products.facets.priceRange.highest)
 
@@ -21,6 +21,8 @@ export default function List({ products, language, category }) {
         setStock(router.query.stock)
         setSortBy(router.query.sortBy ? router.query.sortBy : 'trendings')
     }, [router])
+
+    console.log(sortBy);
 
     function filterFlavor(flavor) {
         filterPage(1)
@@ -52,6 +54,7 @@ export default function List({ products, language, category }) {
 
     function filterSortBy(sortBy) {
         filterPage(1)
+        setSortBy(sortBy)
         router.query['sortBy'] = router.query.sortBy || ''
         if (sortBy) {
             router.query.sortBy = sortBy
