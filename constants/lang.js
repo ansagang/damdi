@@ -115,6 +115,12 @@ const lang = [
         },
         cart: {
             title: 'Cart'
+        },
+        header: {
+            search: 'Search'
+        },
+        notFound: {
+            title: 'Not Found'
         }
     },
     {
@@ -233,6 +239,12 @@ const lang = [
         },
         cart: {
             title: 'Корзина'
+        },
+        header: {
+            search: 'Поиск'
+        },
+        notFound: {
+            title: 'Не найдено'
         }
     }
 ]

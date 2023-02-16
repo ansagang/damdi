@@ -116,22 +116,42 @@ textarea {
     resize: none;
     border: 2px solid $bg_color_lighter;
     width: 100%;
+    
+    &:hover{
+        border: 2px solid $accent_color
+    }
+    &:focus{
+        border: 2px solid $accent_color;
+    }
 }
 
 input[type="number"]{
     margin-bottom: 0;
 }
 
+input[type="search"]{
+    padding: 15px 5px;
+    // border-radius: $input_radius;
+    font-size: $input_font_size;
+    background-color: $bg_color;
+    color: $primary_color;
+    resize: none;
+    border-bottom: 2px solid $bg_color_lighter;
+    &:hover{
+        border-bottom: 2px solid $accent_color;
+    }
+    &:focus{
+        border-bottom: 2px solid $accent_color;
+    }
+    &::placeholder{
+        color: $bg_color_darker;
+    }
+}
+
 input,
 textarea{
     &:disabled{
         cursor: not-allowed;
-    }
-    &:hover{
-        border: 2px solid $accent_color
-    }
-    &:focus{
-        border: 2px solid $accent_color;
     }
 }
 

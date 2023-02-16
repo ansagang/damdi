@@ -66,15 +66,31 @@ header {
         }
     
         &__menu {
+            width: 30%;
             text-align: center;
-    
+            &.links{
+                & .header__menu-list{
+                    justify-content: center;
+                    &_item{
+                        margin-right: 70px;
+                        &:last-child{
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
             &-list {
                 display: flex;
-                align-items: center;
-    
+                align-items: center;    
+                justify-content: right;
                 &_item {
-                    margin-right: 70px;
-    
+                    margin-left: 30px;
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                    & input{
+                        width: 150px;
+                    }
                     & svg {
                         width: 25px;
                         height: 25px;
@@ -85,15 +101,12 @@ header {
                         height: 40px;
                         border-radius: 50%;
                     }
-    
-                    &:last-child {
-                        margin-right: 0;
-                    }
                 }
             }
         }
     
         &__logo {
+            width: 30%;
             &-title {
                 margin-bottom: 0;
                 &.title {
@@ -251,6 +264,74 @@ header {
                     background-color: $accent_color;
                 }
             }
+        }
+    }
+}
+
+.notification {
+    background-color: $primary_color;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    width: 300px;
+    animation: left 0.4s;
+    animation-fill-mode: forwards;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__title {
+        margin-bottom: 7px;
+
+        h1 {
+            color: $bg_color;
+        }
+    }
+
+    &__info {
+        p {
+            color: $secondary_color;
+        }
+    }
+
+    &__list {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        z-index: 999;
+    }
+
+    &.exit {
+        animation: right 0.4s;
+        animation-fill-mode: forwards;
+    }
+
+    &__line {
+        height: 4px;
+        border-radius: 20px;
+        background-color: $bg_color;
+        margin-top: 10px;
+    }
+
+    @keyframes left {
+        0% {
+            margin-left: 120%;
+        }
+
+        100% {
+            margin-left: 0;
+        }
+    }
+
+    @keyframes right {
+        0% {
+            margin-left: 0;
+        }
+
+        100% {
+            margin-left: 120%;
         }
     }
 }

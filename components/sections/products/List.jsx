@@ -22,8 +22,8 @@ export default function List({ products, language, category }) {
         setSortBy(router.query.sortBy ? router.query.sortBy : 'trendings')
     }, [router])
 
-
     function filterFlavor(flavor) {
+        filterPage(1)
         router.query['flavors'] = router.query.flavors || ''
         let flavors = router.query.flavors.split('-')
         if (flavors.includes(flavor)) {
@@ -40,6 +40,7 @@ export default function List({ products, language, category }) {
     }
 
     function filterStock(stock) {
+        filterPage(1)
         router.query['stock'] = router.query.stock || ''
         if (stock) {
             router.query.stock = stock
@@ -50,6 +51,7 @@ export default function List({ products, language, category }) {
     }
 
     function filterSortBy(sortBy) {
+        filterPage(1)
         router.query['sortBy'] = router.query.sortBy || ''
         if (sortBy) {
             router.query.sortBy = sortBy
@@ -60,6 +62,7 @@ export default function List({ products, language, category }) {
     }
 
     function filterLimit(limit) {
+        filterPage(1)
         router.query['limit'] = router.query.limit || ''
         if (limit) {
             router.query.limit = limit
@@ -80,6 +83,7 @@ export default function List({ products, language, category }) {
     }
 
     function filterPrice() {
+        filterPage(1)
         router.query['price'] = router.query.price || ''
         if (lowestPrice && highestPrice) {
             router.query.price = `${lowestPrice}-${highestPrice}`
