@@ -3,14 +3,14 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
+import { Pagination } from "@/components"
+
 export default function List({ products, language, category }) {
 
     const router = useRouter()
     const [stock, setStock] = useState()
     const [flavors, setFlavors] = useState([])
     const [sortBy, setSortBy] = useState('trendings')
-    const [limit, setLimit] = useState(10)
-    const [page, setPage] = useState(1)
     const [lowestPrice, setLowestPrice] = useState(products.facets.priceRange.lowest)
     const [highestPrice, setHighestPrice] = useState(products.facets.priceRange.highest)
 
@@ -172,6 +172,7 @@ export default function List({ products, language, category }) {
                             <div className="products__catalog-bar">
                                 <div className="products__catalog-bar_results info">
                                     <p>{language.products.results.productsFound}{products.pagination.totalResults}</p>
+                                    <p>{language.products.results.pagesFound}{products.pagination.totalPages}</p>
                                 </div>
                                 <div className="products__catalog-bar_sort">
                                     <select value={sortBy} onChange={(e) => filterSortBy(e.target.value)}>
@@ -191,14 +192,17 @@ export default function List({ products, language, category }) {
                                                     products.data.length > 0 ?
                                                         (
                                                             products.data.map((product, i) => (
-                                                                <div className="catalog__list-item" key={i}>
-                                                                    <div className="catalog__list-item_img">
-                                                                        <Image loading='lazy' height={1} width={1} unoptimized={true} title={product.title} src={`/uploads/${product.images[0]}`} alt="" />
+                                                                <>
+                                                                    <div className="catalog__list-item" key={i}>
+                                                                        <div className="catalog__list-item_img">
+                                                                            <Image loading='lazy' height={1} width={1} unoptimized={true} title={product.title} src={`/uploads/${product.images[0]}`} alt="" />
+                                                                        </div>
+                                                                        <Link href={{ pathname: `/products/${product.id}` }} className="catalog__list-item_title title">
+                                                                            <h3>{product.title}</h3>
+                                                                        </Link>
                                                                     </div>
-                                                                    <Link href={{ pathname: `/products/${product.id}` }} className="catalog__list-item_title title">
-                                                                        <h3>{product.title}</h3>
-                                                                    </Link>
-                                                                </div>
+                                                                </>
+
                                                             ))
 
                                                         )
@@ -212,6 +216,7 @@ export default function List({ products, language, category }) {
                                         null
                                 }
                             </div>
+                            <Pagination filterPage={filterPage} currentPage={products.pagination.currentPage} previousPage={products.pagination.previousPage} nextPage={products.pagination.nextPage} totalPages={products.pagination.totalPages}  />
                         </div>
                     </div>
                 </div>

@@ -100,7 +100,8 @@ const lang = [
             },
             results: {
                 productsFound: 'Products found: ',
-                search: 'Search results for: '
+                search: 'Search results for: ',
+                pagesFound: 'Pages found: '
             },
             sort: {
                 trendings: 'Trendings',
@@ -217,7 +218,8 @@ const lang = [
             },
             results: {
                 productsFound: 'Найдено товаров: ',
-                search: 'Результаты поиска для: '
+                search: 'Результаты поиска для: ',
+                pagesFound: 'Найдено страниц: '
             },
             sort: {
                 trendings: 'Популярные',

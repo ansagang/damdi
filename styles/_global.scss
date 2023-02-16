@@ -41,6 +41,10 @@
     color: $secondary_color;
     line-height: 22px;
     transition: 0.4s ease;
+    & p{
+        margin-right: 30px;
+        display: inline-block;
+    }
 }
 
 .inner {

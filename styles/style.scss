@@ -212,5 +212,45 @@ header {
             align-items: center;
             justify-content: space-between;
         }
+        &-pagination{
+            margin-top: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            &_arrow,
+            &_page{
+                width: 35px;
+                height: 35px;
+                margin-right: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $bg_color;
+                border: 1.5px solid $bg_color_lighter;
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+            &_arrow{
+                & svg{
+                    width: 10px;
+                    height: 10px;
+                    fill: $primary_color;
+                }
+                &.right{
+                    & svg{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            &_page{
+                &.active{
+                    border: 1.5px solid $accent_color;
+                    color: $bg_color_lighter;
+                    background-color: $accent_color;
+                }
+            }
+        }
     }
 }
