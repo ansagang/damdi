@@ -1,16 +1,15 @@
-import { Layout, Landing, Categories } from '@/components'
+import { Layout, Landing, Categories, List } from '@/components'
 import { getAccount, getProducts, getCategories } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
 
-export default function Page({ account, language, products, categories}) {
-
-    console.log(products, categories)
-
+export default function Page({ account, language, categories, newArrivals, trendings}) {
 
     return (
         <>
             <Landing language={language} />
             <Categories language={language} categories={categories} />
+            <List title={language.home.trendingsList.title} products={trendings} />
+            <List title={language.home.newArrivalsList.title} products={newArrivals} />
         </>
 
     )
@@ -20,14 +19,17 @@ export async function getServerSideProps(context) {
 
     const account = await getAccount(context)
     const language = useLanguage(account.data, context)
-    const products = await getProducts({language: language.lang, limit: 3, price: '20-80', stock: 'true', flavors: 'banana'})
     const categories = await getCategories({language: language.lang})
+    const trendings = await getProducts({language: language.lang, limit: 4, sortBy: 'trendings'})
+    const newArrivals = await getProducts({language: language.lang, limit: 4, sortBy: 'new_arrivals'})
+
     return {
         props: {
             account: account,
             language: language,
-            products: products,
-            categories: categories
+            categories: categories,
+            trendings: trendings,
+            newArrivals: newArrivals
         }
     }
 }

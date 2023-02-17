@@ -20,7 +20,6 @@ async function get(req, res) {
     try {
         await db.connect()
         const language = languageDefinder(req.query.lang)
-        console.log(req.query);
         const filterOne = {
             flavors: req.query.flavors ? { $elemMatch: { $in: req.query.flavors.split('-') } } : undefined,
             "price.value": req.query.price ? { $gte: parseInt(req.query.price.split('-')[0]), $lte: parseInt(req.query.price.split('-')[1]) } : undefined,
@@ -28,7 +27,8 @@ async function get(req, res) {
         }
         const filterTwo = {
             "category.code": req.query.category ? req.query.category : undefined,
-            title: req.query.search ? { $regex: req.query.search } : undefined,
+            // $or: [{title: req.query.search ? { $regex: req.query.search, $options: 'i'} : undefined}, {"category.title": req.query.search ? { $regex: req.query.search, $options: 'i' } : undefined}, {flavors: req.query.search ? { $elemMatch: { $regex: req.query.search, $options: 'i' } } : undefined}],
+            title: req.query.search ? { $regex: req.query.search, $options: 'i'} : undefined,
             language: language.lang
         }
         const sortBy = req.query.sortBy ? req.query.sortBy === 'trendings' ? { trendScore: -1 } : req.query.sortBy === 'new_arrivals' ? { createdAt: 1 } : req.query.sortBy.split('_')[0] === 'price' ? { "price.value": req.query.sortBy.split('_')[1] } : undefined : undefined

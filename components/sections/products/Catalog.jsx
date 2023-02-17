@@ -5,27 +5,25 @@ import { useEffect, useState } from "react"
 
 import { Pagination } from "@/components"
 
-export default function List({ products, language, category }) {
+export default function Catalog({ products, language, category }) {
 
     const router = useRouter()
-    const [stock, setStock] = useState('trendings')
+    const [stock, setStock] = useState()
     const [flavors, setFlavors] = useState([])
-    const [sortBy, setSortBy] = useState()
+    const [sortBy, setSortBy] = useState('trendings')
     const [lowestPrice, setLowestPrice] = useState(products.facets.priceRange.lowest)
     const [highestPrice, setHighestPrice] = useState(products.facets.priceRange.highest)
 
     useEffect(() => {
-        setLowestPrice(router.query.price ? router.query.price.split('-')[0] : products.facets.priceRange.lowest)
-        setHighestPrice(router.query.price ? router.query.price.split('-')[1] : products.facets.priceRange.highest)
+        setLowestPrice(router.query.price ? router.query.price.split('-')[0] : products.facets.priceRange.lowest ? products.facets.priceRange.lowest : '')
+        setHighestPrice(router.query.price ? router.query.price.split('-')[1] : products.facets.priceRange.highest ? products.facets.priceRange.highest : '')
         setFlavors(router.query.flavors ? router.query.flavors.split('-') : [])
         setStock(router.query.stock)
         setSortBy(router.query.sortBy ? router.query.sortBy : 'trendings')
     }, [router])
 
-    console.log(sortBy);
 
     function filterFlavor(flavor) {
-        filterPage(1)
         router.query['flavors'] = router.query.flavors || ''
         let flavors = router.query.flavors.split('-')
         if (flavors.includes(flavor)) {
@@ -35,6 +33,7 @@ export default function List({ products, language, category }) {
         }
         if (flavors.length > 0) {
             router.query.flavors = flavors.filter(el => el !== '').map(el => el).join("-")
+            router.query.page = 1
         } else {
             delete router.query.flavors
         }
@@ -42,10 +41,10 @@ export default function List({ products, language, category }) {
     }
 
     function filterStock(stock) {
-        filterPage(1)
         router.query['stock'] = router.query.stock || ''
         if (stock) {
             router.query.stock = stock
+            router.query.page = 1
         } else {
             delete router.query.stock
         }
@@ -53,11 +52,10 @@ export default function List({ products, language, category }) {
     }
 
     function filterSortBy(sortBy) {
-        filterPage(1)
-        setSortBy(sortBy)
         router.query['sortBy'] = router.query.sortBy || ''
         if (sortBy) {
             router.query.sortBy = sortBy
+            router.query.page = 1
         } else {
             delete router.query.sortBy
         }
@@ -65,10 +63,10 @@ export default function List({ products, language, category }) {
     }
 
     function filterLimit(limit) {
-        filterPage(1)
         router.query['limit'] = router.query.limit || ''
         if (limit) {
             router.query.limit = limit
+            router.query.page = 1
         } else {
             delete router.query.limit
         }
@@ -86,10 +84,10 @@ export default function List({ products, language, category }) {
     }
 
     function filterPrice() {
-        filterPage(1)
         router.query['price'] = router.query.price || ''
         if (lowestPrice && highestPrice) {
             router.query.price = `${lowestPrice}-${highestPrice}`
+            router.query.page = 1
         } else {
             delete router.query.price
         }
@@ -100,7 +98,6 @@ export default function List({ products, language, category }) {
         delete router.query.flavors
         delete router.query.stock
         delete router.query.sortBy
-        delete router.query.limit
         delete router.query.page
         delete router.query.price
         router.push({ pathname: router.pathname, query: router.query }, undefined, { scroll: false })
@@ -190,7 +187,7 @@ export default function List({ products, language, category }) {
                                     </select>
                                 </div>
                             </div>
-                            <div className="products__catalog-list list">
+                            <div className="products__catalog-list list__mini">
                                 {
                                     products ?
                                         (

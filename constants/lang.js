@@ -78,6 +78,12 @@ const lang = [
             },
             categories: {
                 title: 'Categories'
+            },
+            trendingsList: {
+                title: 'Trendings'
+            },
+            newArrivalsList: {
+                title: 'New Arrivals'
             }
         },
         aboutUs: {
@@ -202,6 +208,12 @@ const lang = [
             },
             categories: {
                 title: 'Категории'
+            },
+            trendingsList: {
+                title: 'Популярные'
+            },
+            newArrivalsList: {
+                title: 'Новинки'
             }
         },
         aboutUs: {

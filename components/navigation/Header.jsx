@@ -9,13 +9,18 @@ import { NavLink } from ".."
 export default function Header({ account, language }) {
 
     const router = useRouter()
-    
+
     const [searchTerm, setSearchTerm] = useState()
-    
+
     function search() {
         router.query['search'] = router.query.search || ''
         if (searchTerm) {
             setSearchTerm('')
+            delete router.query.flavors
+            delete router.query.stock
+            delete router.query.sortBy
+            delete router.query.page
+            delete router.query.price
             router.query.search = searchTerm
             router.pathname = '/products'
         }
@@ -25,7 +30,7 @@ export default function Header({ account, language }) {
     return (
         <header>
             <div className="container__fluid">
-                <div className="header__inner inner__small">
+                <div className="header__inner">
                     <div className="header__logo">
                         <div className="header__logo-title title">
                             <h2>damdi</h2>

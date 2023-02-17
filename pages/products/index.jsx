@@ -1,7 +1,7 @@
 import { getAccount, getCategories, getProducts } from "@/utils/requests"
 import useLanguage from "@/utils/useLanguage"
 import { Layout } from "@/components"
-import { Category, List, Sidebar } from "@/components"
+import { Category, Catalog } from "@/components"
 
 export default function Products({ account, language, products, categories }) {
     console.log(categories, products)
@@ -14,7 +14,7 @@ export default function Products({ account, language, products, categories }) {
                     :
                     <Category category={categories} language={language} />
             }
-            <List language={language} products={products} category={categories} />
+            <Catalog language={language} products={products} category={categories} />
         </>
     )
 }
