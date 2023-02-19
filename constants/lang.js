@@ -127,6 +127,10 @@ const lang = [
         },
         notFound: {
             title: 'Not Found'
+        },
+        product: {
+            flavors: 'Flavors',
+            ingredients: 'Ingredients'
         }
     },
     {
@@ -257,6 +261,10 @@ const lang = [
         },
         notFound: {
             title: 'Не найдено'
+        },
+        product: {
+            flavors: 'Вкусы',
+            ingredients: 'Ингредиенты'
         }
     }
 ]

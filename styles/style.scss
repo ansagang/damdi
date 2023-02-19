@@ -117,6 +117,15 @@ header {
                     // color: $accent_color;
                 }
             }
+            &::before{
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 0.7px;
+                background-color: $primary_color;
+            }
         }
     }
 }
@@ -336,5 +345,81 @@ header {
         100% {
             margin-left: 120%;
         }
+    }
+}
+
+.product-card{
+    &__img{
+        border-radius: 12px;
+        overflow: hidden;
+        height: 300px;
+        & img{
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+    }
+    &__content{
+        margin-top: 10px;
+    }
+    &__info{
+        & p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+                    line-clamp: 2;
+            -webkit-box-orient: vertical;
+            // line-height: 1.8em;
+        }
+    }
+    &__title{
+        & h1{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+                    line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    }
+}
+
+.product{
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__left{
+        width: 47%;
+    }
+    &__right{
+        width: 47%;
+    }
+    &__img{
+        height: 600px;
+        width: 100%;
+        &-selector{
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            &_item{
+                margin-right: 20px;
+                &.active{
+                    border: 2px solid $primary_color;
+                }
+                & img{
+                    width: 160px;
+                    height: 160px;
+                }
+            }
+        }
+    }
+    &__details{
+        margin-top: 40px;
+    }
+    &__flavors,
+    &__ingredients{
+        margin-top: 40px;
     }
 }

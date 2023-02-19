@@ -92,6 +92,8 @@ a {
     transition: 0.2s ease;
     &.active{
         color: $primary_color;
+        // text-decoration: 1.8px underline $primary_color;
+        // text-underline-offset: 10px;
     }
     &:hover{
         color: $primary_color;
@@ -138,10 +140,10 @@ input[type="search"]{
     resize: none;
     border-bottom: 2px solid $bg_color_lighter;
     &:hover{
-        border-bottom: 2px solid $accent_color;
+        border-bottom: 2px solid $primary_color;
     }
     &:focus{
-        border-bottom: 2px solid $accent_color;
+        border-bottom: 2px solid $primary_color;
     }
     &::placeholder{
         color: $bg_color_darker;
