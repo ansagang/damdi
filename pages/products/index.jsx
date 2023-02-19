@@ -3,7 +3,7 @@ import useLanguage from "@/utils/useLanguage"
 import { Layout } from "@/components"
 import { Category, Catalog } from "@/components"
 
-export default function Products({ account, language, products, categories }) {
+export default function Page({ account, language, products, categories }) {
     console.log(categories, products)
 
     return (
@@ -35,7 +35,7 @@ export async function getServerSideProps(context) {
     }
 }
 
-Products.useProgress = true
-Products.getLayout = (page) => {
+Page.useProgress = true
+Page.getLayout = (page) => {
     return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.products.title, content: page.props.language.products.description }} comp={{ header: true, footer: true }}>{page}</Layout>;
 }

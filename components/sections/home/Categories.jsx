@@ -7,7 +7,7 @@ export default function Categories({ language, categories }) {
             <div className="container">
                 <div className="categories__inner inner">
                     <div className="categories__title title">
-                        <h2>{language.home.categories.title}</h2>
+                        <h1>{language.home.categories.title}</h1>
                     </div>
                     <div className="categories__list list">
                         {

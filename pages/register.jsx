@@ -2,7 +2,7 @@ import { Layout, RegisterForm } from "@/components"
 import { getAccount } from "@/utils/requests"
 import useLanguage from "@/utils/useLanguage"
 
-export default function Register({language}) {
+export default function Page({language}) {
 
     return (
         <RegisterForm language={language} />
@@ -29,6 +29,6 @@ export async function getServerSideProps(context) {
     }
 }
 
-Register.getLayout = (page) => {
+Page.getLayout = (page) => {
     return <Layout head={{  title: page.props.language.register.title, content:  page.props.language.register.description }} comp={{ header: false, footer: false }}>{page}</Layout>;
 }

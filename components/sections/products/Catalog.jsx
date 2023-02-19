@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
-import { Pagination } from "@/components"
+import { Pagination, ProductCard } from "@/components"
 
 export default function Catalog({ products, language, category }) {
 
@@ -137,7 +137,7 @@ export default function Catalog({ products, language, category }) {
                                                                     products.facets.flavors.map((flavor, i) => (
                                                                         <div onClick={() => filterFlavor(flavor)} className={flavors.includes(flavor) ? 'products__sidebar-filter_item active info' : 'products__sidebar-filter_item info'} key={i}>
                                                                             <div className="checkbox"></div>
-                                                                            <p>{flavor.charAt(0).toUpperCase()}{flavor.slice(1)}</p>
+                                                                            <p>{flavor}</p>
                                                                         </div>
                                                                     ))
                                                                 }
@@ -195,18 +195,8 @@ export default function Catalog({ products, language, category }) {
                                                 (
                                                     products.data.length > 0 ?
                                                         (
-                                                            products.data.map((product, i) => (
-                                                                <>
-                                                                    <div className="catalog__list-item" key={i}>
-                                                                        <div className="catalog__list-item_img">
-                                                                            <Image loading='lazy' height={1} width={1} unoptimized={true} title={product.title} src={`/uploads/${product.images[0]}`} alt="" />
-                                                                        </div>
-                                                                        <Link href={{ pathname: `/products/${product.id}` }} className="catalog__list-item_title title">
-                                                                            <h3>{product.title}</h3>
-                                                                        </Link>
-                                                                    </div>
-                                                                </>
-
+                                                            products.data.map((product, key) => (
+                                                                <ProductCard product={product} key={key} />
                                                             ))
 
                                                         )
