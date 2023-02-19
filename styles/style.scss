@@ -67,11 +67,12 @@ header {
         }
     
         &__menu {
-            width: 30%;
+            width: 40%;
             text-align: center;
             &.links{
+                width: 40%;
                 & .header__menu-list{
-                    justify-content: center;
+                    justify-content: left;
                     &_item{
                         margin-right: 70px;
                         &:last-child{
@@ -85,12 +86,12 @@ header {
                 align-items: center;    
                 justify-content: right;
                 &_item {
-                    margin-left: 30px;
+                    margin-left: 50px;
                     &:first-child{
                         margin-left: 0;
                     }
                     & input{
-                        width: 150px;
+                        width: 250px;
                     }
                     & svg {
                         width: 25px;
@@ -107,7 +108,8 @@ header {
         }
     
         &__logo {
-            width: 30%;
+            width: 10%;
+            position: relative;
             &-title {
                 margin-bottom: 0;
                 &.title {
