@@ -142,16 +142,14 @@ header {
     }
 }
 
-.categories__list{
-    &-item{
-        &_img{
-            border-radius: 12px;
-            overflow: hidden;
-            height: 300px;
-            & img{
-                &:hover{
-                    transform: scale(1.05);
-                }
+.category-card{
+    &__img{
+        border-radius: 12px;
+        overflow: hidden;
+        height: 300px;
+        & img{
+            &:hover{
+                transform: scale(1.05);
             }
         }
     }

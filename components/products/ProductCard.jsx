@@ -1,9 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
 
-export default function ProductCard({ product, key }) {
+export default function ProductCard({ product }) {
     return (
-        <Link prefetch={true} scroll={true} href={{ pathname: `/products/${product.id}` }} className="product-card" key={key}>
+        <Link scroll={true} href={{ pathname: `/products/${product.id}` }} className="product-card">
             <div className="product-card__img">
                 <Image loading='lazy' height={1} width={1} unoptimized={true} title={product.title} src={`/uploads/${product.images[0]}`} alt={product.title} />
             </div>
