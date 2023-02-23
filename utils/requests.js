@@ -14,7 +14,7 @@ export async function getAccount(context) {
         console.log(err);
     }
 
-    return account
+    return {account, session}
 }
 
 export async function getProducts({ language: language, limit: limit, price: price, stock: stock, category: category, flavors: flavors, search: search, sortBy: sortBy, page: page }) {
@@ -51,6 +51,20 @@ export async function getProduct({ language: language, id: id }) {
     let data = {}
     try {
         await axios.get(`${process.env.URL}/api/products/${id}?lang=${language}`)
+            .then((res) => {
+                data = res.data
+            })
+    } catch (err) {
+        console.log(err);
+    }
+
+    return data
+}
+
+export async function getCart({ language: language, sessionID: sessionID }) {
+    let data = {}
+    try {
+        await axios.get(`${process.env.URL}/api/cart?lang=${language}&sessionID=${sessionID}`)
             .then((res) => {
                 data = res.data
             })

@@ -21,7 +21,7 @@ export default function Page({ account, language, products, categories }) {
 
 export async function getServerSideProps(context) {
     const { category, stock, limit, price, flavors, search, sortBy, page } = context.query;
-    const account = await getAccount(context)
+    const {account} = await getAccount(context)
     const language = useLanguage(account.data, context)
     const products = await getProducts({ language: language.lang, category: category, stock: stock, limit: limit, price: price, flavors: flavors, search: search, sortBy: sortBy, page: page })
     const categories = await getCategories({ language: language.lang, code: category })

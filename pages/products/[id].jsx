@@ -1,14 +1,38 @@
+import axios from "axios"
+
 import Image from "next/image"
 
 import { getAccount, getProduct } from "@/utils/requests"
 import useLanguage from "@/utils/useLanguage"
 import { Layout } from "@/components"
 import { useState } from "react"
+import responseHandler from "@/utils/responseHandler"
 
-export default function Page({ account, language, product }) {
-    console.log(product)
+export default function Page({ account, language, product, sessionID }) {
 
     const [imageSelector, setImageSelector] = useState(product.data.images[0])
+    const [quantity, setQuantity] = useState(1)
+
+    const dispatcher = responseHandler()
+
+
+    async function addToCart(){
+        try {
+            await axios.post(`/api/cart?lang=${language.lang}`, {
+                sessionID: sessionID,
+                quantity: quantity,
+                productId: product.data.id
+            }).then((res) => {
+                dispatcher({message: res.data.message, title: 'Alert', type: false})
+                if (res.data.success) {
+                    setQuantity(1)
+                    // dispatcher({message: res.data.message, title: language.res.cartAdded, type: res.data.success})
+                }
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <section className="product">
@@ -85,6 +109,14 @@ export default function Page({ account, language, product }) {
                                 <p>{product.data.description}</p>
                             </div>
                         </div>
+                        <div className="product__cart">
+                            <div className="product__cart-quantity">
+                                <button disabled={quantity <= 1 ? true : false} onClick={() => setQuantity(quantity - 1)} className="product__cart-quantity_button">-</button>
+                                <div className="product__cart-quantity_value">{quantity}</div>
+                                <button onClick={() => setQuantity(quantity + 1)} className="product__cart-quantity_button">+</button>
+                            </div>
+                            <button onClick={() => addToCart()} type="submit" className="product__cart-button primary">{language.product.addToCart}</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,7 +126,7 @@ export default function Page({ account, language, product }) {
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
-    const account = await getAccount(context)
+    const {account, session} = await getAccount(context)
     const language = useLanguage(account.data, context)
     const product = await getProduct({ language: language.lang, id: id })
     return {
@@ -102,6 +134,7 @@ export async function getServerSideProps(context) {
             account: account,
             language: language,
             product: product,
+            sessionID: session
         }
     }
 }

@@ -3,10 +3,10 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useState } from "react"
 
-// import { images } from "@/constants"
+import { images } from "@/constants"
 import { NavLink } from ".."
 
-export default function Header({ account, language }) {
+export default function Header({ account, language, cart }) {
 
     const router = useRouter()
 
@@ -63,6 +63,19 @@ export default function Header({ account, language }) {
                                             <button type="button" className="header__register-button primary">{language.login.buttons.login}</button>
                                         </Link>
                                     </li>
+                            }
+                            {
+                                account.data ?
+                                    (
+                                        <li className="header__menu-list_item">
+                                            <Link href={"/cart"}>
+                                                <Image width={35} height={35} src={images.cart} alt="cart" />
+                                            </Link>
+                                            <div className="header__menu-list_item-value">{cart}</div>
+                                        </li>
+                                    )
+                                    :
+                                    null
                             }
                         </ul>
                     </nav>

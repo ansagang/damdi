@@ -10,7 +10,7 @@ export default function Page({ language }) {
 }
 
 export async function getServerSideProps(context) {
-    const account = await getAccount(context)
+    const {account} = await getAccount(context)
     const language = useLanguage(account.data, context)
     if (account.data) {
         return {

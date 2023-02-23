@@ -33,6 +33,8 @@ const lang = [
             usernameChangeResult: 'Username has been changed successfully',
             wishlistAddResult: 'Product has been added to wishlist successfuly',
             wishlistRemoveResult: 'Product has been deleted from wishlist successfully',
+            accountRequired: 'Account is required',
+            cartAdded: 'Product has been added to cart'
         },
         title: 'English',
         login: {
@@ -130,7 +132,8 @@ const lang = [
         },
         product: {
             flavors: 'Flavors',
-            ingredients: 'Ingredients'
+            ingredients: 'Ingredients',
+            addToCart: 'Add to Cart'
         }
     },
     {
@@ -167,6 +170,8 @@ const lang = [
             usernameChangeResult: 'Никнейм был успешно изменен',
             wishlistAddResult: 'Продукт был успешно добавлен в список желаемых',
             wishlistRemoveResult: 'Продукт был успешно удален из списка желаемых',
+            accountRequired: 'Для этой функции необходимо сначала войти в аккаунт',
+            cartAdded: 'Продукт был добавлен в корзину'
         },
         title: 'Русский',
         login: {
@@ -264,7 +269,8 @@ const lang = [
         },
         product: {
             flavors: 'Вкусы',
-            ingredients: 'Ингредиенты'
+            ingredients: 'Ингредиенты',
+            addToCart: 'Добавить в корзину'
         }
     }
 ]

@@ -99,9 +99,9 @@ header {
                     }
     
                     & img {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50%;
+                        width: 35px;
+                        height: 35px;
+                        // border-radius: 50%;
                     }
                 }
             }
@@ -419,5 +419,32 @@ header {
     &__flavors,
     &__ingredients{
         margin-top: 40px;
+    }
+    &__cart{
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-quantity{
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &_button{
+                padding: 10px;
+                border-radius: 50%;
+                background-color: $accent_color;
+                font-size: 20px;
+                color: $bg_color;
+                width: 25px;
+                height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        &-button{
+            width: 60% !important;
+        }
     }
 }

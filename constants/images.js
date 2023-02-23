@@ -1,6 +1,7 @@
 import damdiBackground from '../src/damdi-background.png'
 import backgroundOne from '../src/backgroundOne.png'
 import backgroundTwo from '../src/backgroundTwo.png'
+import cart from '../src/shopping-cart.png'
 
 const arrow = <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
 width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -38,7 +39,8 @@ const images = {
     damdiBackground,
     backgroundTwo,
     arrow,
-    search
+    search,
+    cart
 }
 
 export default images

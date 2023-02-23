@@ -1,8 +1,10 @@
 import { Layout, Landing, Categories, List } from '@/components'
-import { getAccount, getProducts, getCategories } from '@/utils/requests';
+import { getAccount, getProducts, getCategories, getCart } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
 
-export default function Page({ account, language, categories, newArrivals, trendings}) {
+export default function Page({ account, language, categories, newArrivals, trendings }) {
+
+    console.log(account);
 
     return (
         <>
@@ -17,7 +19,7 @@ export default function Page({ account, language, categories, newArrivals, trend
 
 export async function getServerSideProps(context) {
 
-    const account = await getAccount(context)
+    const {account} = await getAccount(context)
     const language = useLanguage(account.data, context)
     const categories = await getCategories({language: language.lang})
     const trendings = await getProducts({language: language.lang, limit: 4, sortBy: 'trendings'})
