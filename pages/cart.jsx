@@ -1,13 +1,14 @@
-import { getAccount, getCart } from '@/utils/requests';
+import { getAccount, getCart, getCartProducts } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
 import { Layout, Cart } from '@/components';
 
-export default function Page({ account, language, cart }) {
+export default function Page({ account, language, cart, cartProducts }) {
 
     // console.log(cart, account, language);
+    console.log(cartProducts);
 
     return (
-        <Cart cart={cart} account={account} language={language} />
+        <Cart cart={cart} account={account} language={language} cartProducts={cartProducts} />
     )
 }
 
@@ -16,6 +17,9 @@ export async function getServerSideProps(context) {
     const {account, session} = await getAccount(context)
     const language = useLanguage(account.data, context)
     const cart = await getCart({ language: language.lang, sessionID: session })
+    const productsId = []
+    cart.data.list.forEach(product => productsId.push(product.productId))
+    const cartProducts = await getCartProducts({ language: language.lang, sessionID: session, id: productsId.map(el => el).join("-") })
 
     if (!account.data) {
         return {
@@ -29,7 +33,8 @@ export async function getServerSideProps(context) {
             props: {
                 account: account,
                 language: language,
-                cart: cart
+                cart: cart,
+                cartProducts: cartProducts
             }
         }
     }
