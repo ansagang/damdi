@@ -1,6 +1,7 @@
 import axios from "axios"
 
 import Image from "next/image"
+import Link from "next/link"
 
 import { getAccount, getProduct } from "@/utils/requests"
 import useLanguage from "@/utils/useLanguage"
@@ -18,7 +19,7 @@ export default function Page({ account, language, product, sessionID }) {
 
     async function addToCart(){
         try {
-            await axios.post(`/api/cart?lang=${language.lang}`, {
+            await axios.post(`/api/cart?lang=${language.lang}&method=inc`, {
                 sessionID: sessionID,
                 quantity: quantity,
                 productId: product.data.id
@@ -108,6 +109,9 @@ export default function Page({ account, language, product, sessionID }) {
                             <div className="product__info info">
                                 <p>{product.data.description}</p>
                             </div>
+                            <div className="product__price info">
+                                <h1>{product.data.price.value} {product.data.price.currency}</h1>
+                            </div>
                         </div>
                         <div className="product__cart">
                             <div className="product__cart-quantity">
@@ -116,6 +120,7 @@ export default function Page({ account, language, product, sessionID }) {
                                 <button onClick={() => setQuantity(quantity + 1)} className="product__cart-quantity_button">+</button>
                             </div>
                             <button onClick={() => addToCart()} type="submit" className="product__cart-button primary">{language.product.addToCart}</button>
+                            <Link className="product__cart-button" scroll={true} href={{ pathname: `/cart` }}><button type="submit" className="secondary">{language.product.goToCart}</button></Link>
                         </div>
                     </div>
                 </div>

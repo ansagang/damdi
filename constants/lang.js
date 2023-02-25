@@ -122,7 +122,16 @@ const lang = [
             title: 'Account'
         },
         cart: {
-            title: 'Cart'
+            title: 'Cart',
+            bar: {
+                product: 'Product',
+                quantity: 'Quantity',
+                price: 'Price',
+                total: 'Total'
+            },
+            buttons: {
+                remove: 'Remove'
+            }
         },
         header: {
             search: 'Search'
@@ -133,7 +142,9 @@ const lang = [
         product: {
             flavors: 'Flavors',
             ingredients: 'Ingredients',
-            addToCart: 'Add to Cart'
+            addToCart: 'Add to Cart',
+            goToCart: 'Go To Cart'
+            
         }
     },
     {
@@ -259,7 +270,16 @@ const lang = [
             title: 'Аккаунт'
         },
         cart: {
-            title: 'Корзина'
+            title: 'Корзина',
+            bar: {
+                product: 'Продукт',
+                quantity: 'Количество',
+                price: 'Цена',
+                total: 'Итого'
+            },
+            buttons: {
+                remove: 'Удалить'
+            }
         },
         header: {
             search: 'Поиск'
@@ -270,7 +290,8 @@ const lang = [
         product: {
             flavors: 'Вкусы',
             ingredients: 'Ингредиенты',
-            addToCart: 'Добавить в корзину'
+            addToCart: 'Добавить в корзину',
+            goToCart: 'Корзина'
         }
     }
 ]

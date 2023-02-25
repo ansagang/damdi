@@ -4,13 +4,21 @@ const cartSchema = new mongoose.Schema({
     userId: String,
     list: [
       {
-        productId: String,
+        product: Object,
         quantity: {
           type: Number,
           default: 1,
         },
+        price: {
+          value: Number,
+          currency: String
+        }
       },
     ],
+    totalPrice: {
+      value: Number,
+      currency: String
+    }
 },
   {
     timestamps: true

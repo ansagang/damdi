@@ -21,6 +21,16 @@ async function get(req, res) {
         const session = await Session.findOne({ sessionID: sessionID })
         if (session) {
             const cart = await Cart.findOne({ userId: session.userID })
+            const list = cart.list.filter(item => item.product.language == language.lang)
+            const totalPrice = {}
+            totalPrice.value = list.reduce((acc, curr) => {
+                return acc ? acc + curr.price.value : curr.price.value;
+            }, 0)
+            totalPrice.currency = list.reduce((acc, curr) => {
+                return curr.price.currency
+            }, 0)
+            cart.list = list
+            cart.totalPrice = totalPrice
             res.send({
                 success: true,
                 message: language.res.getResult,
@@ -29,7 +39,7 @@ async function get(req, res) {
         } else {
             res.send({
                 success: false,
-                message: language.res.sessionNotFoundError
+                message: language.res.accountRequired
             })
         }
     } catch (err) {
@@ -45,32 +55,45 @@ async function post(req, res) {
         await db.connect()
         const language = languageDefinder(req.query.lang)
         const { sessionID, productId, quantity } = req.body
+        const quantityType = req.query.method
         if (sessionID && productId) {
             const session = await Session.findOne({ sessionID: sessionID })
             if (session) {
                 const cart = await Cart.findOne({ userId: session.userID });
-                console.log(productId);
+                const products = await Product.find({ id: productId })
                 if (cart) {
-                    const itemIndex = cart.list.findIndex((item) => item.productId == productId);
-                    //check if product exists or not
-                    if (itemIndex > -1) {
-                        let product = cart.list[itemIndex];
-                        product.quantity += parseInt(quantity);
-                        // cart.bill = cart.items.reduce((acc, curr) => {
-                        //     return acc + curr.quantity * curr.price;
-                        // }, 0)
-                        cart.list[itemIndex] = product;
+                    const indexes = []
+                    for (let i = 0; i < cart.list.length; i++) {
+                        if (cart.list[i].product.id === productId) {
+                            indexes.push(i)
+                        }
+                    }
+                    if (indexes.length !== 0) {
+                        indexes.forEach((index) => {
+                            console.log(index);
+                            let product = cart.list[index];
+                            if (quantityType === 'inc') {
+                                product.quantity += parseInt(quantity);
+                            } else {
+                                product.quantity = parseInt(quantity);
+                            }
+                            product.price.value = product.product.price.value * product.quantity
+                            cart.list[index] = product;
+                        })
+                        if (quantity === 0) {
+                            for (const i of indexes.reverse()) {
+                                cart.list.splice(i, 1);
+                            }
+                        }
                         await cart.save();
-                        // res.status(200).send(cart);
                         res.send({
                             success: true,
                             message: language.res.addResult
                         })
                     } else {
-                        cart.list.push({ productId: productId, quantity: quantity });
-                        // cart.bill = cart.items.reduce((acc, curr) => {
-                        //     return acc + curr.quantity * curr.price;
-                        // }, 0)
+                        products.forEach((product) => {
+                            cart.list.push({ product: product, quantity: quantity, price: { value: product.price.value * quantity, currency: product.price.currency } });
+                        })
                         await cart.save();
                         res.send({
                             success: true,
@@ -78,14 +101,14 @@ async function post(req, res) {
                         })
                     }
                 } else {
+                    const list = []
+
+                    products.forEach((product) => {
+                        list.push({ product: product, quantity: quantity, price: { value: product.price.value * quantity, currency: product.price.currency } })
+                    })
                     new Cart({
                         userId: session.userID,
-                        list: [
-                            {
-                                productId: productId,
-                                quantity: quantity
-                            }
-                        ]
+                        list: list
                     }).save(err => {
                         if (!err) {
                             res.send({
