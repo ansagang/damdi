@@ -145,6 +145,17 @@ const lang = [
             addToCart: 'Add to Cart',
             goToCart: 'Go To Cart'
             
+        },
+        account: {
+            details: {
+                title: 'Details'
+            },
+            orders: {
+                title: 'Orders'
+            },
+            payment: {
+                title: 'Payment'
+            }
         }
     },
     {
@@ -292,6 +303,17 @@ const lang = [
             ingredients: 'Ингредиенты',
             addToCart: 'Добавить в корзину',
             goToCart: 'Корзина'
+        },
+        account: {
+            details: {
+                title: 'Информация'
+            },
+            orders: {
+                title: 'Заказы'
+            },
+            payment: {
+                title: 'Оплата'
+            }
         }
     }
 ]

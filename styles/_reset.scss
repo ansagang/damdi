@@ -92,6 +92,11 @@ a {
     transition: 0.2s ease;
     &.active{
         color: $primary_color;
+        
+
+    & svg{
+        fill: $accent_color;
+    }
         // text-decoration: 1.8px underline $primary_color;
         // text-underline-offset: 10px;
     }

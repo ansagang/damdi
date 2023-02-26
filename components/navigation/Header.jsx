@@ -6,7 +6,7 @@ import { useState } from "react"
 import { images } from "@/constants"
 import { NavLink } from ".."
 
-export default function Header({ account, language, cart }) {
+export default function Header({ account, language, fixed }) {
 
     const router = useRouter()
 
@@ -28,7 +28,7 @@ export default function Header({ account, language, cart }) {
     }
 
     return (
-        <header>
+        <header style={fixed ? null : {position: 'fixed'}}>
             <div className="container__fluid">
                 <div className="header__inner">
                     <div className="header__logo">
@@ -71,7 +71,6 @@ export default function Header({ account, language, cart }) {
                                             <Link href={"/cart"}>
                                                 <Image width={35} height={35} src={images.cart} alt="cart" />
                                             </Link>
-                                            <div className="header__menu-list_item-value">{cart}</div>
                                         </li>
                                     )
                                     :

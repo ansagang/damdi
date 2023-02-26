@@ -74,17 +74,3 @@ export async function getCart({ language: language, sessionID: sessionID }) {
 
     return data
 }
-
-export async function getCartProducts({ language: language, sessionID: sessionID, id: id }) {
-    let data = {}
-    try {
-        await axios.get(`${process.env.URL}/api/cart/products?lang=${language}&sessionID=${sessionID}&id=${id}`)
-            .then((res) => {
-                data = res.data
-            })
-    } catch (err) {
-        console.log(err);
-    }
-
-    return data
-}

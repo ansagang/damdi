@@ -73,7 +73,7 @@ export default function Cart({ language, cart, account, sessionID }) {
                                                     </Link>
                                                     <div className="cart__product-quantity">
                                                         <button onClick={() => updateQuantity(item.quantity - 1, item.product.id)} className="cart__product-quantity_button text">-</button>
-                                                        <div className="cart__product-quantity_value">{item.quantity}</div>
+                                                        <div className="cart__product-quantity_value title"><h3>{item.quantity}</h3></div>
                                                         <button onClick={() => updateQuantity(item.quantity + 1, item.product.id)} className="cart__product-quantity_button text">+</button>
                                                     </div>
                                                     <div className="cart__product-price">

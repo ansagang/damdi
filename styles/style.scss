@@ -51,7 +51,6 @@
 }
 
 header {
-    position: fixed;
     left: 0;
     right: 0;
     width: 100%;
@@ -492,14 +491,71 @@ header {
         &-quantity{
             display: flex;
             justify-content: space-between;
-            align-items: start;
+            align-items: flex-start;
             width: 10%;
+            &_button{
+                font-size: 20px;
+                line-height: 20px;
+            }
         }
         &-price{
             width: 10%;
         }
         &-total{
             width: 10%;
+        }
+    }
+}
+
+.account{
+    &-sidebar{
+        width: 280px;
+        &__profile{
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            &-img{
+                width: 90px;
+                height: 90px;
+                margin-bottom: 20px;
+            }
+            &-details{
+                text-align: center;
+            }
+        }
+        &__menu{
+            padding: 20px 0;
+            &-links{
+                display: flex;
+                flex-direction: column;
+            }
+            &-link{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                & a {
+                    display: flex;
+                    align-items: center;
+                    padding: 20px 30px;
+                    width: 100%;
+                    & h1{
+                        color: $secondary_color
+                    }
+                    &.active{
+                        & h1{
+                            color: $primary_color;
+                        }
+                    }
+                }
+                & svg{
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 20px;
+                    fill: $secondary_color;
+                }
+            }
         }
     }
 }
