@@ -133,3 +133,15 @@ export const createProductValidation = (req) => {
     }
     return errors
 }
+
+export const createOrderValidation = (req) => {
+    const { address, city, zipCode, district, country } = req.body
+    const errors = []
+
+    const language = languageDefinder(req.query.lang)
+    if (address && city && zipCode && district && country) {
+    } else {
+        errors.push(language.res.missingFields)
+    }
+    return errors
+}

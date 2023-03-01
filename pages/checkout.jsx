@@ -1,13 +1,13 @@
 import { getAccount, getCart } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
-import { Layout, Cart } from '@/components';
+import { Layout, Checkout } from '@/components';
 
 export default function Page({ account, language, cart, sessionID }) {
 
     console.log(cart);
 
     return (
-        <Cart cart={cart} account={account} language={language} sessionID={sessionID} />
+        <Checkout cart={cart} account={account} language={language} sessionID={sessionID} />
     )
 }
 
@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
     const language = useLanguage(account.data, context)
     const cart = await getCart({ language: language.lang, sessionID: session })
 
-    if (!account.data) {
+    if (!account.data || !cart.data || cart.data.list.length <= 0) {
         return {
             redirect: {
                 destination: '/',
@@ -38,5 +38,5 @@ export async function getServerSideProps(context) {
 
 Page.useProgress = true
 Page.getLayout = (page) => {
-    return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.cart.title, content: page.props.language.cart.description }} comp={{ header: true, footer: true }}>{page}</Layout>;
+    return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.checkout.title, content: page.props.language.checkout.description }} comp={{ header: true, footer: true }}>{page}</Layout>;
 };

@@ -156,6 +156,37 @@ const lang = [
             payment: {
                 title: 'Payment'
             }
+        },
+        order: {
+            type: {
+                pickup: 'Pick up',
+                delivery: 'Delivery'
+            },
+            status: {
+                pending: 'Pending',
+                delivering: 'Delivering',
+                done: 'Done'
+            },
+            total: 'Total',
+            subTotal: 'Subtotal',
+            shipping: 'Shipping',
+            checkout: 'Checkout',
+            summary: 'Summary'
+        },
+        checkout: {
+            title: 'Checkout',
+            buttons: {
+                order: 'Order'
+            },
+            inputs: {
+                fullname: 'Fullname',
+                phoneNumber: 'Phone number',
+                country: 'Country',
+                city: 'City',
+                district: 'District',
+                address: 'Address',
+                zipCode: 'Zip Code'
+            }
         }
     },
     {
@@ -313,6 +344,37 @@ const lang = [
             },
             payment: {
                 title: 'Оплата'
+            }
+        },
+        order: {
+            type: {
+                pickup: 'Самовывоз',
+                delivery: 'Доставка'
+            },
+            status: {
+                pending: 'В ожидании',
+                delivering: 'Доставляется',
+                done: 'Готово'
+            },
+            total: 'Итого',
+            subTotal: 'Сумма',
+            shipping: '',
+            checkout: 'Оформление',
+            summary: ''
+        },
+        checkout: {
+            title: 'Оформление заказа',
+            buttons: {
+                order: 'Заказать'
+            },
+            inputs: {
+                fullname: 'ФИО',
+                phoneNumber: 'Номер телефона',
+                country: 'Страна',
+                city: 'Город',
+                district: 'Район',
+                address: 'Адрес',
+                zipCode: 'Почтовый индекс'
             }
         }
     }

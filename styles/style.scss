@@ -505,6 +505,24 @@ header {
             width: 10%;
         }
     }
+    &__summary{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-card{
+            width: 20% !important;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            & .title{
+                margin-bottom: 0 !important;
+            }
+            & button{
+                height: 100%;
+            }
+        }
+    }
 }
 
 .account{
@@ -556,6 +574,18 @@ header {
                     fill: $secondary_color;
                 }
             }
+        }
+    }
+}
+
+.checkout{
+    &__form{
+        width: 45%;
+        &-input{
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: space-between;
+            gap: 10px;
         }
     }
 }
