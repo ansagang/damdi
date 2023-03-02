@@ -100,6 +100,11 @@ c257 110 476 201 487 202 11 1 233 -90 492 -201z"/>
     </g>
 </svg>
 
+const location =
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12.4844" cy="11" r="2" stroke-width="2" />
+        <path d="M12.4852 21.9999L17.9852 16.4999C21.0228 13.4623 21.0228 8.53742 17.9852 5.49985C14.9476 2.46229 10.0228 2.46229 6.9852 5.49985C3.94764 8.53742 3.94764 13.4623 6.98521 16.4999L12.4852 21.9999Z" stroke-width="2" stroke-linejoin="round" />
+    </svg>
 
 
 const images = {
@@ -112,7 +117,8 @@ const images = {
     information,
     orders,
     payment,
-    account
+    account,
+    location
 }
 
 export default images

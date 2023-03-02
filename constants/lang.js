@@ -202,6 +202,9 @@ const lang = [
             },
             contactDetails: 'Contact Details',
             order: 'Your order'
+        },
+        contacts: {
+            title: 'Contacts'
         }
     },
     {
@@ -406,6 +409,9 @@ const lang = [
             },
             contactDetails: 'Контактная информация',
             order: 'Ваш заказ'
+        },
+        contacts: {
+            title: 'Контакты'
         }
     }
 ]

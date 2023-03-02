@@ -583,14 +583,12 @@ header {
                 display: flex;
                 align-items: center;
                 width: 100%;
-                position: relative;
-                padding: 20px 30px;
                 & a {
+                    width: 100%;
+                    position: relative;
+                    padding: 20px 30px;
                     display: flex;
                     align-items: center;
-                    padding: 20px 30px;
-                    width: 100%;
-                position: relative;
                     & h1{
                         color: $secondary_color
                     }
@@ -705,4 +703,21 @@ header {
 
 .information{
     width: 30%;
+}
+
+.contacts{
+    &__item{
+        & svg {
+            & circle{
+                fill: $accent_color;
+            }
+            & path{
+                stroke: $accent_color;
+            }
+        }
+        &-upper{
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+    }
 }

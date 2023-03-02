@@ -1,7 +1,7 @@
 import axios from "axios"
 
-import Image from "next/image"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 import { NavLink } from "@/components"
 import responseHandler from "@/utils/responseHandler"
@@ -56,7 +56,9 @@ export default function Sidebar({ account, language, sessionID }) {
                             </NavLink>
                         </li>
                         <li onClick={() => signOut()} className="account-sidebar__menu-link info">
-                            <h1>{language.account.signOut}</h1>
+                            <Link href={''}>
+                                <h1>{language.account.signOut}</h1>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
