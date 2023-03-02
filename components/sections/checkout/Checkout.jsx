@@ -13,13 +13,13 @@ export default function Checkout({ language, cart, account, sessionID }) {
     const router = useRouter();
 
     const [orderType, setOrderType] = useState('pickup')
-    const [address, setAddress] = useState(account.address)
+    const [address, setAddress] = useState()
     const [city, setCity] = useState()
     const [zipCode, setZipcode] = useState()
     const [country, setCountry] = useState('Kazakhstan')
     const [district, setDistrict] = useState()
-    const [phoneNumber, setPhoneNumber] = useState(account.phone)
-    const [fullname, setFullname] = useState(account.fullname)
+    const [phoneNumber, setPhoneNumber] = useState(account.data.phone)
+    const [fullname, setFullname] = useState(account.data.fullname)
 
     async function createOrder() {
         try {

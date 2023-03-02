@@ -12,7 +12,7 @@ const handler = nc();
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads");
+    cb(null, "public/uploads");
   },
   filename: function (req, file, cb) {
     cb(
@@ -28,8 +28,12 @@ let upload = multer({
 
 handler.use(upload.array("images"));
 handler.post(async (req, res) => {
+  const filenames = []
+  req.files.forEach(file => {
+    filenames.push(file.filename)
+  })
   res.send({
-    filename: req.files[0].filename
+    filename: filenames
   })
 });
 

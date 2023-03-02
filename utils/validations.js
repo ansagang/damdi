@@ -55,7 +55,7 @@ export const changePasswordValidation = (req) => {
                 errors.push(language.res.passwordUniqueError)
             }
         } else {
-            errors.push(language.passwordMatchError)
+            errors.push(language.res.passwordMatchError)
         }
     } else {
         errors.push(language.res.missingFields)
