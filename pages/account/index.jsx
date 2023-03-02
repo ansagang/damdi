@@ -1,11 +1,11 @@
 import { getAccount } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
-import { Layout, AccountLayout } from '@/components';
+import { Layout, AccountLayout, Details } from '@/components';
 
 export default function Page({ account, language, sessionID }) {
 
     return (
-        null
+        <Details account={account} language={language} sessionID={sessionID} />
     )
 }
 
@@ -34,5 +34,5 @@ export async function getServerSideProps(context) {
 
 Page.useProgress = true
 Page.getLayout = (page) => {
-    return <Layout fixed={true} account={page.props.account} language={page.props.language} head={{ title: page.props.language.account.details.title, content: page.props.language.account.details.description }} comp={{ header: true, footer: true }}><AccountLayout account={page.props.account} language={page.props.language} sessionID={page.props.sessionID}>{page}</AccountLayout></Layout>;
+    return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.account.details.title, content: page.props.language.account.details.description }} comp={{ header: true, footer: true }}><AccountLayout account={page.props.account} language={page.props.language} sessionID={page.props.sessionID}>{page}</AccountLayout></Layout>;
 };

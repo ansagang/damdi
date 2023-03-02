@@ -56,6 +56,7 @@ header {
     width: 100%;
     z-index: $z_fixed;
     background-color: $bg_color;
+    position: fixed;
     & .header{
         &__inner {
             display: flex;
@@ -532,8 +533,31 @@ header {
 }
 
 .account{
+    display: flex;
+    &-details{
+        // margin-left: 320px;
+        &__form{
+            &-input{
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            &-button{
+                float: right;
+            }
+        }
+        &__img{
+            & img{
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
     &-sidebar{
-        width: 280px;
+        width: 300px;
+        margin-right: 20px;
+        // position: fixed;
         &__profile{
             padding: 0 30px;
             display: flex;
@@ -559,11 +583,14 @@ header {
                 display: flex;
                 align-items: center;
                 width: 100%;
+                position: relative;
+                padding: 20px 30px;
                 & a {
                     display: flex;
                     align-items: center;
                     padding: 20px 30px;
                     width: 100%;
+                position: relative;
                     & h1{
                         color: $secondary_color
                     }
@@ -571,7 +598,16 @@ header {
                         & h1{
                             color: $primary_color;
                         }
-                        border-left: 5px solid $accent_color;
+                        // border-left: 5px solid $accent_color;
+                        &::before{
+                            content: '';
+                            height: 80%;
+                            width: 5px;
+                            border-radius: 20px;
+                            background-color: $accent_color;
+                            left: 0px;
+                            position: absolute;
+                        }
                     }
                 }
                 & svg{
@@ -586,31 +622,87 @@ header {
 }
 
 .checkout{
-    &__container{
+    // &__container{
+    //     display: flex;
+    //     justify-content: space-between;
+    // }
+    // &__menu{
+    //     width: 45%;
+    // }
+    // &__form{
+    //     margin-top: 30px;
+    //     &-input{
+    //         display: flex;
+    //         margin-bottom: 20px;
+    //         gap: 10px;            
+    //     }
+    // }
+    // &__summary{
+    //     width: 45%;
+    //     &-item{
+    //         display: flex;
+    //         justify-content: space-between;
+    //         margin-bottom: 30px;
+    //     }
+    //     &-list{
+    //         margin-top: 30px;
+    //     }
+    // }
+    &__tabs{
+        border-bottom: 2px solid $bg_color_lighter;
+        display: flex;
+    }
+    &__tab{
+        margin-right: 100px;
+        font-size: 25px;
+        padding-bottom: 20px;
+        &.active{
+            color: $primary_color;
+            border-bottom: 2px solid $primary_color;
+        }
+    }
+    &__delivery{
         display: flex;
         justify-content: space-between;
-    }
-    &__menu{
-        width: 45%;
-    }
-    &__form{
-        margin-top: 30px;
-        &-input{
-            display: flex;
-            margin-bottom: 20px;
-            justify-content: space-between;
-            gap: 10px;            
+        margin-top: 20px;
+        &-form{
+            width: 50%;
+            &_input{
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
         }
     }
-    &__summary{
-        width: 45%;
+    &__pickup{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        &-list{
+            width: 50%;
+        }
         &-item{
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-        &-list{
-            margin-top: 30px;
+            &_input{
+                margin-right: 10px;
+            }
         }
     }
+    &__details{
+        &-form{
+            margin-top: 40px;
+            &_input{
+                display: flex;
+                gap: 20px;
+            }
+        }
+    }
+    &__button{
+        margin-top: 30px;
+        float: right;
+    }
+}
+
+.information{
+    width: 30%;
 }

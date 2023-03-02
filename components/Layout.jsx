@@ -1,9 +1,8 @@
 import Head from "next/head"
 
 import Header from "./navigation/Header"
-import Footer from "./navigation/Footer"
 
-export default function Layout({ children, head: { title, content }, comp: { header, footer }, account, language, fixed }) {
+export default function Layout({ children, head: { title, content }, comp: { header }, account, language }) {
 
     return (
         <>
@@ -15,7 +14,7 @@ export default function Layout({ children, head: { title, content }, comp: { hea
                 {
                     header ?
                         (
-                            <Header fixed={fixed} account={account} language={language} />
+                            <Header account={account} language={language} />
                         )
                         :
                         null
@@ -23,14 +22,6 @@ export default function Layout({ children, head: { title, content }, comp: { hea
                 <main>
                     {children}
                 </main>
-                {
-                    footer ?
-                        (
-                           <Footer />
-                        )
-                        :
-                        null
-                }
             </div>
         </>
     )

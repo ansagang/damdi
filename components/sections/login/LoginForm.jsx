@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import Image from "next/image"
 import Link from "next/link"
-import Router from "next/router"
+import { useRouter } from "next/router"
 
 import axios from "axios"
 
@@ -15,6 +15,7 @@ export default function LoginForm({language}) {
     const dispatcher = responseHandler()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const router = useRouter()
 
     async function login() {
         try {
@@ -24,7 +25,7 @@ export default function LoginForm({language}) {
             }).then((res) => {
                 dispatcher({message: res.data.message, title: 'Alert', type: res.data.success})
                 if (res.data.success) {
-                    Router.push('/')
+                    router.push('/')
                 }
             })
         } catch (err) {

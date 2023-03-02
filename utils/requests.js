@@ -74,3 +74,17 @@ export async function getCart({ language: language, sessionID: sessionID }) {
 
     return data
 }
+
+export async function getOffices({ language: language }) {
+    let data = {}
+    try {
+        await axios.get(`${process.env.URL}/api/offices?lang=${language}`)
+            .then((res) => {
+                data = res.data
+            })
+    } catch (err) {
+        console.log(err);
+    }
+
+    return data
+}

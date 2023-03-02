@@ -28,10 +28,10 @@ export default function Sidebar({ account, language, sessionID }) {
 
     return (
         <aside className="account-sidebar">
-            <div className="account-sidebar__inner inner__aside">
-                <div className="account-sidebar__profile">
+            <div className="account-sidebar__inner inner">
+                {/* <div className="account-sidebar__profile">
                     <div className="account-sidebar__profile-img">
-                        <Image loading='lazy' height={1} width={1} unoptimized={true} title={account.data.username} src={`/uploads/${account.data.img}`} alt={account.data.username} />
+                        <Image style={{borderRadius: 50}} loading='lazy' height={1} width={1} unoptimized={true} title={account.data.username} src={`/uploads/${account.data.img}`} alt={account.data.username} />
                     </div>
                     <div className="account-sidebar__profile-details">
                         <div className="account-sidebar__profile-detail title">
@@ -42,7 +42,7 @@ export default function Sidebar({ account, language, sessionID }) {
                         </div>
                         <button onClick={() => signOut()} type="submit" className="account-sidebar__profile-detail text">Sign out</button>
                     </div>
-                </div>
+                </div> */}
                 <nav className="account-sidebar__menu">
                     <ul className="account-sidebar__menu-links">
                         <li className="account-sidebar__menu-link info">
@@ -54,6 +54,9 @@ export default function Sidebar({ account, language, sessionID }) {
                             <NavLink exact={true} href={'/account/orders'}>
                                 <h1>{language.account.orders.title}</h1>
                             </NavLink>
+                        </li>
+                        <li onClick={() => signOut()} className="account-sidebar__menu-link info">
+                            <h1>{language.account.signOut}</h1>
                         </li>
                     </ul>
                 </nav>

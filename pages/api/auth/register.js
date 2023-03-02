@@ -38,9 +38,9 @@ async function register(req, res) {
                     username: username,
                     password: hash,
                     role: 'user',
-                    img: 'default-avatar.png',
                     lang: lang,
-                    email: email
+                    email: email,
+                    shipping: {}
                 })
 
                 const user = await doc.save()

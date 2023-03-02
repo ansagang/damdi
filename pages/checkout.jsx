@@ -1,13 +1,11 @@
-import { getAccount, getCart } from '@/utils/requests';
+import { getAccount, getCart, getOffices } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
 import { Layout, Checkout } from '@/components';
 
-export default function Page({ account, language, cart, sessionID }) {
-
-    console.log(cart);
-
+export default function Page({ account, language, cart, sessionID, offices }) {
+    
     return (
-        <Checkout cart={cart} account={account} language={language} sessionID={sessionID} />
+        <Checkout cart={cart} account={account} language={language} sessionID={sessionID} offices={offices} />
     )
 }
 
@@ -16,6 +14,7 @@ export async function getServerSideProps(context) {
     const { account, session } = await getAccount(context)
     const language = useLanguage(account.data, context)
     const cart = await getCart({ language: language.lang, sessionID: session })
+    const offices = await getOffices({ language: language.lang })
 
     if (!account.data || !cart.data || cart.data.list.length <= 0) {
         return {
@@ -30,7 +29,8 @@ export async function getServerSideProps(context) {
                 account: account,
                 language: language,
                 cart: cart,
-                sessionID: session
+                sessionID: session,
+                offices: offices
             }
         }
     }

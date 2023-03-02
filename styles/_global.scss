@@ -15,10 +15,11 @@
 .title {
     font-weight: $bold_font_weight;
     color: $primary_color;
-    margin-bottom: 15px;
     // transition: 0.4s ease;
     // text-transform: uppercase;
     // letter-spacing: 2px;
+    margin-bottom: 15px;
+
 
     & h1 {
         font-size: $h1_font_size;
@@ -40,7 +41,6 @@
     margin-top: 5px;
     color: $secondary_color;
     line-height: 22px;
-    transition: 0.4s ease;
 }
 
 .inner {

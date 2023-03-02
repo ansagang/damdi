@@ -1,4 +1,4 @@
-import { Order, Session, Product, Cart } from "@/models";
+import { Order, Session, Cart, Office } from "@/models";
 import languageDefinder from "@/utils/languageDefinder";
 import db from "@/utils/server";
 import { createOrderValidation } from "@/utils/validations";
@@ -24,6 +24,7 @@ async function get(req, res) {
             const orders = await Order.find({ userId: session.userID })
             orders.forEach(order => {
                 const list = order.list.filter(item => item.product.language == language.lang)
+                const office = order.office.filter(item => item.language == language.lang)[0]
                 const totalPrice = {}
                 totalPrice.value = list.reduce((acc, curr) => {
                     return acc ? acc + curr.price.value : curr.price.value;
@@ -33,6 +34,7 @@ async function get(req, res) {
                 }, 0)
                 order.list = list
                 order.totalPrice = totalPrice
+                order.office = office
             })
             res.send({
                 success: true,
@@ -57,36 +59,44 @@ async function post(req, res) {
     try {
         await db.connect()
         const language = languageDefinder(req.query.lang)
-        const { sessionID, type, address, city, zipCode, district, country, phoneNumber, fullname } = req.body
+        const { sessionID, type, address, city, zipCode, district, country, phoneNumber, fullname, officeId } = req.body
         if (sessionID && type && phoneNumber && fullname) {
             const session = await Session.findOne({ sessionID: sessionID })
             if (session) {
                 if (type === 'pickup') {
-                    const cart = await Cart.findOne({ userId: session.userID });
-                    const list = cart.list
-
-                    new Order({
-                        userId: session.userID,
-                        list: list,
-                        status: language.order.status.pending,
-                        type: language.order.type.pickup,
-                        phoneNumber: phoneNumber,
-                        fullname: fullname
-                    }).save(err => {
-                        if (!err) {
-                            cart.list = []
-                            cart.save();
-                            res.send({
-                                success: true,
-                                message: language.res.addResult
-                            })
-                        } else {
-                            res.send({
-                                success: false,
-                                message: language.res.error
-                            })
-                        }
-                    })
+                    if (officeId) {
+                        const offices = await Office.find({id: officeId})
+                        const cart = await Cart.findOne({ userId: session.userID });
+                        const list = cart.list
+                        new Order({
+                            userId: session.userID,
+                            list: list,
+                            status: 'pending',
+                            type: 'pickup',
+                            phoneNumber: phoneNumber,
+                            fullname: fullname,
+                            office: offices
+                        }).save(err => {
+                            if (!err) {
+                                cart.list = []
+                                cart.save();
+                                res.send({
+                                    success: true,
+                                    message: language.res.addResult
+                                })
+                            } else {
+                                res.send({
+                                    success: false,
+                                    message: language.res.error
+                                })
+                            }
+                        })
+                    } else {
+                        res.send({
+                            success: false,
+                            message: language.res.missingFields
+                        })
+                    }
                 } else if (type === 'delivery') {
                     const errors = createOrderValidation(req)
                     if (errors.length === 0) {
@@ -96,8 +106,8 @@ async function post(req, res) {
                         new Order({
                             userId: session.userID,
                             list: list,
-                            status: language.order.status.pending,
-                            type: language.order.type.delivery,
+                            status: 'pending',
+                            type: 'delivery',
                             shipping: {
                                 address: address,
                                 city: city,

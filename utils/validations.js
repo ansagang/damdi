@@ -116,6 +116,19 @@ export const createCategoryValidation = (req) => {
     return errors
 }
 
+export const createOfficeValidation = (req) => {
+    const { address, building, city, country, start, end, phone, id, title} = req.body
+    const errors = []
+
+    const language = languageDefinder(req.query.lang)
+    if (address && building && city && country && start && end && phone && id && title) {
+    } else {
+        errors.push(language.res.missingFields)
+    }
+
+    return errors
+}
+
 export const createProductValidation = (req) => {
     const { title, description, price, category, stock, id, weight, quantity, flavors, ingredients } = req.body
     const errors = []

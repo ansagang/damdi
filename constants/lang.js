@@ -146,14 +146,29 @@ const lang = [
         },
         account: {
             details: {
-                title: 'Details'
+                title: 'Details',
+                inputs: {
+                    username: 'Username',
+                    email: 'Email',
+                    fullname: 'Fullname',
+                    phone: 'Phone',
+                    lang: 'Lang',
+                    country: 'Country',
+                    city: 'City',
+                    address: 'Address',
+                    district: 'District'
+                },
+                buttons: {
+                    save: 'Save'
+                }
             },
             orders: {
                 title: 'Orders'
             },
             payment: {
                 title: 'Payment'
-            }
+            },
+            signOut: 'Sign out'
         },
         order: {
             type: {
@@ -184,7 +199,9 @@ const lang = [
                 district: 'District',
                 address: 'Address',
                 zipCode: 'Zip Code'
-            }
+            },
+            contactDetails: 'Contact Details',
+            order: 'Your order'
         }
     },
     {
@@ -333,14 +350,29 @@ const lang = [
         },
         account: {
             details: {
-                title: 'Информация'
+                title: 'Информация',
+                inputs: {
+                    username: 'Имя пользователя',
+                    email: 'Электронная почта',
+                    fullname: 'Полное имя',
+                    phone: 'Телефон',
+                    lang: 'Язык',
+                    country: 'Страна',
+                    city: 'Город',
+                    address: 'Адрес',
+                    district: 'Район'
+                },
+                buttons: {
+                    save: 'Сохранить'
+                }
             },
             orders: {
                 title: 'Заказы'
             },
             payment: {
                 title: 'Оплата'
-            }
+            },
+            signOut: 'Выйти'
         },
         order: {
             type: {
@@ -371,7 +403,9 @@ const lang = [
                 district: 'Район',
                 address: 'Адрес',
                 zipCode: 'Почтовый индекс'
-            }
+            },
+            contactDetails: 'Контактная информация',
+            order: 'Ваш заказ'
         }
     }
 ]

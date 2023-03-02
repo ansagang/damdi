@@ -6,7 +6,7 @@ import { useState } from "react"
 import { images } from "@/constants"
 import { NavLink } from ".."
 
-export default function Header({ account, language, fixed }) {
+export default function Header({ account, language }) {
 
     const router = useRouter()
 
@@ -28,7 +28,7 @@ export default function Header({ account, language, fixed }) {
     }
 
     return (
-        <header style={fixed ? null : {position: 'fixed'}}>
+        <header>
             <div className="container__fluid">
                 <div className="header__inner">
                     <div className="header__logo">
@@ -52,8 +52,20 @@ export default function Header({ account, language, fixed }) {
                                 account.data ?
                                     (
                                         <li className="header__menu-list_item">
+                                            <Link href={"/cart"}>
+                                                <Image width={35} height={35} src={images.cart} alt="cart" />
+                                            </Link>
+                                        </li>
+                                    )
+                                    :
+                                    null
+                            }
+                            {
+                                account.data ?
+                                    (
+                                        <li className="header__menu-list_item">
                                             <Link href={"/account"}>
-                                                <Image width={35} height={35} title={account.data.username} src={`/uploads/${account.data.img}`} alt="" />
+                                                <Image style={{borderRadius: 50}} width={35} height={35} title={account.data.username} src={images.account} alt="" />
                                             </Link>
                                         </li>
                                     )
@@ -63,18 +75,6 @@ export default function Header({ account, language, fixed }) {
                                             <button type="button" className="header__register-button primary">{language.login.buttons.login}</button>
                                         </Link>
                                     </li>
-                            }
-                            {
-                                account.data ?
-                                    (
-                                        <li className="header__menu-list_item">
-                                            <Link href={"/cart"}>
-                                                <Image width={35} height={35} src={images.cart} alt="cart" />
-                                            </Link>
-                                        </li>
-                                    )
-                                    :
-                                    null
                             }
                         </ul>
                     </nav>

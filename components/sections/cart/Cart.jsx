@@ -130,31 +130,6 @@ export default function Cart({ language, cart, account, sessionID }) {
                                             cart.data.list.length > 0 ?
                                                 (
                                                     <div className="cart__summary">
-                                                        {/* <div className="cart__summary-card">
-                                                    <div className="cart__summary-card_title title">
-                                                        <h3>{language.order.total}</h3>
-                                                    </div>
-                                                    <div className="cart__summary-card_info title">
-                                                        <h3>{cart.data.totalPrice.value}{cart.data.totalPrice.currency}</h3>
-                                                    </div>
-                                                </div> */}
-                                                        {/* <div className="cart__summary-card">
-                                                    <div className="cart__summary-card_title title">
-                                                        <h3>{language.order.shipping}</h3>
-                                                    </div>
-                                                    <select value={orderType} onChange={(e) => setOrderType(e.target.value)}>
-                                                        <option value="pickup">{language.order.type.pickup}</option>
-                                                        <option value="delivery">{language.order.type.delivery}</option>
-                                                    </select>
-                                                </div> */}
-                                                        {/* <div className="cart__checkout-line">
-                                                    <div className="cart__checkout-line_title title">
-                                                        <h3>{language.order.total}</h3>
-                                                    </div>
-                                                    <div className="cart__checkout-line_info title">
-                                                        <h3>{cart.data.totalPrice.value}{cart.data.totalPrice.currency}</h3>
-                                                    </div>
-                                                </div> */}
                                                         <button type="submit" className="secondary cart__summary-card">
                                                             <div className="cart__summary-card_title title">
                                                                 <h3>{language.order.total}</h3>

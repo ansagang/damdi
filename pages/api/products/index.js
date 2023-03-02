@@ -31,7 +31,7 @@ async function get(req, res) {
             title: req.query.search ? { $regex: req.query.search, $options: 'i'} : undefined,
             language: language.lang
         }
-        const sortBy = req.query.sortBy ? req.query.sortBy === 'trendings' ? { trendScore: -1 } : req.query.sortBy === 'new_arrivals' ? { createdAt: 1 } : req.query.sortBy.split('_')[0] === 'price' ? { "price.value": req.query.sortBy.split('_')[1] } : undefined : undefined
+        const sortBy = req.query.sortBy ? req.query.sortBy === 'trendings' ? { trendScore: -1 } : req.query.sortBy === 'new_arrivals' ? { createdAt: 1 } : req.query.sortBy.split('_')[0] === 'price' ? { "price.value": req.query.sortBy.split('_')[1] } : undefined : { trendScore: -1 }
         const page = req.query.page ? parseInt(req.query.page) : 1
         const limit = req.query.limit ? parseInt(req.query.limit) : 10
         const products = await Product.find(filterOne).find(filterTwo).sort(sortBy).skip((page - 1) * limit).limit(limit)

@@ -5,10 +5,15 @@ const userSchema = new mongoose.Schema({
   password: String,
   lang: String,
   role: String,
-  img: String,
   email: String,
   fullname: String,
   phone: String,
+  shipping: {
+    address: String,
+    city: String,
+    country: String,
+    district: String,
+  }
 },
   {
     timestamps: true

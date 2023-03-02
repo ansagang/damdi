@@ -29,7 +29,8 @@ const orderSchema = new mongoose.Schema({
     },
     phoneNumber: String,
     fullname: String,
-    type: String
+    type: String,
+    office: Array
 },
   {
     timestamps: true
