@@ -95,6 +95,8 @@ async function post(req, res) {
                             cart.list.push({ product: product, quantity: quantity, price: { value: product.price.value * quantity, currency: product.price.currency } });
                         })
                         await cart.save();
+                        await Product.findOneAndUpdate({ id: productId, language: 'en' }, { $inc: { trendScore: 1 }, })
+                        await Product.findOneAndUpdate({ id: productId, language: 'ru' }, { $inc: { trendScore: 1 }, })
                         res.send({
                             success: true,
                             message: language.res.addResult
@@ -122,6 +124,8 @@ async function post(req, res) {
                             })
                         }
                     })
+                    await Product.findOneAndUpdate({ id: productId, language: 'en' }, { $inc: { trendScore: 1 }, })
+                    await Product.findOneAndUpdate({ id: productId, language: 'ru' }, { $inc: { trendScore: 1 }, })
                 }
             } else {
                 res.send({

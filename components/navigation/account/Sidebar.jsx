@@ -1,9 +1,30 @@
-import Image from "next/image"
+import axios from "axios"
 
-import { images } from "@/constants"
+import Image from "next/image"
+import { useRouter } from "next/router"
+
 import { NavLink } from "@/components"
+import responseHandler from "@/utils/responseHandler"
 
 export default function Sidebar({ account, language, sessionID }) {
+
+    const dispatcher = responseHandler()
+    const router = useRouter();
+
+    async function signOut() {
+        try {
+            await axios.post(`/api/auth/delete-session?lang=${language.lang}`, {
+                sessionID: sessionID
+            }).then((res) => {
+                dispatcher({ message: res.data.message, title: 'Alert', type: res.data.success })
+                if (res.data.success) {
+                    router.push('/');
+                }
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <aside className="account-sidebar">
@@ -19,34 +40,21 @@ export default function Sidebar({ account, language, sessionID }) {
                         <div className="account-sidebar__profile-detail info">
                             <p>{account.data.email}</p>
                         </div>
+                        <button onClick={() => signOut()} type="submit" className="account-sidebar__profile-detail text">Sign out</button>
                     </div>
                 </div>
                 <nav className="account-sidebar__menu">
                     <ul className="account-sidebar__menu-links">
                         <li className="account-sidebar__menu-link info">
                             <NavLink exact={true} href={'/account'}>
-                                {images.information}
                                 <h1>{language.account.details.title}</h1>
                             </NavLink>
                         </li>
                         <li className="account-sidebar__menu-link info">
                             <NavLink exact={true} href={'/account/orders'}>
-                                {images.orders}
                                 <h1>{language.account.orders.title}</h1>
                             </NavLink>
                         </li>
-                        <li className="account-sidebar__menu-link info">
-                            <NavLink exact={true} href={'/account/payment'}>
-                                {images.payment}
-                                <h1>{language.account.payment.title}</h1>
-                            </NavLink>
-                        </li>
-                        {/* <li className="account-sidebar__menu-link info">
-                            <NavLink exact={true} href={'/account'}>
-                                {images.information}
-                                <h1>{language.account.details.title}</h1>
-                            </NavLink>
-                        </li> */}
                     </ul>
                 </nav>
             </div>

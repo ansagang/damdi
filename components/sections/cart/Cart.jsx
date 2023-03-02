@@ -55,6 +55,9 @@ export default function Cart({ language, cart, account, sessionID }) {
                                                     <div className="cart__bar-title info">
                                                         <p>{language.cart.bar.total}</p>
                                                     </div>
+                                                    <div className="cart__bar-title info">
+                                                        <p>{language.cart.bar.remove}</p>
+                                                    </div>
                                                 </div>
                                             )
                                             :
@@ -87,7 +90,6 @@ export default function Cart({ language, cart, account, sessionID }) {
                                                                     <div className="cart__product-details_category info">
                                                                         <p>{item.product.category.title}</p>
                                                                     </div>
-                                                                    <button onClick={() => updateQuantity(0, item.product.id)} className="cart__product-details_button text">{language.cart.buttons.remove}</button>
                                                                 </div>
                                                             </Link>
                                                             <div className="cart__product-quantity">
@@ -104,6 +106,9 @@ export default function Cart({ language, cart, account, sessionID }) {
                                                                 <div className="cart__product-total_title title">
                                                                     <h3>{item.price.value}{item.price.currency}</h3>
                                                                 </div>
+                                                            </div>
+                                                            <div className="cart__product-remove">
+                                                                <button onClick={() => updateQuantity(0, item.product.id)} className="cart__product-remove_button text">X</button>
                                                             </div>
                                                         </div>
                                                     ))

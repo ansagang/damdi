@@ -127,9 +127,7 @@ const lang = [
                 product: 'Product',
                 quantity: 'Quantity',
                 price: 'Price',
-                total: 'Total'
-            },
-            buttons: {
+                total: 'Total',
                 remove: 'Remove'
             }
         },
@@ -317,9 +315,7 @@ const lang = [
                 product: 'Продукт',
                 quantity: 'Количество',
                 price: 'Цена',
-                total: 'Итого'
-            },
-            buttons: {
+                total: 'Итого',
                 remove: 'Удалить'
             }
         },
