@@ -63,11 +63,10 @@ button {
     }
 
     &.secondary {
-        border: none;
         background-color: $bg_color;
         color: $primary_color;
         border: 2px solid $bg_color_lighter;
-        width: 100%;
+        // width: 100%;
     }
 
     &.text{

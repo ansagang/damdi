@@ -56,7 +56,7 @@ export default function Sidebar({ account, language, sessionID }) {
                             </NavLink>
                         </li>
                         <li onClick={() => signOut()} className="account-sidebar__menu-link info">
-                            <Link href={''}>
+                            <Link href=''>
                                 <h1>{language.account.signOut}</h1>
                             </Link>
                         </li>

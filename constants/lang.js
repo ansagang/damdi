@@ -159,7 +159,8 @@ const lang = [
                     district: 'District'
                 },
                 buttons: {
-                    save: 'Save'
+                    save: 'Save',
+                    cancel: 'Cancel'
                 }
             },
             orders: {
@@ -366,7 +367,8 @@ const lang = [
                     district: 'Район'
                 },
                 buttons: {
-                    save: 'Сохранить'
+                    save: 'Сохранить',
+                    cancel: 'Отменить'
                 }
             },
             orders: {
