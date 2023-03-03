@@ -21,7 +21,7 @@ async function get(req, res) {
         const sessionID = req.query.sessionID
         const session = await Session.findOne({ sessionID: sessionID })
         if (session) {
-            const orders = await Order.find({ userId: session.userID })
+            const orders = await Order.find({ userId: session.userID }).sort({createdAt: -1})
             orders.forEach(order => {
                 const list = order.list.filter(item => item.product.language == language.lang)
                 const office = order.office.filter(item => item.language == language.lang)[0]
@@ -32,9 +32,13 @@ async function get(req, res) {
                 totalPrice.currency = list.reduce((acc, curr) => {
                     return curr.price.currency
                 }, 0)
+                const status = order.status === 'pending' ? language.order.status.pending : order.status === 'delivering' ? language.order.status.delivering : order.status === 'done' ? language.order.status.done : undefined
+                const type = order.type === 'pickup' ? language.order.type.pickup : order.type === 'delivery' ? language.order.type.delivery : undefined
                 order.list = list
                 order.totalPrice = totalPrice
                 order.office = office
+                order.status = status
+                order.type = type
             })
             res.send({
                 success: true,

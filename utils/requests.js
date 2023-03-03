@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export async function getAccount(context) {
-    const session = context.req.cookies['session']
+    const session = context.req.cookies['session'] ? context.req.cookies['session'] : null
     const lang = context.req.headers["accept-language"].split(",")[0].split("-")[0]
     let account = {}
     try {
@@ -65,6 +65,20 @@ export async function getCart({ language: language, sessionID: sessionID }) {
     let data = {}
     try {
         await axios.get(`${process.env.URL}/api/cart?lang=${language}&sessionID=${sessionID}`)
+            .then((res) => {
+                data = res.data
+            })
+    } catch (err) {
+        console.log(err);
+    }
+
+    return data
+}
+
+export async function getOrdersHistory({ language: language, sessionID: sessionID }) {
+    let data = {}
+    try {
+        await axios.get(`${process.env.URL}/api/orders?lang=${language}&sessionID=${sessionID}`)
             .then((res) => {
                 data = res.data
             })

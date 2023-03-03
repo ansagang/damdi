@@ -28,7 +28,7 @@ export default function Sidebar({ account, language, sessionID }) {
 
     return (
         <aside className="account-sidebar">
-            <div className="account-sidebar__inner inner">
+            <div className="account-sidebar__inner">
                 {/* <div className="account-sidebar__profile">
                     <div className="account-sidebar__profile-img">
                         <Image style={{borderRadius: 50}} loading='lazy' height={1} width={1} unoptimized={true} title={account.data.username} src={`/uploads/${account.data.img}`} alt={account.data.username} />
@@ -51,8 +51,8 @@ export default function Sidebar({ account, language, sessionID }) {
                             </NavLink>
                         </li>
                         <li className="account-sidebar__menu-link info">
-                            <NavLink exact={true} href={'/account/orders'}>
-                                <h1>{language.account.orders.title}</h1>
+                            <NavLink exact={true} href={'/account/orders-history'}>
+                                <h1>{language.account.ordersHistory.title}</h1>
                             </NavLink>
                         </li>
                         <li onClick={() => signOut()} className="account-sidebar__menu-link info">

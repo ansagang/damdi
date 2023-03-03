@@ -1,0 +1,16 @@
+@import 'vars';
+
+@media (max-width: $breakpoint_laptop) {
+    .container{
+        max-width: 1130px;
+    }
+}
+
+
+@media (max-width: $breakpoint_tablet) {
+    
+}
+
+@media (max-width: $breakpoint_phone) {
+
+}

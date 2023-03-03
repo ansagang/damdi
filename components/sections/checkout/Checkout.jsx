@@ -23,7 +23,7 @@ export default function Checkout({ language, account, sessionID, offices }) {
 
     async function createOrder() {
         try {
-            await axios.post(`/api/order?lang=${language.lang}`, {
+            await axios.post(`/api/orders?lang=${language.lang}`, {
                 sessionID: sessionID,
                 type: orderType,
                 phoneNumber: phoneNumber,
@@ -37,7 +37,7 @@ export default function Checkout({ language, account, sessionID, offices }) {
             }).then((res) => {
                 dispatcher({ message: res.data.message, title: 'Alert', type: false })
                 if (res.data.success) {
-                    router.push('/account/orders');
+                    router.push('/account/orders-history');
                 }
             })
         } catch (err) {

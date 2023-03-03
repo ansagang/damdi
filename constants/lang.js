@@ -163,8 +163,8 @@ const lang = [
                     cancel: 'Cancel'
                 }
             },
-            orders: {
-                title: 'Orders'
+            ordersHistory: {
+                title: 'Orders History'
             },
             payment: {
                 title: 'Payment'
@@ -177,6 +177,7 @@ const lang = [
                 delivery: 'Delivery'
             },
             status: {
+                status: 'Status',
                 pending: 'Pending',
                 delivering: 'Delivering',
                 done: 'Done'
@@ -371,8 +372,8 @@ const lang = [
                     cancel: 'Отменить'
                 }
             },
-            orders: {
-                title: 'Заказы'
+            ordersHistory: {
+                title: 'История Заказов'
             },
             payment: {
                 title: 'Оплата'
@@ -385,6 +386,7 @@ const lang = [
                 delivery: 'Доставка'
             },
             status: {
+                status: 'Статус',
                 pending: 'В ожидании',
                 delivering: 'Доставляется',
                 done: 'Готово'
