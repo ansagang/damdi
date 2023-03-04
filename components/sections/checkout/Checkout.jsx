@@ -35,7 +35,7 @@ export default function Checkout({ language, account, sessionID, offices }) {
                 fullname: fullname,
                 officeId: officeId
             }).then((res) => {
-                dispatcher({ message: res.data.message, title: 'Alert', type: false })
+                dispatcher({ message: res.data.message, title: language.res.message, type: false })
                 if (res.data.success) {
                     router.push('/account/orders-history');
                 }

@@ -21,7 +21,7 @@ export default function Product({ account, language, product, sessionID }) {
                 quantity: quantity,
                 productId: product.data.id
             }).then((res) => {
-                dispatcher({ message: res.data.message, title: 'Alert', type: false })
+                dispatcher({ message: res.data.message, title: language.res.message, type: false })
                 if (res.data.success) {
                     setQuantity(1)
                 }

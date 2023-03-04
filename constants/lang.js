@@ -29,7 +29,9 @@ const lang = [
             accountUpdateResult: 'Account has been updated successfully',
             accountRequired: 'Account is required',
             productAddResult: 'Product has been added to cart',
-            orderAddResult: 'Order has been created'
+            orderAddResult: 'Order has been created',
+            message: 'Message',
+            alert: 'Alert'
         },
         title: 'English',
         login: {
@@ -225,7 +227,9 @@ const lang = [
             accountUpdateResult: 'Аккаунт был успешно обновлен',
             accountRequired: 'Для начала войдите в аккаунт',
             productAddResult: 'Продукт был добавлен в корзину',
-            orderAddResult: 'Заказ был оформлен'
+            orderAddResult: 'Заказ был оформлен',
+            message: 'Уведомление',
+            alert: 'Внимание'
         },
         title: 'Русский',
         login: {

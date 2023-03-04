@@ -3,16 +3,14 @@
 @media (max-width: $breakpoint_laptop) {
     .container{
         max-width: 1030px;
-        &__fluid{
-            max-width: 1030px;
-        }
     }
     .header{
         &__links{
             width: auto;
             &-list{
                 &_item{
-                    margin-right: 40px !important;
+                    margin:0 80px;
+                    text-align: center;
                 }
             }
         }
@@ -31,6 +29,7 @@
             }
         }
         &__logo{
+            text-align: right;
             &::before{
                 display: none;
             }
@@ -40,6 +39,15 @@
 
 
 @media (max-width: $breakpoint_tablet) {
+    .header{
+        &__links{
+            &-list{
+                &_item{
+                    margin:0 40px;
+                }
+            }
+        }
+    }
     .container{
         max-width: 840px;
     }
@@ -219,6 +227,43 @@
             }
         }
     }
+    .login{
+        &__inner{
+            flex-direction: column;
+        }
+        &__banner{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            filter: blur(3px);
+            display: none;
+        }
+        &__menu{
+            // width: 70%;
+            // height: 100%;
+            // position: absolute;
+            width: 100%;
+            left: 50%;
+            top: 50%;
+            background-color: $bg_color;
+            // transform: translate(-50%, -50%);
+            // border-radius: 20px;
+        }
+    }
+    .category{
+        &__inner{
+            flex-direction: column-reverse;
+        }
+        &__left{
+            width: 100%;
+            border-bottom: 1px solid $secondary_color;
+        }
+        &__right{
+            width: 100%;
+        }
+    }
 }
 
 @media (max-width: $breakpoint_phone) {
@@ -235,9 +280,6 @@
                     // display: none;
                     &:nth-child(2){
                         display: none;
-                    }
-                    &:nth-child(3){
-                        margin-right: 30px;
                     }
                     &:last-child{
                         display: block;
@@ -385,6 +427,23 @@
             &-img{
                 display: none;
             }
+        }
+    }
+    .notification{
+        width: 90%;
+        animation: top 0.4s;
+        &__list{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            bottom: 20px;
+            width: 100%;
+            right: 0px;
+            left: 0px;
+        }
+        &.exit{
+            animation: bottom 0.4s;
         }
     }
 }

@@ -13,6 +13,10 @@ export default async function handler(req, res) {
     }
 }
 
+function roundTo(n, place) {    
+    return +(Math.round(n + "e+" + place) + "e-" + place);
+}
+
 async function get(req, res) {
     try {
         await db.connect()
@@ -77,7 +81,7 @@ async function post(req, res) {
                             } else {
                                 product.quantity = parseInt(quantity);
                             }
-                            product.price.value = product.product.price.value * product.quantity
+                            product.price.value = roundTo(product.product.price.value * product.quantity, 2)
                             cart.list[index] = product;
                         })
                         if (quantity === 0) {
@@ -92,7 +96,7 @@ async function post(req, res) {
                         })
                     } else {
                         products.forEach((product) => {
-                            cart.list.push({ product: product, quantity: quantity, price: { value: product.price.value * quantity, currency: product.price.currency } });
+                            cart.list.push({ product: product, quantity: quantity, price: { value: roundTo(product.price.value * quantity, 2), currency: product.price.currency } });
                         })
                         await cart.save();
                         await Product.findOneAndUpdate({ id: productId, language: 'en' }, { $inc: { trendScore: 1 }, })
@@ -106,7 +110,7 @@ async function post(req, res) {
                     const list = []
 
                     products.forEach((product) => {
-                        list.push({ product: product, quantity: quantity, price: { value: product.price.value * quantity, currency: product.price.currency } })
+                        list.push({ product: product, quantity: quantity, price: { value: roundTo(product.price.value * quantity, 2), currency: product.price.currency } })
                     })
                     new Cart({
                         userId: session.userID,

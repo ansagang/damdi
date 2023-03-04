@@ -16,7 +16,7 @@ export default function Sidebar({ account, language, sessionID, active }) {
             await axios.post(`/api/auth/delete-session?lang=${language.lang}`, {
                 sessionID: sessionID
             }).then((res) => {
-                dispatcher({ message: res.data.message, title: 'Alert', type: res.data.success })
+                dispatcher({ message: res.data.message, title: language.res.message, type: res.data.success })
                 if (res.data.success) {
                     router.push('/');
                 }
@@ -28,7 +28,7 @@ export default function Sidebar({ account, language, sessionID, active }) {
 
     return (
         <>
-            <aside className={active ? "account-sidebar active" : "account-sidebar"}>
+            <aside className="account-sidebar">
                 <div className="account-sidebar__inner">
                     <nav className="account-sidebar__menu">
                         <ul className="account-sidebar__menu-links">

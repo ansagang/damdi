@@ -26,7 +26,7 @@ export default function RegisterForm({language}) {
                 confirmPassword: confirmPassword,
                 lang: language.lang
             }).then((res) => {
-                dispatcher({message: res.data.message, title: 'Alert', type: res.data.success})
+                dispatcher({message: res.data.message, title: language.res.message, type: res.data.success})
                 if (res.data.success) {
                     Router.push('/login')
                 }
@@ -41,7 +41,7 @@ export default function RegisterForm({language}) {
         <section className="login">
             <div className="login__inner">
                 <div className="login__banner">
-                    <Image width="100%" height="100%" src={images.damdiBackground} />
+                    <Image unoptimized={true} width={1} height={1} src={images.damdiBackground} />
                 </div>
                 <div className="login__menu">
                     <div className="login__menu-title title">
@@ -73,7 +73,7 @@ export default function RegisterForm({language}) {
                         </div>
 
                         <button onClick={() => register()} type="submit" className="login__menu-form_button primary">{language.register.buttons.register}</button>
-                        <p className="login__menu-form_note info">{language.register.texts.alreadyHaveAnAccount}<Link href={'/login'}>{language.register.links.signIn}</Link></p>
+                        <p className="login__menu-form_note info">{language.register.texts.alreadyHaveAnAccount}<Link className="link" href={'/login'}>{language.register.links.signIn}</Link></p>
                     </div>
                 </div>
             </div>

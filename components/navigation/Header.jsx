@@ -90,7 +90,15 @@ export default function Header({ account, language }) {
                             <li className="header__panel-link link"><NavLink href={'/'}>{language.home.title}</NavLink></li>
                             <li className="header__panel-link link"><NavLink href={'/products'}>{language.products.title}</NavLink></li>
                             <li className="header__panel-link link"><NavLink href={'/contacts'}>{language.contacts.title}</NavLink></li>
-                            <li className="header__panel-link link"><NavLink href={'/cart'}>{language.cart.title}</NavLink></li>
+                            
+                            {
+                                account.data ?
+                                (
+                                    <li className="header__panel-link link"><NavLink href={'/cart'}>{language.cart.title}</NavLink></li>
+                                )
+                                :
+                                <li className="header__panel-link link"><NavLink href={'/login'}>{language.login.title}</NavLink></li>
+                            }
                         </div>
                     </div>
                 </div>

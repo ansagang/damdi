@@ -35,7 +35,7 @@ export default function Details({ language, account, sessionID }) {
                 country: country,
                 district: district,
             }).then((res) => {
-                dispatcher({ message: res.data.message, title: 'Alert', type: false })
+                dispatcher({ message: res.data.message, title: language.res.message, type: false })
                 if (res.data.success) {
                     router.push({ pathname: router.pathname }, undefined, { scroll: false });
                 }

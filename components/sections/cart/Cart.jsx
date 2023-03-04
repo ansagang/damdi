@@ -18,7 +18,7 @@ export default function Cart({ language, cart, account, sessionID }) {
                 quantity: quantity,
                 productId: id
             }).then((res) => {
-                dispatcher({ message: res.data.message, title: 'Alert', type: res.data.success })
+                dispatcher({ message: res.data.message, title: language.res.message, type: res.data.success })
                 if (res.data.success) {
                     router.push({ pathname: router.pathname }, undefined, { scroll: false });
                 }
