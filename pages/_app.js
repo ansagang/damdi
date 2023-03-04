@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import '@/styles/style.scss'
+import '@/styles/adaptive.scss'
 import NotificationProvider from '@/context/notification/NotificationProvider';
 import { Progress } from '@/components';
 

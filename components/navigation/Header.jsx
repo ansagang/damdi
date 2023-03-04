@@ -11,6 +11,7 @@ export default function Header({ account, language }) {
     const router = useRouter()
 
     const [searchTerm, setSearchTerm] = useState()
+    const [show, setShow] = useState(false)
 
     function search() {
         router.query['search'] = router.query.search || ''
@@ -28,7 +29,7 @@ export default function Header({ account, language }) {
     }
 
     return (
-        <header>
+        <header className="header">
             <div className="container__fluid">
                 <div className="header__inner">
                     <div className="header__logo">
@@ -36,11 +37,11 @@ export default function Header({ account, language }) {
                             <h2>damdi</h2>
                         </div>
                     </div>
-                    <nav className="header__menu links">
-                        <ul className="header__menu-list">
-                            <li className="header__menu-list_item link"><NavLink href={'/'}>{language.home.title}</NavLink></li>
-                            <li className="header__menu-list_item link"><NavLink href={'/products'}>{language.products.title}</NavLink></li>
-                            <li className="header__menu-list_item link"><NavLink href={'/contacts'}>{language.contacts.title}</NavLink></li>
+                    <nav className="header__links links">
+                        <ul className="header__links-list">
+                            <li className="header__links-list_item link"><NavLink href={'/'}>{language.home.title}</NavLink></li>
+                            <li className="header__links-list_item link"><NavLink href={'/products'}>{language.products.title}</NavLink></li>
+                            <li className="header__links-list_item link"><NavLink href={'/contacts'}>{language.contacts.title}</NavLink></li>
                         </ul>
                     </nav>
                     <nav className="header__menu">
@@ -65,7 +66,7 @@ export default function Header({ account, language }) {
                                     (
                                         <li className="header__menu-list_item">
                                             <Link href={"/account"}>
-                                                <Image style={{borderRadius: 50}} width={35} height={35} title={account.data.username} src={images.account} alt="" />
+                                                <Image style={{ borderRadius: 50 }} width={35} height={35} title={account.data.username} src={images.account} alt="" />
                                             </Link>
                                         </li>
                                     )
@@ -76,8 +77,22 @@ export default function Header({ account, language }) {
                                         </Link>
                                     </li>
                             }
+                            <li onClick={() => setShow(!show)} className="header__menu-list_item menu">
+                                {images.menu}
+                            </li>
                         </ul>
                     </nav>
+                    <div className={show ? "header__panel active" : "header__panel"}>
+                        <div className="header__panel-search">
+                            <input value={searchTerm} placeholder={language.header.search} type="search" onKeyPress={(e) => e.key === 'Enter' ? search() : null} onChange={(e) => setSearchTerm(e.target.value)} />
+                        </div>
+                        <div className="header__panel-links">
+                            <li className="header__panel-link link"><NavLink href={'/'}>{language.home.title}</NavLink></li>
+                            <li className="header__panel-link link"><NavLink href={'/products'}>{language.products.title}</NavLink></li>
+                            <li className="header__panel-link link"><NavLink href={'/contacts'}>{language.contacts.title}</NavLink></li>
+                            <li className="header__panel-link link"><NavLink href={'/cart'}>{language.cart.title}</NavLink></li>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>

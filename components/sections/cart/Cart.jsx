@@ -47,10 +47,10 @@ export default function Cart({ language, cart, account, sessionID }) {
                                                         <p>{language.cart.bar.product}</p>
                                                     </div>
                                                     <div className="cart__bar-title info">
-                                                        <p>{language.cart.bar.quantity}</p>
+                                                        <p>{language.cart.bar.price}</p>
                                                     </div>
                                                     <div className="cart__bar-title info">
-                                                        <p>{language.cart.bar.price}</p>
+                                                        <p>{language.cart.bar.quantity}</p>
                                                     </div>
                                                     <div className="cart__bar-title info">
                                                         <p>{language.cart.bar.total}</p>
@@ -92,19 +92,19 @@ export default function Cart({ language, cart, account, sessionID }) {
                                                                     </div>
                                                                 </div>
                                                             </Link>
+                                                            <div className="cart__product-price">
+                                                                <div className="cart__product-price_title title">
+                                                                    <h3><span>{language.cart.bar.price}: </span>{item.product.price.value}{item.product.price.currency}</h3>
+                                                                </div>
+                                                            </div>
                                                             <div className="cart__product-quantity">
                                                                 <button onClick={() => updateQuantity(item.quantity - 1, item.product.id)} className="cart__product-quantity_button text">-</button>
                                                                 <div className="cart__product-quantity_value title"><h3>{item.quantity}</h3></div>
                                                                 <button onClick={() => updateQuantity(item.quantity + 1, item.product.id)} className="cart__product-quantity_button text">+</button>
                                                             </div>
-                                                            <div className="cart__product-price">
-                                                                <div className="cart__product-price_title title">
-                                                                    <h3>{item.product.price.value}{item.product.price.currency}</h3>
-                                                                </div>
-                                                            </div>
                                                             <div className="cart__product-total">
                                                                 <div className="cart__product-total_title title">
-                                                                    <h3>{item.price.value}{item.price.currency}</h3>
+                                                                    <h3><span>{language.cart.bar.total}: </span>{item.price.value}{item.price.currency}</h3>
                                                                 </div>
                                                             </div>
                                                             <div className="cart__product-remove">
@@ -131,11 +131,8 @@ export default function Cart({ language, cart, account, sessionID }) {
                                                 (
                                                     <div className="cart__summary">
                                                         <button type="submit" className="secondary cart__summary-card">
-                                                            <div className="cart__summary-card_title title">
-                                                                <h3>{language.order.total}</h3>
-                                                            </div>
                                                             <div className="cart__summary-card_info title">
-                                                                <h3>{cart.data.totalPrice.value}{cart.data.totalPrice.currency}</h3>
+                                                                <h3>{language.order.total}: {cart.data.totalPrice.value}{cart.data.totalPrice.currency}</h3>
                                                             </div>
                                                         </button>
                                                         <Link className="cart__summary-card" href={'/checkout'}><button type="submit" className="secondary">{language.order.checkout}</button></Link>

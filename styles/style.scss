@@ -1,7 +1,6 @@
 @import 'global';
 @import 'vars';
 @import 'reset';
-@import 'adaptive';
 
 .login {
     height: 100vh;
@@ -51,14 +50,54 @@
     }
 }
 
-header {
+.header {
     left: 0;
     right: 0;
     width: 100%;
-    z-index: $z_fixed;
+    z-index: 999;
     background-color: $bg_color;
     position: fixed;
-    & .header{
+    &__panel{
+        border-top: 1px solid $secondary_color;
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 100px;
+        width: 100vw;
+        height: 100vh;
+        background-color: $bg_color;
+        z-index: 90;
+        padding: 40px;
+        &-search{
+            width: 100%;
+            // padding: 20px 0;
+            & input{
+                width: 100%;
+                border: 1px solid $secondary_color;
+                border-radius: 10px;
+                padding: 20px;
+                &:hover{
+                    border: 1px solid $secondary_color;
+                border-radius: 10px;
+                }
+                &:focus{
+                    border: 1px solid $secondary_color;
+                    border-radius: 10px;
+                }
+            }
+        }
+        &-links{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        &-link{
+            text-align: center;
+            width: 100%;
+            padding: 40px 0;
+        }
+    }
         &__inner {
             display: flex;
             align-items: center;
@@ -70,26 +109,17 @@ header {
         &__menu {
             width: 40%;
             text-align: center;
-            &.links{
-                width: 40%;
-                & .header__menu-list{
-                    justify-content: left;
-                    &_item{
-                        margin-right: 70px;
-                        &:last-child{
-                            margin-right: 0;
-                        }
-                    }
-                }
-            }
             &-list {
                 display: flex;
                 align-items: center;    
                 justify-content: right;
                 &_item {
-                    margin-left: 50px;
-                    &:first-child{
-                        margin-left: 0;
+                    margin-right: 50px;
+                    &:nth-child(3){
+                        margin-right: 0;
+                    }
+                    &:last-child{
+                        display: none;
                     }
                     & input{
                         width: 250px;
@@ -106,6 +136,37 @@ header {
                     }
                 }
             }
+        }
+
+        &__links {
+            width: 40%;
+            text-align: center;
+                &-list{
+                    justify-content: space-between;
+                    display: flex;
+                    align-items: center;
+                    &_item{
+                        margin-right: 70px;
+                        &:last-child{
+                            margin-right: 0;
+                        }
+                        &:first-child{
+                            margin-left: 0;
+                        }
+                        & input{
+                            width: 250px;
+                        }
+                        & svg {
+                            width: 25px;
+                            height: 25px;
+                        }
+                        & img {
+                            width: 35px;
+                            height: 35px;
+                            // border-radius: 50%;
+                        }
+                    }
+                }
         }
     
         &__logo {
@@ -128,7 +189,6 @@ header {
                 background-color: $primary_color;
             }
         }
-    }
 }
 
 .progress{
@@ -147,7 +207,7 @@ header {
     &__img{
         border-radius: 12px;
         overflow: hidden;
-        height: 300px;
+        // height: 300px;
         & img{
             &:hover{
                 transform: scale(1.05);
@@ -185,6 +245,20 @@ header {
     }
     &__sidebar{
         width: 25%;
+        &-close{
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            & svg {
+                width: 50px;
+                height: 50px;
+                fill: $primary_color;
+                & path{
+                    fill: $primary_color;
+                }
+            }
+        }
         &-filter{
             margin-bottom: 20px;
             &_range{
@@ -239,6 +313,21 @@ header {
                 &.info p{
                     display: inline;
                     margin-right: 25px;
+                }
+            }
+            &_sort{
+                display: flex;
+                align-items: center;
+                &-filter{
+                    display: none;
+                    & svg {
+                        width: 50px;
+                        height: 50px;
+                        fill: $primary_color;
+                        & path{
+                            fill: $primary_color;
+                        }
+                    }
                 }
             }
         }
@@ -357,7 +446,7 @@ header {
     &__img{
         border-radius: 12px;
         overflow: hidden;
-        height: 300px;
+        // height: 300px;
         & img{
             &:hover{
                 transform: scale(1.05);
@@ -391,7 +480,7 @@ header {
 }
 
 .product{
-    &__inner{
+    &__container{
         display: flex;
         justify-content: space-between;
     }
@@ -402,8 +491,8 @@ header {
         width: 47%;
     }
     &__img{
-        height: 600px;
-        width: 100%;
+        // height: 100%;
+        // width: 100%;
         &-selector{
             margin-top: 20px;
             display: flex;
@@ -485,7 +574,7 @@ header {
             display: flex;
             &_img{
                 margin-right: 30px;
-                height: 300px;
+                // height: 300px;
                 width: 300px;
             }
             &_button{
@@ -512,6 +601,9 @@ header {
         &-remove{
             width: 5%;
         }
+        & span{
+            display: none;
+        }
     }
     &__summary{
         display: flex;
@@ -522,7 +614,7 @@ header {
             height: 80px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             & .title{
                 margin-bottom: 0 !important;
             }
@@ -539,6 +631,10 @@ header {
         width: 25%;
         margin-right: 20px;
         // position: fixed;
+        &__hr{
+            display: none;
+            margin: 0;
+        }
         &__profile{
             padding: 0 30px;
             display: flex;
@@ -594,6 +690,20 @@ header {
     &__inner{
         display: flex;
         justify-content: space-between;
+    }
+    &__menu{
+        display: none;
+        z-index: 999;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        width: 40px;
+        height: 40px;
+        & svg{
+            width: 40px;
+        height: 40px;
+            fill: $primary_color;
+        }
     }
 }
 
@@ -755,7 +865,6 @@ header {
         margin-bottom: 50px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
         &:last-child{
             margin-bottom: 0;
         }
@@ -764,24 +873,16 @@ header {
             display: flex;
             justify-content: space-between;
         }
-        &-right{
-            // width: 70%;
-        }
         &-img{
-            width: 35%;
+            width: 25%;
             // height: 230px;
             margin-right: 20px;
             & img{
                 border-radius: 10px;
             }
         }
-        &-price{
-            // margin-top: 20px;
-        }
-        &-title{
-        }
         &-content{
-            width: 60%;
+            width: 70%;
         }
     }
 }

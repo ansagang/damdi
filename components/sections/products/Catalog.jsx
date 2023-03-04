@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 import { Pagination, ProductCard } from "@/components"
+import { images } from "@/constants"
 
 export default function Catalog({ products, language, category }) {
 
@@ -13,6 +14,7 @@ export default function Catalog({ products, language, category }) {
     const [sortBy, setSortBy] = useState('trendings')
     const [lowestPrice, setLowestPrice] = useState(products.facets.priceRange.lowest)
     const [highestPrice, setHighestPrice] = useState(products.facets.priceRange.highest)
+    const [sidebar, setSidebar] = useState(false)
 
     useEffect(() => {
         setLowestPrice(router.query.price ? router.query.price.split('-')[0] : products.facets.priceRange.lowest ? products.facets.priceRange.lowest : '')
@@ -108,7 +110,10 @@ export default function Catalog({ products, language, category }) {
             <section className="products">
                 <div className="container">
                     <div className="products__inner inner">
-                        <aside className="products__sidebar">
+                        <aside className={sidebar ? "products__sidebar active" : "products__sidebar"}>
+                            <div onClick={() => setSidebar(!sidebar)} className="products__sidebar-close">
+                                {images.close}
+                            </div>
                             <div className="products__sidebar-title title">
                                 <h2>{language.products.sideBar.title}</h2>
                             </div>
@@ -185,6 +190,9 @@ export default function Catalog({ products, language, category }) {
                                         <option value="price_asc">{language.products.sort.priceAsc}</option>
                                         <option value="price_desc">{language.products.sort.priceDesc}</option>
                                     </select>
+                                    <div onClick={() => setSidebar(!sidebar)} className="products__catalog-bar_sort-filter">
+                                        {images.filter}
+                                    </div>
                                 </div>
                             </div>
                             <div className="products__catalog-list list__mini">
@@ -210,7 +218,7 @@ export default function Catalog({ products, language, category }) {
                                         null
                                 }
                             </div>
-                            <Pagination filterPage={filterPage} currentPage={products.pagination.currentPage} previousPage={products.pagination.previousPage} nextPage={products.pagination.nextPage} totalPages={products.pagination.totalPages}  />
+                            <Pagination filterPage={filterPage} currentPage={products.pagination.currentPage} previousPage={products.pagination.previousPage} nextPage={products.pagination.nextPage} totalPages={products.pagination.totalPages} />
                         </div>
                     </div>
                 </div>

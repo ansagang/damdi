@@ -6,7 +6,7 @@ import Link from "next/link"
 import { NavLink } from "@/components"
 import responseHandler from "@/utils/responseHandler"
 
-export default function Sidebar({ account, language, sessionID }) {
+export default function Sidebar({ account, language, sessionID, active }) {
 
     const dispatcher = responseHandler()
     const router = useRouter();
@@ -27,16 +27,18 @@ export default function Sidebar({ account, language, sessionID }) {
     }
 
     return (
-        <aside className="account-sidebar">
-            <div className="account-sidebar__inner">
-                <nav className="account-sidebar__menu">
-                    <ul className="account-sidebar__menu-links">
-                        <NavLink className="account-sidebar__menu-link link" exact={true} href={'/account'}>{language.account.details.title}</NavLink>
-                        <NavLink className="account-sidebar__menu-link link" exact={true} href={'/account/orders-history'}>{language.account.ordersHistory.title}</NavLink>
-                        <li onClick={() => signOut()} className="account-sidebar__menu-link link">{language.account.signOut}</li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
+        <>
+            <aside className={active ? "account-sidebar active" : "account-sidebar"}>
+                <div className="account-sidebar__inner">
+                    <nav className="account-sidebar__menu">
+                        <ul className="account-sidebar__menu-links">
+                            <NavLink className="account-sidebar__menu-link link" exact={true} href={'/account'}>{language.account.details.title}</NavLink>
+                            <NavLink className="account-sidebar__menu-link link" exact={true} href={'/account/orders-history'}>{language.account.ordersHistory.title}</NavLink>
+                            <li onClick={() => signOut()} className="account-sidebar__menu-link link">{language.account.signOut}</li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+        </>
     )
 }
