@@ -27,7 +27,6 @@ async function get(req, res) {
         }
         const filterTwo = {
             "category.code": req.query.category ? req.query.category : undefined,
-            // $or: [{title: req.query.search ? { $regex: req.query.search, $options: 'i'} : undefined}, {"category.title": req.query.search ? { $regex: req.query.search, $options: 'i' } : undefined}, {flavors: req.query.search ? { $elemMatch: { $regex: req.query.search, $options: 'i' } } : undefined}],
             title: req.query.search ? { $regex: req.query.search, $options: 'i'} : undefined,
             language: language.lang
         }

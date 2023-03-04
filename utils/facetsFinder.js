@@ -19,7 +19,6 @@ export default async function facetsFinder(products) {
         priceRange.highest = sorted[sorted.length - 1]
     });
     const flavorsUnique = Array.from(new Set(flavors))
-    // const stocksUnique = Array.from(new Set(stocks))
 
     filters.priceRange = priceRange
     filters.flavors = flavorsUnique

@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 
-export default function NavLink({ href, children, exact }) {
+export default function NavLink({ href, children, exact, className }) {
     const router = useRouter();
-    const className = exact ? router.asPath === `${href}` ? "active" : '' : router.asPath.split('?')[0].split('/')[1] === `${href.split('?')[0].split('/')[1]}` ? "active" : ''
+    const state = exact ? router.asPath === `${href}` ? `active ${className}` : `${className}` : router.asPath.split('?')[0].split('/')[1] === `${href.split('?')[0].split('/')[1]}` ? `active ${className}` : `${className}`
     return (
-        <Link href={href} className={className}>
+        <Link href={href} className={state}>
             {children}
         </Link>
     )

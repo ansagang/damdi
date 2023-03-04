@@ -24,7 +24,6 @@ export default function Product({ account, language, product, sessionID }) {
                 dispatcher({message: res.data.message, title: 'Alert', type: false})
                 if (res.data.success) {
                     setQuantity(1)
-                    // dispatcher({message: res.data.message, title: language.res.cartAdded, type: res.data.success})
                 }
             })
         } catch (err) {

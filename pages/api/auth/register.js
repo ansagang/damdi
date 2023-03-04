@@ -40,7 +40,12 @@ async function register(req, res) {
                     role: 'user',
                     lang: lang,
                     email: email,
-                    shipping: {}
+                    shipping: {
+                        address: null,
+                        city: null,
+                        country: null,
+                        district: null
+                    }
                 })
 
                 const user = await doc.save()

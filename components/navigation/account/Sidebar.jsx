@@ -29,37 +29,11 @@ export default function Sidebar({ account, language, sessionID }) {
     return (
         <aside className="account-sidebar">
             <div className="account-sidebar__inner">
-                {/* <div className="account-sidebar__profile">
-                    <div className="account-sidebar__profile-img">
-                        <Image style={{borderRadius: 50}} loading='lazy' height={1} width={1} unoptimized={true} title={account.data.username} src={`/uploads/${account.data.img}`} alt={account.data.username} />
-                    </div>
-                    <div className="account-sidebar__profile-details">
-                        <div className="account-sidebar__profile-detail title">
-                            <h2>{account.data.username}</h2>
-                        </div>
-                        <div className="account-sidebar__profile-detail info">
-                            <p>{account.data.email}</p>
-                        </div>
-                        <button onClick={() => signOut()} type="submit" className="account-sidebar__profile-detail text">Sign out</button>
-                    </div>
-                </div> */}
                 <nav className="account-sidebar__menu">
                     <ul className="account-sidebar__menu-links">
-                        <li className="account-sidebar__menu-link info">
-                            <NavLink exact={true} href={'/account'}>
-                                <h1>{language.account.details.title}</h1>
-                            </NavLink>
-                        </li>
-                        <li className="account-sidebar__menu-link info">
-                            <NavLink exact={true} href={'/account/orders-history'}>
-                                <h1>{language.account.ordersHistory.title}</h1>
-                            </NavLink>
-                        </li>
-                        <li onClick={() => signOut()} className="account-sidebar__menu-link info">
-                            <Link href=''>
-                                <h1>{language.account.signOut}</h1>
-                            </Link>
-                        </li>
+                        <NavLink className="account-sidebar__menu-link link" exact={true} href={'/account'}>{language.account.details.title}</NavLink>
+                        <NavLink className="account-sidebar__menu-link link" exact={true} href={'/account/orders-history'}>{language.account.ordersHistory.title}</NavLink>
+                        <li onClick={() => signOut()} className="account-sidebar__menu-link link">{language.account.signOut}</li>
                     </ul>
                 </nav>
             </div>

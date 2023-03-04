@@ -1,5 +1,4 @@
 export {default as Header} from './navigation/Header.jsx'
-export {default as NotFound} from './sections/not-found/NotFound.jsx'
 export {default as Landing} from './sections/home/Landing.jsx'
 export {default as Categories} from './sections/home/Categories.jsx'
 export {default as LoginForm} from './sections/login/LoginForm.jsx'

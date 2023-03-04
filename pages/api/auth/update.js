@@ -34,7 +34,7 @@ async function update(req, res) {
                     if (!err) {
                         res.send({
                             success: true,
-                            message: language.res.usernameChangeResult
+                            message: language.res.accountUpdateResult
                         })
                     } else {
                         res.send({
@@ -46,13 +46,13 @@ async function update(req, res) {
             } else {
                 res.send({
                     success: false,
-                    message: language.res.sessionNotFoundError
+                    message: language.res.accountRequired
                 })
             }
         } else {
             res.send({
                 success: false,
-                message: language.res.missingFields
+                message: language.res.accountRequired
             })
         }
     } catch (err) {

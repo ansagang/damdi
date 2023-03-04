@@ -4,7 +4,6 @@ import { Layout } from "@/components"
 import { Category, Catalog } from "@/components"
 
 export default function Page({ account, language, products, categories }) {
-    console.log(categories, products)
 
     return (
         <>

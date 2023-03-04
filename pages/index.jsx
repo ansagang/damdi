@@ -1,10 +1,8 @@
 import { Layout, Landing, Categories, List } from '@/components'
-import { getAccount, getProducts, getCategories, getCart } from '@/utils/requests';
+import { getAccount, getProducts, getCategories } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
 
 export default function Page({ account, language, categories, newArrivals, trendings }) {
-
-    console.log(account);
 
     return (
         <>

@@ -564,31 +564,24 @@ header {
                 display: flex;
                 align-items: center;
                 width: 100%;
-                & a {
-                    width: 100%;
-                    position: relative;
-                    padding: 20px 30px;
-                    display: flex;
-                    align-items: center;
-                    & h1{
-                        color: $secondary_color
-                    }
+                position: relative;
+                padding: 30px 30px;
                     &.active{
                         & h1{
                             color: $primary_color;
                         }
-                        // border-left: 5px solid $accent_color;
                         &::before{
                             content: '';
-                            height: 80%;
-                            width: 5px;
-                            border-radius: 20px;
-                            background-color: $accent_color;
-                            left: 0px;
                             position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            height: 80%;
+                            width: 3px;
+                            background-color: $accent_color;
                         }
                     }
-                }
+                // }
                 & svg{
                     width: 25px;
                     height: 25px;
@@ -736,6 +729,9 @@ header {
 }
 
 .order-card{
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border: 1px solid $bg_color_lighter;
     border-radius: 15px;
@@ -759,24 +755,33 @@ header {
         margin-bottom: 50px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         &:last-child{
             margin-bottom: 0;
         }
         &-left{
-            width: 25%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
         }
         &-right{
-            width: 70%;
+            // width: 70%;
         }
         &-img{
-            // max-width: 230px;
-            height: 230px;
+            width: 35%;
+            // height: 230px;
+            margin-right: 20px;
             & img{
                 border-radius: 10px;
             }
         }
         &-price{
-            margin-top: 20px;
+            // margin-top: 20px;
+        }
+        &-title{
+        }
+        &-content{
+            width: 60%;
         }
     }
 }

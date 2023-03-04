@@ -1,14 +1,6 @@
-// import axios from "axios";
-
-// import { useRouter } from "next/router";
-
-// import responseHandler from "@/utils/responseHandler";
-// import { useState } from "react";
-import { ClientOrderCard, Sidebar } from "@/components";
+import { ClientOrderCard } from "@/components";
 
 export default function OrdersHistory({ language, account, sessionID, ordersHistory }) {
-
-    console.log(ordersHistory);
 
     return (
         <div className="orders-history">

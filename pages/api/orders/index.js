@@ -86,7 +86,7 @@ async function post(req, res) {
                                 cart.save();
                                 res.send({
                                     success: true,
-                                    message: language.res.addResult
+                                    message: language.res.orderAddResult
                                 })
                             } else {
                                 res.send({
@@ -127,7 +127,7 @@ async function post(req, res) {
                                 cart.save();
                                 res.send({
                                     success: true,
-                                    message: language.res.addResult
+                                    message: language.res.orderAddResult
                                 })
                             } else {
                                 res.send({

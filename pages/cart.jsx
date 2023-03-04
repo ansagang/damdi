@@ -1,6 +1,6 @@
-import { getAccount, getCart, getOffices } from '@/utils/requests';
+import { getAccount, getCart } from '@/utils/requests';
 import useLanguage from '@/utils/useLanguage';
-import { Layout, Cart, Checkout } from '@/components';
+import { Layout, Cart } from '@/components';
 
 export default function Page({ account, language, cart, sessionID }) {
 

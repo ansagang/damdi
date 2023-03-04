@@ -1,6 +1,8 @@
 import { User, Session } from "@/models"
+import languageDefinder from "./languageDefinder"
 
 export default async function handleCheckAdmin (req, res) {
+    const language = languageDefinder(req.query.lang)
     const { sessionID } = req.body
     const session = await Session.findOne({ sessionID: sessionID })
     if (session) {
@@ -10,13 +12,13 @@ export default async function handleCheckAdmin (req, res) {
         } else {
             res.send({
                 success: false,
-                message: 'User is not an admin'
+                message: language.res.adminError
             })
         }
     } else {
         res.send({
             success: false,
-            message: 'Session not found'
+            message: language.res.sessionNotFoundError
         })
     }
 }

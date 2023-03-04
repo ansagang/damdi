@@ -26,15 +26,10 @@ const lang = [
             sessionRequiredError: 'Session is required',
             userDeleteResult: 'User has been deleted successfully',
             seesionDeleteResult: 'Session has been deleted successfully',
-            passwordChangeResult: 'Password has been changed successfully',
-            emailChangeResult: 'Email has been changed successfully',
-            imageChangeResult: 'Image has been changed successfully',
-            languageChangeResult: 'Language has been changed successfully',
-            usernameChangeResult: 'Username has been changed successfully',
-            wishlistAddResult: 'Product has been added to wishlist successfuly',
-            wishlistRemoveResult: 'Product has been deleted from wishlist successfully',
+            accountUpdateResult: 'Account has been updated successfully',
             accountRequired: 'Account is required',
-            cartAdded: 'Product has been added to cart'
+            productAddResult: 'Product has been added to cart',
+            orderAddResult: 'Order has been created'
         },
         title: 'English',
         login: {
@@ -51,7 +46,7 @@ const lang = [
                 signUp: 'Sign up'
             },
             texts: {
-                dontHaveAnAccount: "Don't have an account? "
+                dontHaveAnAccount: "Do not have an account? "
             }
         },
         register: {
@@ -76,7 +71,7 @@ const lang = [
         home: {
             title: 'Home',
             landing: {
-                title: ''
+                title: 'damdi'
             },
             categories: {
                 title: 'Categories'
@@ -118,9 +113,6 @@ const lang = [
                 priceDesc: 'Price: High to Low'
             }
         },
-        account: {
-            title: 'Account'
-        },
         cart: {
             title: 'Cart',
             bar: {
@@ -134,15 +126,11 @@ const lang = [
         header: {
             search: 'Search'
         },
-        notFound: {
-            title: 'Not Found'
-        },
         product: {
             flavors: 'Flavors',
             ingredients: 'Ingredients',
-            addToCart: 'Add to Cart',
+            addToCart: 'Add',
             goToCart: 'Go To Cart'
-            
         },
         account: {
             details: {
@@ -152,7 +140,7 @@ const lang = [
                     email: 'Email',
                     fullname: 'Fullname',
                     phone: 'Phone',
-                    lang: 'Lang',
+                    lang: 'Language',
                     country: 'Country',
                     city: 'City',
                     address: 'Address',
@@ -183,10 +171,8 @@ const lang = [
                 done: 'Done'
             },
             total: 'Total',
-            subTotal: 'Subtotal',
             shipping: 'Shipping',
-            checkout: 'Checkout',
-            summary: 'Summary'
+            checkout: 'Checkout'
         },
         checkout: {
             title: 'Checkout',
@@ -212,19 +198,19 @@ const lang = [
     {
         lang: 'ru',
         res: {
-            getResult: 'Объекты были успешно отправлены',
+            getResult: 'Объекты были успешно доставлены',
             error: 'Ошибка',
             addResult: 'Объект был успешно добавлен',
-            updateResult: 'Объект был успешно обновлен',
+            updateResult: 'Объект был успешно добавлен',
             deleteResult: 'Обьект был успешно удален',
-            usesrnameLengthError: 'Никнейм должен быть не меньше 3 символов',
+            usernameLengthError: 'Никнейм должен быть не меньше 3 символов',
             passwordLengthError: 'Пароль должен быть не меньше 3 символов',
             passwordMatchError: 'Пароли не совпадают',
             missingFields: 'Заполните все поля',
             emailValidError: 'Неверная электронная почта',
             passwordUniqueError: 'Пароль должен быть уникальным',
             nameLengthError: 'Название должно быть не меньше 3 символов',
-            codeLengthError: 'Код должен быть не меньше 3 символов',
+            codeLengthError: 'Код должно быть не меньше 3 символов',
             descriptionLengthError: 'Описание должно быть не меньше 5 символов',
             emailExistsError: 'Данная электронная почта уже существует',
             registrationResult: 'Успешная регистрация',
@@ -233,18 +219,13 @@ const lang = [
             userNotFoundError: 'Пользователь не найден',
             userResult: 'Аккаунт был успешно доставлен',
             sessionNotFoundError: 'Сессия не найдена',
-            sessionRequiredError: 'Сессия необходима',
+            sessionRequiredError: 'Сессия необходимаd',
             userDeleteResult: 'Аккаунт был успешно удален',
-            sessionDeleteResult: 'Сессия была успешно удалена',
-            passwordChangeResult: 'Пароль был успешно изменен',
-            emailChangeResult: 'Электронная почта была успешно изменена',
-            imageChangeResult: 'Аватар был успешно изменен',
-            languageChangeResult: 'Язык был успешно изменен',
-            usernameChangeResult: 'Никнейм был успешно изменен',
-            wishlistAddResult: 'Продукт был успешно добавлен в список желаемых',
-            wishlistRemoveResult: 'Продукт был успешно удален из списка желаемых',
-            accountRequired: 'Для этой функции необходимо сначала войти в аккаунт',
-            cartAdded: 'Продукт был добавлен в корзину'
+            seesionDeleteResult: 'Сессия была успешно удален',
+            accountUpdateResult: 'Аккаунт был успешно обновлен',
+            accountRequired: 'Для начала войдите в аккаунт',
+            productAddResult: 'Продукт был добавлен в корзину',
+            orderAddResult: 'Заказ был оформлен'
         },
         title: 'Русский',
         login: {
@@ -286,7 +267,7 @@ const lang = [
         home: {
             title: 'Главная',
             landing: {
-                title: ''
+                title: 'damdi'
             },
             categories: {
                 title: 'Категории'
@@ -328,9 +309,6 @@ const lang = [
                 priceDesc: 'Цена: высокая - низкая'
             }
         },
-        account: {
-            title: 'Аккаунт'
-        },
         cart: {
             title: 'Корзина',
             bar: {
@@ -344,13 +322,10 @@ const lang = [
         header: {
             search: 'Поиск'
         },
-        notFound: {
-            title: 'Не найдено'
-        },
         product: {
             flavors: 'Вкусы',
             ingredients: 'Ингредиенты',
-            addToCart: 'Добавить в корзину',
+            addToCart: 'Добавить',
             goToCart: 'Корзина'
         },
         account: {
@@ -392,10 +367,8 @@ const lang = [
                 done: 'Готово'
             },
             total: 'Итого',
-            subTotal: 'Сумма',
             shipping: '',
             checkout: 'Оформление',
-            summary: ''
         },
         checkout: {
             title: 'Оформление заказа',

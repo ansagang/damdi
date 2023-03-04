@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 import responseHandler from "@/utils/responseHandler";
 import { useState } from "react";
-import { Sidebar } from "@/components";
 
 export default function Details({ language, account, sessionID }) {
 
@@ -36,7 +35,7 @@ export default function Details({ language, account, sessionID }) {
                 country: country,
                 district: district,
             }).then((res) => {
-                dispatcher({ message: res.data.message, title: 'Alert', type: res.data.success })
+                dispatcher({ message: res.data.message, title: 'Alert', type: false })
                 if (res.data.success) {
                     router.push({ pathname: router.pathname }, undefined, { scroll: false });
                 }
@@ -60,9 +59,6 @@ export default function Details({ language, account, sessionID }) {
                         <input value={username} onChange={(e) => {
                             setUsername(e.target.value)
                         }} type="text" placeholder={language.account.details.inputs.username} />
-                        {/* <input value={email} onChange={(e) => {
-                                setEmail(e.target.value)
-                            }} type="text" placeholder={language.account.details.inputs.email} /> */}
                     </div>
                     <div className="details__form-input">
                         <div className="details__form-input_info info">
@@ -81,9 +77,6 @@ export default function Details({ language, account, sessionID }) {
                         <input value={fullname} onChange={(e) => {
                             setFullname(e.target.value)
                         }} type="text" placeholder={language.account.details.inputs.fullname} />
-                        {/* <input value={email} onChange={(e) => {
-                                setEmail(e.target.value)
-                            }} type="text" placeholder={language.account.details.inputs.email} /> */}
                     </div>
                     <div className="details__form-input">
                         <div className="details__form-input_info info">
@@ -150,10 +143,6 @@ export default function Details({ language, account, sessionID }) {
                         setCity(account.data.shipping.city)
                         setCountry(account.data.shipping.country)
                         setDistrict(account.data.shipping.district)
-                        // const [address, setAddress] = useState(account.data.shipping ? account.data.shipping.address : null)
-                        // const [city, setCity] = useState(account.data.shipping ? account.data.shipping.city : null)
-                        // const [country, setCountry] = useState(account.data.shipping ? account.data.shipping.country : null)
-                        // const [district, setDistrict] = useState(account.data.shipping ? account.data.shipping.district : null)
                     }} disabled={username !== account.data.username || email !== account.data.email || fullname !== account.data.fullname || phone !== account.data.phone || lang !== account.data.lang || country !== account.data.shipping.country || city !== account.data.shipping.city || district !== account.data.shipping.district || address !== account.data.shipping.address ? false : true} className="details__form-button secondary" type="button">{language.account.details.buttons.cancel}</button>
                     <button onClick={() => update()} disabled={username !== account.data.username || email !== account.data.email || fullname !== account.data.fullname || phone !== account.data.phone || lang !== account.data.lang || country !== account.data.shipping.country || city !== account.data.shipping.city || district !== account.data.shipping.district || address !== account.data.shipping.address ? false : true} className="details__form-button primary" type="button">{language.account.details.buttons.save}</button>
                 </div>

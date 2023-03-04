@@ -85,11 +85,15 @@ select {
     border: none;
 }
 
-a {
+a{
     text-decoration: none;
+}
+
+.link{
     font-weight: $bold_font_weight;
     color: $secondary_color;
     transition: 0.2s ease;
+    cursor: pointer;
     &.active{
         color: $primary_color;
         
@@ -102,6 +106,25 @@ a {
     }
     &:hover{
         color: $primary_color;
+    }
+
+    a {
+        font-weight: $bold_font_weight;
+        color: $secondary_color;
+        transition: 0.2s ease;
+        &.active{
+            color: $primary_color;
+            
+
+        & svg{
+            fill: $accent_color;
+        }
+            // text-decoration: 1.8px underline $primary_color;
+            // text-underline-offset: 10px;
+        }
+        &:hover{
+            color: $primary_color;
+        }
     }
 }
 

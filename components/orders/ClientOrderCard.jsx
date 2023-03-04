@@ -47,12 +47,10 @@ export default function ClientOrderCard({ order, language }) {
                     {
                         order.list.map((item) => (
                             <div className="order-card__item">
-                                <Link scroll={true} href={{ pathname: `/products/${item.product.id}` }} className="order-card__item-left">
-                                    <div className="order-card__item-img">
-                                        <Image width={1} height={1} loading='lazy' unoptimized={true} src={`/uploads/${item.product.images[0]}`} />
-                                    </div>
+                                <Link scroll={true} href={{ pathname: `/products/${item.product.id}` }} className="order-card__item-img">
+                                    <Image width={1} height={1} loading='lazy' unoptimized={true} src={`/uploads/${item.product.images[0]}`} />
                                 </Link>
-                                <div className="order-card__item-right">
+                                <div className="order-card__item-content">
                                     <div className="order-card__item-title title">
                                         <h3>{item.product.title} x{item.quantity}</h3>
                                     </div>

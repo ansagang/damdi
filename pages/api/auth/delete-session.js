@@ -42,7 +42,7 @@ async function deleteSession(req, res) {
         } else {
             res.send({
                 success: false,
-                message: language.res.sessionRequiredError
+                message: language.res.accountRequired
             })
         }
     } catch (err) {

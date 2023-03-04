@@ -88,7 +88,7 @@ async function post(req, res) {
                         await cart.save();
                         res.send({
                             success: true,
-                            message: language.res.addResult
+                            message: language.res.productAddResult
                         })
                     } else {
                         products.forEach((product) => {
@@ -99,7 +99,7 @@ async function post(req, res) {
                         await Product.findOneAndUpdate({ id: productId, language: 'ru' }, { $inc: { trendScore: 1 }, })
                         res.send({
                             success: true,
-                            message: language.res.addResult
+                            message: language.res.productAddResult
                         })
                     }
                 } else {
@@ -115,7 +115,7 @@ async function post(req, res) {
                         if (!err) {
                             res.send({
                                 success: true,
-                                message: language.res.addResult
+                                message: language.res.productAddResult
                             })
                         } else {
                             res.send({
@@ -136,7 +136,7 @@ async function post(req, res) {
         } else {
             res.send({
                 success: false,
-                message: language.res.missingFields
+                message: language.res.accountRequired
             })
         }
     } catch (err) {
