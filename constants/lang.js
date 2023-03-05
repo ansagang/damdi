@@ -73,7 +73,8 @@ const lang = [
         home: {
             title: 'Home',
             landing: {
-                title: 'damdi'
+                title: 'FROM OUR OVEN TO YOUR DOOR', 
+                description: 'Damdi is a bakery that produces all of its products in-house.All products are made only from natural ingredients, without the use of product substitutes and flavor enhancers.'
             },
             categories: {
                 title: 'Categories'
@@ -271,7 +272,8 @@ const lang = [
         home: {
             title: 'Главная',
             landing: {
-                title: 'damdi'
+                title: 'ИЗ НАШЕЙ ПЕЧИ В ВАШУ ДВЕРЬ ',
+                description: 'Damdi — это пекарня, которая производит всю продукцию на собственном производстве.Вся продукция производится только из натуральных ингредиентов, без использования заменителей продуктов и усилителей вкуса.'
             },
             categories: {
                 title: 'Категории'
