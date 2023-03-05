@@ -1,3 +1,6 @@
+import { images } from "@/constants"
+import Image from "next/image"
+
 export default function Landing({ language }) {
     return (
         <section className="landing">
@@ -12,7 +15,9 @@ export default function Landing({ language }) {
                         </div>
                     </div>
                     <div className="landing__right">
-                        
+                        <div className="landing__img">
+                            <Image width={1} height={1} unoptimized={true} src={images.logo} />
+                        </div>
                     </div>
                 </div>
             </div>

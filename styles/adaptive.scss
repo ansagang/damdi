@@ -351,6 +351,22 @@
             }
         }
     }
+
+    .landing{
+        &__inner{
+            flex-direction: column-reverse;
+            gap: 20px;
+        }
+        &__left{
+            width: 100%;
+        }
+        &__right{
+            width: 100%;
+        }
+        &__img{
+            width: 100%;
+        }
+    }
 }
 
 @media (max-width: $breakpoint_phone_two) {

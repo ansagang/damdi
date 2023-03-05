@@ -3,6 +3,7 @@ import backgroundOne from '../src/backgroundOne.png'
 import backgroundTwo from '../src/backgroundTwo.png'
 import cart from '../src/shopping-cart.png'
 import account from '../src/default-avatar.png'
+import logo from '../src/logo.png'
 
 const arrow = <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
     width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -140,7 +141,8 @@ const images = {
     location,
     filter,
     close,
-    menu
+    menu,
+    logo
 }
 
 export default images
