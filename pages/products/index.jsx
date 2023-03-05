@@ -3,7 +3,7 @@ import useLanguage from "@/utils/useLanguage"
 import { Layout } from "@/components"
 import { Category, Catalog } from "@/components"
 
-export default function Page({ account, language, products, categories }) {
+export default function Page({ account, language, products, categories, sessionID }) {
 
     return (
         <>
@@ -20,7 +20,7 @@ export default function Page({ account, language, products, categories }) {
 
 export async function getServerSideProps(context) {
     const { category, stock, limit, price, flavors, search, sortBy, page } = context.query;
-    const {account} = await getAccount(context)
+    const {account, session} = await getAccount(context)
     const language = useLanguage(account.data, context)
     const products = await getProducts({ language: language.lang, category: category, stock: stock, limit: limit, price: price, flavors: flavors, search: search, sortBy: sortBy, page: page })
     const categories = await getCategories({ language: language.lang, code: category })
@@ -29,12 +29,13 @@ export async function getServerSideProps(context) {
             account: account,
             language: language,
             products: products,
-            categories: categories
+            categories: categories,
+            sessionID: session
         }
     }
 }
 
 Page.useProgress = true
 Page.getLayout = (page) => {
-    return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.products.title, content: page.props.language.products.description }} comp={{ header: true, footer: true }}>{page}</Layout>;
+    return <Layout account={page.props.account} language={page.props.language} sessionID={page.props.sessionID} head={{ title: page.props.language.products.title, content: page.props.language.products.description }} comp={{ header: true, footer: true }}>{page}</Layout>;
 }

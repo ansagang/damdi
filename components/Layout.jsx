@@ -2,7 +2,7 @@ import Head from "next/head"
 
 import Header from "./navigation/Header"
 
-export default function Layout({ children, head: { title, content }, comp: { header }, account, language }) {
+export default function Layout({ children, head: { title, content }, comp: { header }, account, language, sessionID }) {
 
     return (
         <>
@@ -14,7 +14,7 @@ export default function Layout({ children, head: { title, content }, comp: { hea
                 {
                     header ?
                         (
-                            <Header account={account} language={language} />
+                            <Header account={account} language={language} sessionID={sessionID} />
                         )
                         :
                         null

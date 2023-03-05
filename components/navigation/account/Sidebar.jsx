@@ -1,7 +1,6 @@
 import axios from "axios"
 
 import { useRouter } from "next/router"
-import Link from "next/link"
 
 import { NavLink } from "@/components"
 import responseHandler from "@/utils/responseHandler"

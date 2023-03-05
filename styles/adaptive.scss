@@ -4,48 +4,19 @@
     .container{
         max-width: 1030px;
     }
-    .header{
-        &__links{
-            width: auto;
-            &-list{
-                &_item{
-                    margin:0 80px;
-                    text-align: center;
-                }
-            }
-        }
-        &__menu{
-            width: auto;
-            &-list{
-                &_item{
-                    margin-right: 30px;
-                    &:first-child{
-                        display: none;
-                    }
-                    &:last-child{
-                        margin-right: 0;
-                    }
-                }
-            }
-        }
-        &__logo{
-            text-align: right;
-            &::before{
-                display: none;
-            }
-        }
-    }
 }
 
 
 @media (max-width: $breakpoint_tablet) {
     .header{
-        &__links{
-            &-list{
-                &_item{
-                    margin:0 40px;
-                }
+        border-bottom: 1px solid $secondary_color;
+        &__button{
+            & input{
+                display: none;
             }
+        }
+        &__link{
+            margin-right: 60px;
         }
     }
     .container{
@@ -122,10 +93,10 @@
         &__sidebar{
             position: fixed;
             left: -100%;
-            top: 100px;
+            top: 90px;
             width: 100vw;
             height: 100vh;
-            z-index: $z_fixed;
+            z-index: $z_tooltip - 1;
             background-color: $bg_color;
             padding: $pd_plate;
             transition: 0.15s linear;
@@ -267,32 +238,35 @@
 }
 
 @media (max-width: $breakpoint_phone) {
+    .inner{
+            padding: $pd_big;
+    }
     .header{
-    height: 100px;
-
-        &__links{
+        &__link{
             display: none;
+            &.title{
+                display: block;
+            }
         }
-        &__menu{
-            width: 100%;
-            &-list{
-                &_item{
-                    // display: none;
-                    &:nth-child(2){
-                        display: none;
-                    }
-                    &:last-child{
-                        display: block;
-                    }
-                }
+        &__button{
+            margin-left: 25px;
+            &.cart{
+                display: none;
+            }
+            &.menu{
+                display: block;
+            }
+            &.button{
+                display: none;
             }
         }
         &__panel{
             &.active{
-                display: block;
+                top: 90px;
             }
         }
     }
+
     .container{
         max-width: 600px;
     }
@@ -356,13 +330,35 @@
                 &-link{
                     width: 100%;
                     justify-content: left !important;
+                    &:last-child{
+                        display: none;
+                    }
                 }
+            }
+        }
+    }
+
+    .products{
+        &__catalog{
+            display: flex;
+            flex-direction: column;
+            &-pagination{
+                width: 100%;
+                gap: 20px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+                align-self: center;
             }
         }
     }
 }
 
 @media (max-width: $breakpoint_phone_two) {
+    button {
+        &[type="button"]{
+            padding: $pd_button;
+        }
+    }
     .container{
         max-width: 600px;
     }

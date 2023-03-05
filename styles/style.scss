@@ -54,19 +54,19 @@
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 999;
+    z-index: $z_fixed;
     background-color: $bg_color;
     position: fixed;
     &__panel{
+        transition: 0.15s ease-in;
         border-top: 1px solid $secondary_color;
-        display: none;
         position: fixed;
         left: 0;
-        top: 100px;
+        top: -100%;
         width: 100vw;
         height: 100vh;
         background-color: $bg_color;
-        z-index: 90;
+        z-index: $z_tooltip;
         padding: 40px;
         &-search{
             width: 100%;
@@ -102,91 +102,46 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 110px;
             padding: $pd_nav;
         }
-    
-        &__menu {
-            width: 40%;
-            text-align: center;
-            &-list {
-                display: flex;
-                align-items: center;    
-                justify-content: right;
-                &_item {
-                    margin-right: 50px;
-                    &:nth-child(3){
-                        margin-right: 0;
-                    }
-                    &:last-child{
-                        display: none;
-                    }
-                    & input{
-                        width: 250px;
-                    }
-                    & svg {
-                        width: 25px;
-                        height: 25px;
-                    }
-    
-                    & img {
-                        width: 35px;
-                        height: 35px;
-                        // border-radius: 50%;
-                    }
-                }
+
+        &__links{
+            display: flex;
+            align-items: center;
+        }   
+        
+        &__link{
+            margin-right: 100px;
+            &:last-child{
+                margin-right: 0;
+            }
+            &.title{
+                font-family: 'Pacifico', cursive;
+                margin-bottom: 0;
             }
         }
 
-        &__links {
-            width: 40%;
-            text-align: center;
-                &-list{
-                    justify-content: space-between;
-                    display: flex;
-                    align-items: center;
-                    &_item{
-                        // margin-right: 70px;
-                        &:last-child{
-                            margin-right: 0;
-                        }
-                        &:first-child{
-                            margin-left: 0;
-                        }
-                        & input{
-                            width: 250px;
-                        }
-                        & svg {
-                            width: 25px;
-                            height: 25px;
-                        }
-                        & img {
-                            width: 35px;
-                            height: 35px;
-                            // border-radius: 50%;
-                        }
-                    }
-                }
+        &__buttons{
+            display: flex;
+            align-items: center;
         }
-    
-        &__logo {
-            width: 10%;
-            position: relative;
-            &-title {
-                margin-bottom: 0;
-                &.title {
-                    font-family: 'Pacifico', cursive;
-                    // color: $accent_color;
+
+        &__button{
+            margin-left: 40px;
+            &:first-child{
+                margin-left: 0;
+            }
+            &.menu{
+                display: none;
+                & svg{
+                    width: 35px;
+                    height: 35px;
                 }
             }
-            &::before{
-                content: '';
-                position: absolute;
-                right: 0;
-                top: 0;
-                height: 100%;
-                width: 0.7px;
-                background-color: $primary_color;
+            &.account,
+            &.cart{
+                width: 35px;
+                height: 35px;
             }
         }
 }
@@ -333,10 +288,10 @@
         }
         &-pagination{
             margin-top: 100px;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
             &_arrow,
             &_page{
                 width: 35px;

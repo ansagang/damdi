@@ -36,5 +36,5 @@ export async function getServerSideProps(context) {
 
 Page.useProgress = true
 Page.getLayout = (page) => {
-    return <Layout account={page.props.account} language={page.props.language} head={{ title: page.props.language.account.ordersHistory.title, content: page.props.language.account.ordersHistory.description }} comp={{ header: true, footer: true }}><AccountLayout account={page.props.account} language={page.props.language} sessionID={page.props.sessionID   } >{page}</AccountLayout></Layout>;
+    return <Layout account={page.props.account} language={page.props.language} sessionID={page.props.sessionID} head={{ title: page.props.language.account.ordersHistory.title, content: page.props.language.account.ordersHistory.description }} comp={{ header: true, footer: true }}><AccountLayout account={page.props.account} language={page.props.language} sessionID={page.props.sessionID   } >{page}</AccountLayout></Layout>;
 };
