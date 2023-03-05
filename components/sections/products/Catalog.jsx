@@ -172,7 +172,8 @@ export default function Catalog({ products, language, category }) {
                                     :
                                     null
                             }
-                            <button type="submit" onClick={() => clearFilters()} className="products__sidebar-button primary">{language.products.sideBar.clearAll}</button>
+                                            <button type="submit" onClick={() => clearFilters()} className="products__sidebar-button primary">{language.products.sideBar.clearAll}</button>
+
                         </aside>
                         <div className="products__catalog">
                             <div className="products__catalog-title title">

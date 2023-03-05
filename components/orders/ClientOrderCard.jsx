@@ -3,33 +3,8 @@ import Link from "next/link";
 
 export default function ClientOrderCard({ order, language }) {
 
-    function dateFormat(inputDate, format) {
-        //parse the input date
-        const date = new Date(inputDate);
-
-        //extract the parts of the date
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-
-        //replace the month
-        format = format.replace("MM", month.toString().padStart(2, "0"));
-
-        //replace the year
-        if (format.indexOf("yyyy") > -1) {
-            format = format.replace("yyyy", year.toString());
-        } else if (format.indexOf("yy") > -1) {
-            format = format.replace("yy", year.toString().substr(2, 2));
-        }
-
-        //replace the day
-        format = format.replace("dd", day.toString().padStart(2, "0"));
-
-        return format;
-    }
-
-    const date = dateFormat(order.createdAt.split('T')[0], 'dd-MM-yyyy')
-    const time = order.createdAt.split('T')[1].split('.')[0].split(':')[0] + ':' + order.createdAt.split('T')[1].split('.')[0].split(':')[1]
+    const time = new Date(order.createdAt).toLocaleTimeString();
+    const date = new Date(order.createdAt).toLocaleDateString()
 
     return (
         <div className="order-card">
