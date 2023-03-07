@@ -224,6 +224,9 @@
     }
     &__sidebar{
         width: 25%;
+        &-background{
+            display: none;
+        }
         &-close{
             display: none;
             position: absolute;

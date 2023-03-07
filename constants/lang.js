@@ -192,7 +192,9 @@ const lang = [
                 zipCode: 'Zip Code'
             },
             contactDetails: 'Contact Details',
-            order: 'Your order'
+            order: 'Your order',
+            pickupInformation: 'First of all, choose an office from the suggested list from which it will be convenient to pick up your goods. Payment will be made on the spot. After ordering you will be transferred to the page with the history of your orders where you can track the status of your order.',
+            deliveryInformation: 'Fill out this form. To autofill this form when placing future orders you can enter these data in your account. Payment will be made via courier or online transfer. After ordering you will be transferred to the page with the history of your orders where you can track the status of your order.'
         },
         contacts: {
             title: 'Contacts'
@@ -391,7 +393,9 @@ const lang = [
                 zipCode: 'Почтовый индекс'
             },
             contactDetails: 'Контактная информация',
-            order: 'Ваш заказ'
+            order: 'Ваш заказ',
+            pickupInformation: 'Для начала выберете из предложенного списка офис с которого вам будет удобно забрать ваш товар. Оплата будет произведена на месте. После оформление заказа вы будете переведены на страницу с историей ваших заказов на которой вы сможете отслеживать статус вашего заказа.',
+            deliveryInformation: 'Заполните данную форму. Для автозаполнения данный формы при оформлении следующих заказов вы можете ввести эти данные в своем аккаунте. Оплата будет произведена через курьера либо же через онлайн перевод. После оформление заказа вы будете переведены на страницу с историей ваших заказов на которой вы сможете отслеживать статус вашего заказа.'
         },
         contacts: {
             title: 'Контакты'

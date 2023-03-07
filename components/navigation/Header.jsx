@@ -59,7 +59,7 @@ export default function Header({ account, language, sessionID }) {
                     <div className="header__inner">
                         <nav className="header__left">
                             <ul className="header__links">
-                                <li className="header__link title"><h2>damdi</h2></li>
+                                <li className="header__link title"><Link href={'/'}><h2>damdi</h2></Link></li>
                                 <li className="header__link link"><NavLink href={'/'}>{language.home.title}</NavLink></li>
                                 <li className="header__link link"><NavLink href={'/products'}>{language.products.title}</NavLink></li>
                                 <li className="header__link link"><NavLink href={'/contacts'}>{language.contacts.title}</NavLink></li>

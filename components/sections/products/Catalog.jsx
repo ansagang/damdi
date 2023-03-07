@@ -175,6 +175,9 @@ export default function Catalog({ products, language, category }) {
                                             <button type="submit" onClick={() => clearFilters()} className="products__sidebar-button primary">{language.products.sideBar.clearAll}</button>
 
                         </aside>
+                        <div className="products__sidebar-background">
+                            
+                            </div>
                         <div className="products__catalog">
                             <div className="products__catalog-title title">
                                 <h1>{router.query.search ? `${language.products.results.search}${router.query.search}` : category.data.title || language.products.title}</h1>

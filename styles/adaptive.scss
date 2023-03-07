@@ -95,7 +95,7 @@
             left: -100%;
             top: 90px;
             width: 100vw;
-            max-height: 100%;
+            height: 100vh;
             z-index: $z_tooltip - 1;
             background-color: $bg_color;
             padding: $pd_plate;
@@ -103,6 +103,16 @@
             transition: 0.15s linear;
             &.active{
                 left: 0;
+                & .products__sidebar-background{
+                    position: absolute;
+                    height: 100vh;
+                    left: 0;
+                    top: 0;
+                    // background-color: $bg_color;
+                    width: 100vh;
+                    z-index: $z_tooltip - 2;
+                    display: block;
+                }
             }
             &-close{
                 display: block;
@@ -371,6 +381,16 @@
 }
 
 @media (max-width: $breakpoint_phone_two) {
+    .login{
+        &__menu{
+            padding: 80px 30px;
+        }
+    }
+    .category{
+        &__left{
+            padding: 80px 30px;
+        }
+    }
     button {
         &[type="button"]{
             padding: $pd_button;
