@@ -12,11 +12,7 @@
 
     &__banner {
         width: 65%;
-        height: 100%;
-
-        & img {
-            height: 100%;
-        }
+        height: 100vh;
     }
 
     &__menu {
@@ -147,11 +143,12 @@
 }
 
 .progress{
+    z-index: 998;
     &__bar{
         position: fixed;
         left: 0;
         top: 0;
-        z-index: 999;
+        z-index: 998;
         width: 100%;
         height: 3px;
         background-color: $accent_color;
