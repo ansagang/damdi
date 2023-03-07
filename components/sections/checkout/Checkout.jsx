@@ -97,7 +97,7 @@ export default function Checkout({ language, account, sessionID, offices }) {
                                                 null
                                         }
                                     </div>
-                                    <Information>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga aperiam illum vero sequi distinctio, veniam impedit non, ipsam ea rerum tempore amet quae? Commodi minima rem hic mollitia, sed doloribus.</Information>
+                                    <Information>{language.checkout.pickupInformation}</Information>
                                 </div>
                             )
                             :
@@ -127,7 +127,7 @@ export default function Checkout({ language, account, sessionID, offices }) {
                                                 }} type="text" placeholder={language.checkout.inputs.zipCode} />
                                             </div>
                                         </div>
-                                        <Information>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga aperiam illum vero sequi distinctio, veniam impedit non, ipsam ea rerum tempore amet quae? Commodi minima rem hic mollitia, sed doloribus.</Information>
+                                        <Information>{language.checkout.deliveryInformation}</Information>
                                     </div>
                                 )
                                 :
