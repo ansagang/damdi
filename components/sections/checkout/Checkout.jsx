@@ -45,8 +45,6 @@ export default function Checkout({ language, account, sessionID, offices }) {
         }
     }
 
-    console.log(offices);
-
     return (
         <section className="checkout">
             <div className="container">
